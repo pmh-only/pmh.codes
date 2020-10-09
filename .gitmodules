@@ -1,0 +1,3 @@
+[submodule "themes/hugo.386"]
+	path = themes/hugo.386
+	url = git@github.com:pmh-only/HUGO.386.git
