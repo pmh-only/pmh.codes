@@ -1,17 +1,29 @@
-import type { GatsbyConfig } from "gatsby"
+import type { GatsbyConfig } from 'gatsby'
 
 const config: GatsbyConfig = {
   siteMetadata: {
-    title: `pmh.codes`,
-    siteUrl: `https://www.yourdomain.tld`,
+    title: 'pmh.codes',
+    siteUrl: 'https://pmh.codes'
   },
-  // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
-  // If you use VSCode you can also use the GraphQL plugin
-  // Learn more at: https://gatsby.dev/graphql-typegen
-  graphqlTypegen: true,
   plugins: [
-    'gatsby-plugin-pnpm'
-  ],
+    'gatsby-plugin-pnpm',
+    'gatsby-plugin-sass',
+    'gatsby-plugin-image',
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        name: 'pmh.codes',
+        short_name: 'pmh.codes',
+        start_url: '/',
+        background_color: '#fafafa',
+        theme_color: '#fafafa',
+        display: 'standalone',
+        icon: './static/favicon.svg'
+      }
+    }
+  ]
 }
 
 export default config

@@ -1,0 +1,14 @@
+.footer {
+  display: flex;
+  gap: 10px;
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  background-color: #fafafa7a;
+  backdrop-filter: blur(10px);
+  padding: 5px 10px;
+
+  > * {
+    font-size: 12px;
+  }
+}
