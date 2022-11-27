@@ -21,9 +21,6 @@ const IndexPage: React.FC<PageProps> = () => {
           <ListLinkItem href="https://portfolio.pmh.codes">
             My Portfolio
           </ListLinkItem>
-          <ListLinkItem href="https://remi.pmh.codes">
-            RemiDrive
-          </ListLinkItem>
         </List>
 
         <Trigger hiddenLabel='query dns records.'>
