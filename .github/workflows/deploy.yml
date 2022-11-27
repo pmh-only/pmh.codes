@@ -36,11 +36,11 @@ jobs:
         run: |
           git remote update
           git fetch
+          mv public .git/public
           git checkout origin/build
-          mv public .public
-          rm *
-          cp .public/* . -r
-          rm -r .cache .public
+          rm -r *
+          cp .git/public/* . -r
+          rm -r .cache .git/public
 
       - name: Commit Changes
         run: |
