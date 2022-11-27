@@ -18,5 +18,6 @@ module.exports = {
     'react'
   ],
   rules: {
+    '@typescript-eslint/promise-function-async': 'off'
   }
 }

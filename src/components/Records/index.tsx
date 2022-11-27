@@ -1,29 +1,39 @@
 import React, { FC, useEffect, useState } from 'react'
-import * as style from './style.module.scss'
+import { List, ListLinkItem } from '../List'
+
+const QUERY_API = 'https://list-records.pmhonly.workers.dev/'
 
 export const Records: FC = () => {
-  const [records, setRecords] = useState<string[] | undefined>(undefined)
+  const [records, setRecords] = useState<string[]>()
+
+  const fetchRecords = async (): Promise<void> => {
+    const res = await fetch(QUERY_API)
+      .then((res) => res.json())
+
+    setRecords(res)
+  }
 
   useEffect(() => {
-    fetch('https://list-records.pmhonly.workers.dev/')
-      .then(async (res) => await res.json())
-      .then((res) => {
-        setRecords(res as string[])
-      })
-      .catch(() => {})
+    void fetchRecords()
   }, [])
 
   if (records === undefined) {
     return (
-      <p><i>Loading...</i></p>
+      <List>
+        <ListLinkItem href="#">
+          Loading...
+        </ListLinkItem>
+      </List>
     )
   }
 
   return (
-    <ul className={style.records}>
+    <List>
       {records.map((v, i) =>
-        <li key={i}><a href={`https://${v}`}>{v.replace('.pmh.codes', '')}.</a></li>
+        <ListLinkItem key={i} href={`https://${v}`}>
+          {v.replace('.pmh.codes', '') + '.'}
+        </ListLinkItem>
       )}
-    </ul>
+    </List>
   )
 }

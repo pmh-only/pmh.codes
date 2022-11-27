@@ -1,22 +1,34 @@
 import * as React from 'react'
 import type { PageProps } from 'gatsby'
 
-import { Links } from '../components/Links'
 import { Title } from '../components/Title'
+import { Footer } from '../components/Footer'
+import { Trigger } from '../components/Trigger'
+import { Records } from '../components/Records'
 import { Container } from '../components/Container'
-import { RecordsTrigger } from '../components/RecordsTrigger'
+import { List, ListLinkItem } from '../components/List'
 
 import 'normalize.css'
 import '../styles/index.scss'
-import { Footer } from '../components/Footer'
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
     <>
       <Container>
-        <Title />
-        <Links />
-        <RecordsTrigger />
+        <Title>pmh.codes*</Title>
+
+        <List>
+          <ListLinkItem href="https://portfolio.pmh.codes">
+            My Portfolio
+          </ListLinkItem>
+          <ListLinkItem href="https://remi.pmh.codes">
+            RemiDrive
+          </ListLinkItem>
+        </List>
+
+        <Trigger hiddenLabel='query dns records.'>
+          <Records />
+        </Trigger>
       </Container>
       <Footer />
     </>
