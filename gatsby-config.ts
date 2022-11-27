@@ -6,7 +6,6 @@ const config: GatsbyConfig = {
     siteUrl: 'https://pmh.codes'
   },
   plugins: [
-    'gatsby-plugin-pnpm',
     'gatsby-plugin-sass',
     'gatsby-plugin-image',
     'gatsby-plugin-sharp',
