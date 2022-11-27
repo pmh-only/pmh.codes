@@ -37,7 +37,10 @@ jobs:
           git remote update
           git fetch
           git checkout origin/build
+          shopt -s dotglob
+          rm -rv !(".git"|"public")
           cp public/* . -r
+          rm -r public
 
       - name: Commit Changes
         run: |
