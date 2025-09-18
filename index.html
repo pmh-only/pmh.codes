@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" href="/node_modules/normalize.css/normalize.css">
     <link rel="stylesheet" href="/node_modules/@fontsource-variable/inconsolata/index.css">
+    <link rel="stylesheet" href="/node_modules/lucide/dist/umd/lucide.css">
     <link rel="stylesheet" href="/main.css">
 
     <title>Index of pmh.codes</title>
@@ -40,148 +41,396 @@
     <link rel="manifest" href="/manifest.json" />
   </head>
   <body>
-    <img src="/favicon.webp" width="100px" alt="Minhyeok Park's profile picture" />
+    <div class="container">
+      <header class="hero">
+        <div class="profile">
+          <img src="/favicon.webp" alt="Minhyeok Park's profile picture" class="profile-image" />
+          <div class="profile-info">
+            <h1>Index of <a href="https://regexr.com/8h7ep" target="_blank" class="domain-link"><code>^(?:[-_\w]+\.)*pmh\.(codes|so)$</code></a></h1>
+            <p class="tagline"><a href="https://github.com/pmh-only" target="_blank">Minhyeok Park</a>'s personal homelab server (actually hosted on Oracle Cloud).</p>
+          </div>
+        </div>
+      </header>
 
-    <h1>Index of <a href="https://regexr.com/8h7ep" target="_blank"><code>^(?:[-_\w]+\.)*pmh\.(codes|so)$</code></h1></a>
-    <p><a href="https://github.com/pmh-only" target="_blank">Minhyeok Park</a>'s personal homelab server (actually hosted on Oracle Cloud).</p>
+      <main class="services">
+        <section class="service-category">
+          <h2><i data-lucide="rocket"></i> Fancy Stuffs</h2>
+          <div class="service-grid">
+            <div class="service-card">
+              <div class="service-header">
+                <i data-lucide="bar-chart-3" class="service-icon"></i>
+                <h3><a href="https://visualized.pmh.codes" target="_blank">Visualized</a></h3>
+              </div>
+              <p>Realtime & Interactive 3D Visualization of a Kubernetes Cluster</p>
+            </div>
+            <div class="service-card">
+              <div class="service-header">
+                <i data-lucide="git-branch" class="service-icon"></i>
+                <h3><a href="https://argo.pmh.codes" target="_blank">ArgoCD</a></h3>
+              </div>
+              <p>GitOps continuous-deployment controller</p>
+            </div>
+            <div class="service-card">
+              <div class="service-header">
+                <i data-lucide="trending-up" class="service-icon"></i>
+                <h3><a href="https://grafana.pmh.codes" target="_blank">Grafana</a></h3>
+              </div>
+              <p>Metrics dashboard for services and hosts</p>
+            </div>
+          </div>
+        </section>
 
-    <h2>Available services</h2>
-    <p>* : Needs SSO authentication</p>
+        <section class="service-category">
+          <h2><i data-lucide="gamepad-2"></i> Games</h2>
+          <div class="service-grid">
+            <div class="service-card">
+              <div class="service-header">
+                <i data-lucide="box" class="service-icon"></i>
+                <h3><a href="https://maps.pmh.codes" target="_blank">Minecraft</a></h3>
+              </div>
+              <p>Multiplayer Minecraft server (<a href="https://maps.mc.pmh.codes/#ablaze2020:0:10:1:88:0.69:0.79:0:0:perspective" target="_blank">since. 2020</a>) <sup><a href="https://files.mc.pmh.codes" target="_blank">files</a> <i data-lucide="lock" class="inline-lock"></i></sup></p>
+            </div>
+            <div class="service-card">
+              <div class="service-header">
+                <i data-lucide="message-circle" class="service-icon"></i>
+                <h3><a href="https://guess.pmh.codes" target="_blank">GuessAiWord</a></h3>
+              </div>
+              <p>Word guessing game that utilizes OpenAI's models (KR only)</p>
+            </div>
+          </div>
+        </section>
 
-    <h3>Fancy stuffs</h3>
-    <ul>
-      <li><a href="https://visualized.pmh.codes" target="_blank">Visualized</a> - Realtime & Interactive 3D Visualization of a Kubernetes Cluster</li>
-      <li><a href="https://argo.pmh.codes" target="_blank">ArgoCD</a> - GitOps continuous-deployment controller</li>
-      <li><a href="https://grafana.pmh.codes" target="_blank">Grafana</a> - Metrics dashboard for services and hosts</li>
-    </ul>
+        <section class="service-category">
+          <h2><i data-lucide="globe"></i> Public Services</h2>
+          <div class="service-grid">
+            <div class="service-card">
+              <div class="service-header">
+                <i data-lucide="upload" class="service-icon"></i>
+                <h3><a href="https://pub.pmh.codes" target="_blank">Pub</a></h3>
+              </div>
+              <p>Public file dumps</p>
+            </div>
+            <div class="service-card">
+              <div class="service-header">
+                <i data-lucide="utensils" class="service-icon"></i>
+                <h3><a href="https://welplan.pmh.codes" target="_blank">Welplan</a></h3>
+              </div>
+              <p>Samsung restaurant menu viewer</p>
+            </div>
+            <div class="service-card">
+              <div class="service-header">
+                <i data-lucide="wrench" class="service-icon"></i>
+                <h3><a href="https://ptools.pmh.codes" target="_blank">PTools</a></h3>
+              </div>
+              <p>String-modification toolkit</p>
+            </div>
+            <div class="service-card">
+              <div class="service-header">
+                <i data-lucide="file-text" class="service-icon"></i>
+                <h3><a href="https://blog.pmh.codes" target="_blank">Blog</a></h3>
+              </div>
+              <p>Previously active technical blog</p>
+            </div>
+            <div class="service-card">
+              <div class="service-header">
+                <i data-lucide="music" class="service-icon"></i>
+                <h3><a href="https://spotify.pmh.codes" target="_blank">Spotify</a></h3>
+              </div>
+              <p>Do you like my music taste?</p>
+            </div>
+            <div class="service-card">
+              <div class="service-header">
+                <i data-lucide="key" class="service-icon"></i>
+                <h3><a href="https://keys.pmh.codes" target="_blank">Keysboard</a></h3>
+              </div>
+              <p>Simple BBS for Passkey demonstration</p>
+            </div>
+            <div class="service-card">
+              <div class="service-header">
+                <i data-lucide="heart" class="service-icon"></i>
+                <h3><a href="https://heart.pmh.codes" target="_blank">Heartbeat</a></h3>
+              </div>
+              <p>Portable health checker for API endpoints</p>
+            </div>
+          </div>
+        </section>
 
-    <h3>Games</h3>
-    <ul>
-      <li><a href="https://maps.pmh.codes" target="_blank">Minecraft</a> - Multiplayer Minecraft server (<a href="https://maps.mc.pmh.codes/#ablaze2020:0:10:1:88:0.69:0.79:0:0:perspective" target="_blank">since. 2020</a>)</li>
-      <li><a href="https://guess.pmh.codes" target="_blank">GuessAiWord</a> - Word guessing game that utilizes OpenAI's models (KR only)</li>
-    </ul>
+        <section class="service-category">
+          <h2><i data-lucide="shield"></i> Private Services</h2>
+          <div class="service-grid">
+            <div class="service-card auth-required">
+              <div class="service-header">
+                <i data-lucide="shield-check" class="service-icon"></i>
+                <h3><a href="https://auth.pmh.codes" target="_blank">Authentik</a></h3>
+                <i data-lucide="lock" class="auth-badge"></i>
+              </div>
+              <p>SSO authentication service</p>
+            </div>
+            <div class="service-card auth-required">
+              <div class="service-header">
+                <i data-lucide="database" class="service-icon"></i>
+                <h3><a href="https://console.s3.pmh.codes" target="_blank">Minio</a></h3>
+                <i data-lucide="lock" class="auth-badge"></i>
+              </div>
+              <p>S3-compatible object storage <sup><a href="https://explorer.s3.pmh.codes" target="_blank">explorer</a> <i data-lucide="lock" class="inline-lock"></i></sup></p>
+            </div>
+            <div class="service-card auth-required">
+              <div class="service-header">
+                <i data-lucide="hard-drive" class="service-icon"></i>
+                <h3><a href="https://drive.pmh.codes" target="_blank">Seafile</a></h3>
+                <i data-lucide="lock" class="auth-badge"></i>
+              </div>
+              <p>NAS for daily use</p>
+            </div>
+            <div class="service-card auth-required">
+              <div class="service-header">
+                <i data-lucide="camera" class="service-icon"></i>
+                <h3><a href="https://photos.pmh.codes" target="_blank">Immich</a></h3>
+                <i data-lucide="lock" class="auth-badge"></i>
+              </div>
+              <p>Photo and video management solution</p>
+            </div>
+            <div class="service-card auth-required">
+              <div class="service-header">
+                <i data-lucide="key-round" class="service-icon"></i>
+                <h3><a href="https://vault.pmh.codes" target="_blank">Vaultwarden</a></h3>
+                <i data-lucide="lock" class="auth-badge"></i>
+              </div>
+              <p>Password manager (Bitwarden fork)</p>
+            </div>
+            <div class="service-card auth-required">
+              <div class="service-header">
+                <i data-lucide="mail" class="service-icon"></i>
+                <h3><a href="https://mail.pmh.codes" target="_blank">Roundcube</a></h3>
+                <i data-lucide="lock" class="auth-badge"></i>
+              </div>
+              <p>Webmail client for @pmh.codes</p>
+            </div>
+            <div class="service-card auth-required">
+              <div class="service-header">
+                <i data-lucide="code" class="service-icon"></i>
+                <h3><a href="https://ide.pmh.codes" target="_blank">Code Server</a></h3>
+                <i data-lucide="lock" class="auth-badge"></i>
+              </div>
+              <p>Remote development environment</p>
+            </div>
+          </div>
+        </section>
 
-    <h3>Public services</h3>
-    <ul>
-      <li><a href="https://pub.pmh.codes" target="_blank">Pub</a> - Public file dumps</li>
-      <li><a href="https://ptools.pmh.codes" target="_blank">PTools</a> - String‑modification toolkit</li>
-      <li><a href="https://blog.pmh.codes" target="_blank">Blog</a> - Previously active technical blog</li>
-      <li><a href="https://keys.pmh.codes" target="_blank">Keysboard</a> - Simple BBS for Passkey demonstration</li>
-    </ul>
+        <section class="service-category">
+          <h2><i data-lucide="settings"></i> Maintenance</h2>
+          <div class="service-grid">
+            <div class="service-card">
+              <div class="service-header">
+                <i data-lucide="bar-chart" class="service-icon"></i>
+                <h3><a href="https://traffic.pmh.codes" target="_blank">Goaccess</a></h3>
+              </div>
+              <p>Traffic statistics dashboard</p>
+            </div>
+            <div class="service-card auth-required">
+              <div class="service-header">
+                <i data-lucide="activity" class="service-icon"></i>
+                <h3><a href="https://trace.pmh.codes" target="_blank">Rybbit</a></h3>
+                <i data-lucide="lock" class="auth-badge"></i>
+              </div>
+              <p>User telemetry collector</p>
+            </div>
+            <div class="service-card auth-required">
+              <div class="service-header">
+                <i data-lucide="terminal" class="service-icon"></i>
+                <h3><a href="https://pmhoci.host.pmh.codes" target="_blank">ttyd-pmhoci</a></h3>
+                <i data-lucide="lock" class="auth-badge"></i>
+              </div>
+              <p>Web shell</p>
+            </div>
+            <div class="service-card auth-required">
+              <div class="service-header">
+                <i data-lucide="terminal" class="service-icon"></i>
+                <h3><a href="https://pmhoci2.host.pmh.codes" target="_blank">ttyd-pmhoci2</a></h3>
+                <i data-lucide="lock" class="auth-badge"></i>
+              </div>
+              <p>Web shell</p>
+            </div>
+            <div class="service-card auth-required">
+              <div class="service-header">
+                <i data-lucide="terminal" class="service-icon"></i>
+                <h3><a href="https://pmhoci3.host.pmh.codes" target="_blank">ttyd-pmhoci3</a></h3>
+                <i data-lucide="lock" class="auth-badge"></i>
+              </div>
+              <p>Web shell</p>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <aside class="sidebar">
+        <section class="contacts">
+          <h2><i data-lucide="phone"></i> Contacts</h2>
+          <div class="contact-grid">
+            <a href="https://github.com/pmh-only" target="_blank" class="contact-link">
+              <i data-lucide="github" class="contact-icon"></i>
+              <span>@pmh-only</span>
+            </a>
+            <a href="https://www.youtube.com/@pmh_only" target="_blank" class="contact-link">
+              <i data-lucide="youtube" class="contact-icon"></i>
+              <span>@pmh_only</span>
+            </a>
+            <a href="https://www.instagram.com/pmh_only" target="_blank" class="contact-link">
+              <i data-lucide="instagram" class="contact-icon"></i>
+              <span>@pmh_only</span>
+            </a>
+            <a href="https://x.com/pmh_only" target="_blank" class="contact-link">
+              <i data-lucide="twitter" class="contact-icon"></i>
+              <span>@pmh_only</span>
+            </a>
+            <a href="https://www.linkedin.com/in/pmhonly" target="_blank" class="contact-link">
+              <i data-lucide="linkedin" class="contact-icon"></i>
+              <span>@pmhonly</span>
+            </a>
+            <a href="https://keybase.io/pmhonly" target="_blank" class="contact-link">
+              <i data-lucide="key" class="contact-icon"></i>
+              <span>@pmhonly</span>
+            </a>
+            <a href="mailto:pmh_only@pmh.codes" target="_blank" class="contact-link">
+              <i data-lucide="mail" class="contact-icon"></i>
+              <span>pmh_only@pmh.codes</span>
+            </a>
+          </div>
+        </section>
+
+        <section class="crypto-section">
+          <h2><i data-lucide="shield-check"></i> Web of Trust</h2>
+          <p>I'm signing my Git commits, documents and email with following keys:</p>
+          
+          <div class="key-container">
+            <details class="key-details">
+              <summary>[daily use] OpenSSH Public Key (Ed25519)</summary>
+              <div class="key-content">
+                <pre>ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHnT1qBtbFhAIMIx2s/lL1zdG79E4QyGMhJH+Ny51o00 pmh_only@pmh.codes</pre>
+              </div>
+            </details>
+            
+            <details class="key-details">
+              <summary>[for something critical] PGP Public Key (RSA4096)</summary>
+              <div class="key-content">
+                <p>Public key is also available at <a href="https://keybase.io/pmhonly" target="_blank">Keybase</a>.</p>
+                <p>fingerprint: <code>CF639E181A7A8A1CA81CBD9F396086721FAB72C2</code></p>
+                <pre>-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+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
+=Z/GY
+-----END PGP PUBLIC KEY BLOCK-----</pre>
+              </div>
+            </details>
+          </div>
+          
+          <p class="trust-link">You can see <a href="https://keyserver.ubuntu.com/pks/lookup?search=pmh_only%40pmh.codes&fingerprint=on&op=index" target="_blank">other people's signatures</a> proving my identity</p>
+        </section>
+      </aside>
+
+      <footer class="fun-facts">
+        <h2><i data-lucide="zap"></i> Fun Facts</h2>
+        <ul class="fact-list">
+          <li><del>&nbsp;Two&nbsp;</del><sup>Three</sup> Oracle Cloud instances orchestrated with Kubernetes</li>
+          <li>This domain doesn't use fuckin' CloudFlare's reverse proxy</li>
+          <li>There is a <code>X-Water-Mark</code> header on every responses</li>
+          <li>Kubernetes <a href="https://github.com/pmh-only/lab" target="_blank">manifests are included here</a></li>
+          <li>Passes all modern <a href="https://www.ssllabs.com/ssltest/analyze.html?d=pmh.codes&s=144.24.77.19&latest" target="_blank">TLS requirements</a></li>
+          <li>SSH port 22 is closed (probably)</li>
+        </ul>
+      </footer>
+    </div>
     
-    <h3>Privates</h3>
-    <ul>
-      <li><a href="https://auth.pmh.codes" target="_blank">Authentik</a>* - SSO authentication service</li>
-      <li><a href="https://console.s3.pmh.codes" target="_blank">Minio</a>*<sup>[<a href="https://explorer.s3.pmh.codes" target="_blank">explorer</a>*]</sup> - S3-compatible object storage</li>
-      <li><a href="https://drive.pmh.codes" target="_blank">Seafile</a>* - NAS for daily use</li>
-      <li><a href="https://photos.pmh.codes" target="_blank">Immich</a>* - Photo and video management solution</li>
-      <li><a href="https://vault.pmh.codes" target="_blank">Vaultwarden</a>* - Password manager (Bitwarden fork)</li>
-      <li><a href="https://mail.pmh.codes" target="_blank">Roundcube</a>* - Webmail client for @pmh.codes</li>
-    </ul>
-    
-    <h3>For maintenance</h3>
-    <ul>
-      <li><a href="https://trace.pmh.codes" target="_blank">Rybbit</a>* - User telemetry collector</li>
-      <li><a href="https://traffic.pmh.codes" target="_blank">Goaccess</a> - Traffic statistics dashboard</li>
-      <li><a href="https://pmhoci.host.pmh.codes" target="_blank">ttyd-pmhoci</a>* - Web shell</li>
-      <li><a href="https://pmhoci2.host.pmh.codes" target="_blank">ttyd-pmhoci2</a>* - Web shell</li>
-      <li><a href="https://pmhoci3.host.pmh.codes" target="_blank">ttyd-pmhoci3</a>* - Web shell</li>
-    </ul>
-
-    <h2>Contacts</h2>
-    <ul>
-      <li>Github: <a href="https://github.com/pmh-only" target="_blank">@pmh-only</a></li>
-      <li>Discord: <a href="https://discord.gg/GYShuTca" target="_blank">@pmh_only</a></li>
-      <li>Youtube: <a href="https://www.youtube.com/@pmh_only" target="_blank">@pmh_only</a></li>
-      <li>Instagram: <a href="https://www.instagram.com/pmh_only" target="_blank">@pmh_only</a></li>
-      <li>X (Twitter): <a href="https://x.com/pmh_only" target="_blank">@pmh_only</a></li>
-      <li>Linkedin: <a href="https://www.linkedin.com/in/pmhonly" target="_blank">@pmhonly</a></li>
-      <li>Keybase: <a href="https://keybase.io/pmhonly" target="_blank">@pmhonly</a></li>
-      <li>Email: <a href="mailto:pmh_only@pmh.codes"  target="_blank">pmh_only@pmh.codes</a></li>
-    </ul>
-
-    <h2>Web of trust</h2>
-    <p>I'm signing my Git commits, documents and email with following keys:</p> <br>
-    
-    <details>
-      <summary>[daily use] OpenSSH Public Key (Ed25519)</summary>
-      <div>
-        <pre>ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHnT1qBtbFhAIMIx2s/lL1zdG79E4QyGMhJH+Ny51o00 pmh_only@pmh.codes</pre>
-      </div>
-    </details>
-    
-    <details>
-      <summary>[for something critical] PGP Public Key (RSA4096, fingerprint: <code>CF639E181A7A8A1CA81CBD9F396086721FAB72C2</code>)</summary>
+    <script src="/node_modules/lucide/dist/umd/lucide.js"></script>
+    <script>
+      // Initialize Lucide icons
+      lucide.createIcons();
       
-      <div>
-        <p>Public key is also available at <a href="https://keybase.io/pmhonly" target="_blank">Keybase</a>.</p>
-        <pre>
-          -----BEGIN PGP PUBLIC KEY BLOCK-----
-
-          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
-          =Z/GY
-          -----END PGP PUBLIC KEY BLOCK-----
-        </pre>
-      </div>
-    </details>
-
-    <br>
-    <p>You can see <a href="https://keyserver.ubuntu.com/pks/lookup?search=pmh_only%40pmh.codes&fingerprint=on&op=index" target="_blank">other people's signatures</a> proving my identity</p>
-
-    <h2>Fun facts</h2>
-    <ul>
-      <li><del>&nbsp;Two&nbsp;</del><sup>Three</sup> Oracle Cloud instances orchestrated with Kubernetes</li>
-      <li>This domain doesn't use fuckin' CloudFlare's reverse proxy</li>
-      <li>There is a <code>X-Water-Mark</code> header on every responses</li>
-      <li>Kubernetes <a href="https://github.com/pmh-only/lab" target="_blank">manifests are included here</a></li>
-      <li>Passes all modern <a href="https://www.ssllabs.com/ssltest/analyze.html?d=pmh.codes&s=144.24.77.19&latest" target="_blank">TLS requirements</a></li>
-      <li>SSH port 22 is closed (probably)</li>
-    </ul>
+      // Make service cards clickable
+      document.addEventListener('DOMContentLoaded', function() {
+        const serviceCards = document.querySelectorAll('.service-card');
+        
+        serviceCards.forEach(card => {
+          // Find the main service link (the one in the h3)
+          const mainLink = card.querySelector('.service-header h3 a');
+          
+          if (mainLink) {
+            const mainUrl = mainLink.href;
+            const mainTarget = mainLink.target;
+            
+            // Add click handler to the card
+            card.addEventListener('click', function(e) {
+              // Check if the click was on a nested link or its parent elements
+              let target = e.target;
+              let isNestedLink = false;
+              
+              // Walk up the DOM tree to check if we clicked on a nested link
+              while (target && target !== card) {
+                if (target.tagName === 'A' && target !== mainLink) {
+                  isNestedLink = true;
+                  break;
+                }
+                target = target.parentElement;
+              }
+              
+              // Only navigate to main URL if we didn't click on a nested link
+              if (!isNestedLink) {
+                if (mainTarget === '_blank') {
+                  window.open(mainUrl, '_blank');
+                } else {
+                  window.location.href = mainUrl;
+                }
+              }
+            });
+          }
+        });
+      });
+    </script>
   </body>
 </html>
