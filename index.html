@@ -11,61 +11,78 @@
 
     <title>Index of pmh.codes</title>
 
+    <meta name="description" content="Minhyeok Park's personal homelab server with various services including storage, games, monitoring tools, and development resources." />
+    <meta name="keywords" content="homelab, kubernetes, selfhosted, cloud services, minio, minecraft, grafana, authentik" />
+    <meta name="author" content="Minhyeok Park" />
+    <meta name="robots" content="index, follow" />
+
     <meta content="Index of pmh.codes" property="og:title" />
-    <meta content="Minhyeok Park's personal homelab server." property="og:description" />
+    <meta content="Minhyeok Park's personal homelab server with various services including storage, games, monitoring tools, and development resources." property="og:description" />
     <meta content="https://pmh.codes" property="og:url" />
     <meta content="https://pmh.codes/favicon.webp" property="og:image" />
+    <meta content="website" property="og:type" />
+    <meta content="pmh.codes" property="og:site_name" />
+    <meta content="512" property="og:image:width" />
+    <meta content="512" property="og:image:height" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@pmh_only" />
+    <meta name="twitter:creator" content="@pmh_only" />
+    <meta name="twitter:title" content="Index of pmh.codes" />
+    <meta name="twitter:description" content="Minhyeok Park's personal homelab server with various services including storage, games, monitoring tools, and development resources." />
+    <meta name="twitter:image" content="https://pmh.codes/favicon.webp" />
+
     <meta content="#ffaaaa" name="theme-color" />
+    <meta name="msapplication-TileColor" content="#ffaaaa" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    
+    <link rel="manifest" href="/manifest.json" />
   </head>
   <body>
-    <img src="/favicon.webp" width="100px" />
+    <img src="/favicon.webp" width="100px" alt="Minhyeok Park's profile picture" />
 
-    <h1>Index of <a href="https://regexr.com/8g780" target="_blank"><code>^(?:[-_\w]+\.)*pmh\.codes$</code></h1></a>
-    <p><a href="https://github.com/pmh-only" target="_blank">Minhyeok Park</a>'s personal homelab (not actually, It's hosted on Oracle Cloud) server.</p>
+    <h1>Index of <a href="https://regexr.com/8h7ep" target="_blank"><code>^(?:[-_\w]+\.)*pmh\.(codes|so)$</code></h1></a>
+    <p><a href="https://github.com/pmh-only" target="_blank">Minhyeok Park</a>'s personal homelab server (actually hosted on Oracle Cloud).</p>
 
     <h2>Available services</h2>
     <p>* : Needs SSO authentication</p>
 
-    <br>
+    <h3>Fancy stuffs</h3>
     <ul>
-      <li><b>** NEW **</b></li>
       <li><a href="https://visualized.pmh.codes" target="_blank">Visualized</a> - Realtime & Interactive 3D Visualization of a Kubernetes Cluster</li>
+      <li><a href="https://argo.pmh.codes" target="_blank">ArgoCD</a> - GitOps continuous-deployment controller</li>
+      <li><a href="https://grafana.pmh.codes" target="_blank">Grafana</a> - Metrics dashboard for services and hosts</li>
     </ul>
 
-    <h3>Storage services</h3>
+    <h3>Games</h3>
     <ul>
+      <li><a href="https://maps.pmh.codes" target="_blank">Minecraft</a> - Multiplayer Minecraft server (<a href="https://maps.mc.pmh.codes/#ablaze2020:0:10:1:88:0.69:0.79:0:0:perspective" target="_blank">since. 2020</a>)</li>
+      <li><a href="https://guess.pmh.codes" target="_blank">GuessAiWord</a> - Word guessing game that utilizes OpenAI's models (KR only)</li>
+    </ul>
+
+    <h3>Public services</h3>
+    <ul>
+      <li><a href="https://pub.pmh.codes" target="_blank">Pub</a> - Public file dumps</li>
+      <li><a href="https://ptools.pmh.codes" target="_blank">PTools</a> - String‑modification toolkit</li>
+      <li><a href="https://blog.pmh.codes" target="_blank">Blog</a> - Previously active technical blog</li>
+      <li><a href="https://keys.pmh.codes" target="_blank">Keysboard</a> - Simple BBS for Passkey demonstration</li>
+    </ul>
+    
+    <h3>Privates</h3>
+    <ul>
+      <li><a href="https://auth.pmh.codes" target="_blank">Authentik</a>* - SSO authentication service</li>
       <li><a href="https://console.s3.pmh.codes" target="_blank">Minio</a>*<sup>[<a href="https://explorer.s3.pmh.codes" target="_blank">explorer</a>*]</sup> - S3-compatible object storage</li>
       <li><a href="https://drive.pmh.codes" target="_blank">Seafile</a>* - NAS for daily use</li>
       <li><a href="https://photos.pmh.codes" target="_blank">Immich</a>* - Photo and video management solution</li>
       <li><a href="https://vault.pmh.codes" target="_blank">Vaultwarden</a>* - Password manager (Bitwarden fork)</li>
       <li><a href="https://mail.pmh.codes" target="_blank">Roundcube</a>* - Webmail client for @pmh.codes</li>
-      <li><a href="https://pub.pmh.codes" target="_blank">Pub</a> - Public file dumps</li>
-    </ul>
-
-    <h3>Games</h3>
-    <ul>
-      <li><a href="https://maps.pmh.codes" target="_blank">Minecraft</a> - Large, multiplayer Minecraft server</li>
-      <li><a href="https://guess.pmh.codes" target="_blank">GuessAiWord</a> - Self made word guessing game that utilizes OpenAI's API</li>
-    </ul>
-
-    <h3>Etc...</h3>
-    <ul>
-      <li><a href="https://blog.pmh.codes" target="_blank">Ghost blog</a> - Previously active technical blog</li>
-      <li><a href="https://keys.pmh.codes" target="_blank">Keysboard</a> - Simple BBS for Passkey demonstration</li>
-      <li><a href="https://ptools.pmh.codes" target="_blank">PTools</a> - String‑modification toolkit</li>
     </ul>
     
-    <h3>Monitoring tools</h3>
+    <h3>For maintenance</h3>
     <ul>
-      <li><a href="https://grafana.pmh.codes" target="_blank">Grafana</a> - Metrics dashboard for services and hosts</li>
       <li><a href="https://trace.pmh.codes" target="_blank">Rybbit</a>* - User telemetry collector</li>
       <li><a href="https://traffic.pmh.codes" target="_blank">Goaccess</a> - Traffic statistics dashboard</li>
-    </ul>
-
-    <h3>Services for maintenance</h3>
-    <ul>
-      <li><a href="https://auth.pmh.codes" target="_blank">Authentik</a>* - SSO authentication service</li>
-      <li><a href="https://argo.pmh.codes" target="_blank">ArgoCD</a> - GitOps continuous‑deployment controller</li>
       <li><a href="https://pmhoci.host.pmh.codes" target="_blank">ttyd-pmhoci</a>* - Web shell</li>
       <li><a href="https://pmhoci2.host.pmh.codes" target="_blank">ttyd-pmhoci2</a>* - Web shell</li>
       <li><a href="https://pmhoci3.host.pmh.codes" target="_blank">ttyd-pmhoci3</a>* - Web shell</li>
@@ -155,11 +172,16 @@
     </details>
 
     <br>
-    <p>You can see <a href="https://keyserver.ubuntu.com/pks/lookup?search=pmh_only%40pmh.codes&fingerprint=on&op=index" target="_blank">other people's signature</a> proving my identity</p>
+    <p>You can see <a href="https://keyserver.ubuntu.com/pks/lookup?search=pmh_only%40pmh.codes&fingerprint=on&op=index" target="_blank">other people's signatures</a> proving my identity</p>
 
     <h2>Fun facts</h2>
     <ul>
       <li><del>&nbsp;Two&nbsp;</del><sup>Three</sup> Oracle Cloud instances orchestrated with Kubernetes</li>
-      <li>Kubernetes manifests are included <a href="https://github.com/pmh-only/lab" target="_blank">here</a></li>
       <li>This domain doesn't use fuckin' CloudFlare's reverse proxy</li>
-      <li>SSL configuration passes <a href="https://www.ssllabs.com/ssltest/anal
+      <li>There is a <code>X-Water-Mark</code> header on every responses</li>
+      <li>Kubernetes <a href="https://github.com/pmh-only/lab" target="_blank">manifests are included here</a></li>
+      <li>Passes all modern <a href="https://www.ssllabs.com/ssltest/analyze.html?d=pmh.codes&s=144.24.77.19&latest" target="_blank">TLS requirements</a></li>
+      <li>SSH port 22 is closed (probably)</li>
+    </ul>
+  </body>
+</html>

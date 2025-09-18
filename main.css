@@ -1,12 +1,24 @@
 :root {
   --accent-color: #ffaaaa;
-  --link-color: #aaaaff;
+  --link-color: #b0b0ff;
+  --link-visited: #d0a0d0;
   --text-color: #eee;
   --background-color: #222;
   --secondary-background-color: #333;
   --secondary-text-color: #666;
+
+  user-select: none;
 }
-  
+
+pre {
+  user-select: all;
+}
+
+*::selection {
+  color: var(--text-color);
+  background-color: var(--link-color);
+}
+
 html, code, pre {
   font-family: "Inconsolata Variable", monospace;
 }
@@ -30,14 +42,25 @@ img {
   border-radius: 6px;
 }
 
-a, summary {
-  color: var(--link-color);
-  text-decoration: none;
-  cursor: pointer;
+summary {
+  padding: 6px 0px;
 }
 
-a:hover, summary:hover {
+a, summary {
+  color: var(--link-color);
   text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 2px;
+  cursor: pointer;
+  transition: text-decoration-color 0.2s ease;
+}
+
+a:hover, summary:hover, a:focus, summary:focus {
+  text-decoration-color: var(--link-color);
+}
+
+a:visited {
+  color: var(--link-visited);
 }
 
 code, pre {
