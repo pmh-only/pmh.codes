@@ -7,7 +7,6 @@
 
     <link rel="stylesheet" href="/node_modules/normalize.css/normalize.css">
     <link rel="stylesheet" href="/node_modules/@fontsource-variable/inconsolata/index.css">
-    <link rel="stylesheet" href="/node_modules/lucide/dist/umd/lucide.css">
     <link rel="stylesheet" href="/main.css">
 
     <title>Index of pmh.codes</title>
@@ -35,12 +34,34 @@
 
     <meta content="#ffaaaa" name="theme-color" />
     <meta name="msapplication-TileColor" content="#ffaaaa" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     
     <link rel="manifest" href="/manifest.json" />
   </head>
   <body>
+    <!-- Floating ambient elements -->
+    <div class="floating-elements">
+      <div class="floating-element floating-circle"></div>
+      <div class="floating-element floating-square"></div>
+      <div class="floating-element floating-triangle"></div>
+      <div class="floating-element floating-circle"></div>
+      <div class="floating-element floating-hexagon"></div>
+      <div class="floating-element floating-square"></div>
+      <div class="floating-element floating-dot"></div>
+      <div class="floating-element floating-ring"></div>
+      <div class="floating-element floating-star"></div>
+      <div class="floating-element floating-circle floating-small"></div>
+      <div class="floating-element floating-triangle"></div>
+      <div class="floating-element floating-dot"></div>
+      <div class="floating-element floating-square floating-small"></div>
+      <div class="floating-element floating-ring"></div>
+      <div class="floating-element floating-star"></div>
+      <div class="floating-element floating-hexagon"></div>
+      <div class="floating-element floating-circle floating-tiny"></div>
+      <div class="floating-element floating-dot"></div>
+    </div>
+    
     <div class="container">
       <header class="hero">
         <div class="profile">
@@ -388,49 +409,6 @@ jcZoUzz8H8pvyprHkITpHXSn8n8tphHs4nQGiFzQ4VnrrtByLFjL3ximvJRKcg==
     </div>
     
     <script src="/node_modules/lucide/dist/umd/lucide.js"></script>
-    <script>
-      // Initialize Lucide icons
-      lucide.createIcons();
-      
-      // Make service cards clickable
-      document.addEventListener('DOMContentLoaded', function() {
-        const serviceCards = document.querySelectorAll('.service-card');
-        
-        serviceCards.forEach(card => {
-          // Find the main service link (the one in the h3)
-          const mainLink = card.querySelector('.service-header h3 a');
-          
-          if (mainLink) {
-            const mainUrl = mainLink.href;
-            const mainTarget = mainLink.target;
-            
-            // Add click handler to the card
-            card.addEventListener('click', function(e) {
-              // Check if the click was on a nested link or its parent elements
-              let target = e.target;
-              let isNestedLink = false;
-              
-              // Walk up the DOM tree to check if we clicked on a nested link
-              while (target && target !== card) {
-                if (target.tagName === 'A' && target !== mainLink) {
-                  isNestedLink = true;
-                  break;
-                }
-                target = target.parentElement;
-              }
-              
-              // Only navigate to main URL if we didn't click on a nested link
-              if (!isNestedLink) {
-                if (mainTarget === '_blank') {
-                  window.open(mainUrl, '_blank');
-                } else {
-                  window.location.href = mainUrl;
-                }
-              }
-            });
-          }
-        });
-      });
-    </script>
+    <script src="/main.js"></script>
   </body>
 </html>
