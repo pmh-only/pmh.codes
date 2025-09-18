@@ -1,6 +1,12 @@
 {
+  "scripts": {
+    "start": "serve ."
+  },
   "dependencies": {
     "@fontsource-variable/inconsolata": "^5.2.6",
     "normalize.css": "^8.0.1"
+  },
+  "devDependencies": {
+    "serve": "^14.2.5"
   }
 }
