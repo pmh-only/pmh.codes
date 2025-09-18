@@ -1,0 +1,105 @@
+:root {
+  --accent-color: #ffaaaa;
+  --link-color: #aaaaff;
+  --text-color: #eee;
+  --background-color: #222;
+  --secondary-background-color: #333;
+  --secondary-text-color: #666;
+}
+  
+html {
+  font-size: 16px;
+  font-family: "Inconsolata Variable", monospace;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+
+  color: var(--text-color);
+  background-color: var(--background-color);
+
+  white-space: nowrap;
+  padding: 30px 26px;
+}
+
+img {
+  border-radius: 6px;
+}
+
+a, summary {
+  color: var(--link-color);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a:hover, summary:hover {
+  text-decoration: underline;
+}
+
+code, pre {
+  color: var(--accent-color);
+  background-color: var(--secondary-background-color);
+  border-radius: 6px;
+}
+
+code {
+  padding: 0px 8px;
+}
+
+pre {
+  padding: 16px 24px;
+  white-space: pre-line;
+  display: inline-block;
+}
+
+ul {
+  padding-left: 0px;
+}
+
+details > div {
+  padding-left: 24px;
+}
+
+h1, h2, h3 {
+  margin: 0;
+  margin-top: 16px;
+}
+
+p, ul, li {
+  margin: 0;
+}
+
+summary::marker, li::marker {
+  color: var(--secondary-text-color);
+  font-weight: bold;
+}
+
+ul {
+  list-style: ':: ' inside;
+}
+
+details summary::marker {
+  content: "[+] ";
+}
+
+details[open] summary::marker {
+  content: "[-] ";
+}
+
+details:last-of-type summary::-webkit-details-marker {
+  display: none;
+}
+
+:focus-visible {
+  outline: none;
+  text-decoration: underline;
+}
+
+del {
+  text-decoration: line-through var(--accent-color) 2px;
+}
+
+sup {
+  color: var(--accent-color);
+}

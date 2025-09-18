@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@fontsource-variable/inconsolata": "^5.2.6",
+    "normalize.css": "^8.0.1"
+  }
+}
