@@ -4,23 +4,30 @@ lucide.createIcons();
 // Randomize floating elements
 function randomizeFloatingElements() {
   const elements = document.querySelectorAll('.floating-element');
+  const themeClasses = ['theme-accent', 'theme-link', 'theme-visited', 'theme-secondary', 'theme-border'];
   
   elements.forEach((element, index) => {
     // Random position (with some margin from edges)
     const x = Math.random() * 85 + 5; // 5% to 90%
     const y = Math.random() * 85 + 5; // 5% to 90%
     
-    // Random animation delay (0-30 seconds)
-    const delay = Math.random() * 30;
-    
     // Random duration (20-40 seconds)
     const duration = Math.random() * 20 + 20;
+    
+    // Random rotation (0-360 degrees)
+    const rotation = Math.random() * 360;
+    
+    // Random theme class
+    const themeClass = themeClasses[Math.floor(Math.random() * themeClasses.length)];
     
     // Apply CSS custom properties
     element.style.setProperty('--start-x', x + '%');
     element.style.setProperty('--start-y', y + '%');
-    element.style.setProperty('--delay', delay + 's');
     element.style.setProperty('--duration', duration + 's');
+    element.style.setProperty('--icon-rotation', rotation + 'deg');
+    
+    // Add theme class for color variation
+    element.classList.add(themeClass);
   });
 }
 
