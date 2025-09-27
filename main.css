@@ -14,7 +14,7 @@
   --card-shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.4);
   
   --font-mono: "Inconsolata Variable", monospace;
-  --border-radius: 8px;
+  --border-radius: 2px;
   --transition: all 0.2s ease;
 
   user-select: none;
@@ -81,26 +81,12 @@ body {
   transition: transform 0.3s ease;
 }
 
-/* Theme-based color classes */
-.floating-icon.theme-accent svg {
-  color: var(--accent-color);
-}
-
-.floating-icon.theme-link svg {
-  color: var(--link-color);
-}
-
-.floating-icon.theme-visited svg {
-  color: var(--link-visited);
-}
-
-.floating-icon.theme-secondary svg {
-  color: var(--secondary-text-color);
-}
-
-.floating-icon.theme-border svg {
-  color: var(--border-color);
-}
+/* Theme-based color classes - consolidated */
+.floating-icon.theme-accent svg { color: var(--accent-color); }
+.floating-icon.theme-link svg { color: var(--link-color); }
+.floating-icon.theme-visited svg { color: var(--link-visited); }
+.floating-icon.theme-secondary svg { color: var(--secondary-text-color); }
+.floating-icon.theme-border svg { color: var(--border-color); }
 
 
 code, pre {
@@ -146,11 +132,8 @@ code, pre {
 /* Hero Section */
 .hero {
   grid-area: hero;
-  background: linear-gradient(135deg, var(--secondary-background-color) 0%, var(--tertiary-background-color) 100%);
   border-radius: var(--border-radius);
   padding: 2rem;
-  box-shadow: var(--card-shadow);
-  border: 1px solid var(--border-color);
 }
 
 .hero code {
@@ -226,23 +209,26 @@ code, pre {
 }
 
 .service-category {
-  margin-bottom: 3rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--card-shadow);
+  margin-bottom: 1.5rem;
 }
 
-.service-category h2 {
-  margin: 0 0 1.5rem 0;
-  font-size: 1.5rem;
+.service-category legend {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
   color: var(--accent-color);
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-.service-category h2 i {
+.service-category legend i {
   width: 1.3rem;
   height: 1.3rem;
 }
-
 
 .service-grid {
   display: grid;
@@ -400,7 +386,7 @@ a:focus {
   gap: 0.8rem;
   padding: 0.8rem;
   background: var(--background-color);
-  border-radius: 6px;
+  border-radius: 2px;
   transition: var(--transition);
   border: 1px solid transparent;
   text-decoration: none;
@@ -473,7 +459,7 @@ a:focus {
 .key-details {
   margin-bottom: 1rem;
   background: var(--background-color);
-  border-radius: 6px;
+  border-radius: 2px;
   border: 1px solid var(--border-color);
   overflow: hidden;
 }
@@ -632,28 +618,12 @@ details[open] summary::before {
   content: '[-] ';
 }
 
-/* Floating Element Animations */
+/* Optimized floating animation - reduced complexity */
 @keyframes floatAround {
-  0% {
-    transform: translate(0, 0) rotate(var(--icon-rotation, 0deg));
-    opacity: 0.15;
-  }
-  25% {
-    transform: translate(30px, -20px) rotate(calc(var(--icon-rotation, 0deg) + 90deg));
-    opacity: 0.25;
-  }
-  50% {
-    transform: translate(-15px, 35px) rotate(calc(var(--icon-rotation, 0deg) + 180deg));
-    opacity: 0.1;
-  }
-  75% {
-    transform: translate(20px, 10px) rotate(calc(var(--icon-rotation, 0deg) + 270deg));
-    opacity: 0.2;
-  }
-  100% {
-    transform: translate(0, 0) rotate(calc(var(--icon-rotation, 0deg) + 360deg));
-    opacity: 0.15;
-  }
+  0%, 100% { transform: translate(0, 0) rotate(var(--icon-rotation, 0deg)); opacity: 0.15; }
+  25% { transform: translate(30px, -20px) rotate(calc(var(--icon-rotation, 0deg) + 90deg)); opacity: 0.25; }
+  50% { transform: translate(-15px, 35px) rotate(calc(var(--icon-rotation, 0deg) + 180deg)); opacity: 0.1; }
+  75% { transform: translate(20px, 10px) rotate(calc(var(--icon-rotation, 0deg) + 270deg)); opacity: 0.2; }
 }
 
 /* Loading animation */
@@ -672,12 +642,14 @@ details[open] summary::before {
   animation: fadeInUp 0.5s ease forwards;
 }
 
-.service-card:nth-child(1) { animation-delay: 0.1s; }
-.service-card:nth-child(2) { animation-delay: 0.2s; }
-.service-card:nth-child(3) { animation-delay: 0.3s; }
-.service-card:nth-child(4) { animation-delay: 0.4s; }
-.service-card:nth-child(5) { animation-delay: 0.5s; }
-.service-card:nth-child(6) { animation-delay: 0.6s; }
+/* Efficient nth-child animation delays */
+.service-card:nth-child(n) { animation-delay: calc(0.1s * var(--n, 1)); }
+.service-card:nth-child(1) { --n: 1; }
+.service-card:nth-child(2) { --n: 2; }
+.service-card:nth-child(3) { --n: 3; }
+.service-card:nth-child(4) { --n: 4; }
+.service-card:nth-child(5) { --n: 5; }
+.service-card:nth-child(6) { --n: 6; }
 
 /* Mobile optimizations */
 @media (max-width: 640px) {
