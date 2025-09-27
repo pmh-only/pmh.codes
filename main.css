@@ -259,25 +259,19 @@ code, pre {
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--accent-color) 0%, var(--link-color) 100%);
-  transform: scaleX(0);
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--accent-color) 0%, var(--link-color) 100%);
+  transform: scaleY(0);
   transition: transform 0.3s ease;
 }
 
 .service-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--card-shadow-hover);
   border-color: var(--accent-color);
 }
 
-.service-card:active {
-  transform: translateY(-1px);
-}
-
 .service-card:hover::before {
-  transform: scaleX(1);
+  transform: scaleY(1);
 }
 
 .service-header {
@@ -310,6 +304,16 @@ code, pre {
 
 .auth-required {
   border-left: 3px solid var(--disabled-color);
+  transition: var(--transition);
+}
+
+.auth-required:hover {
+  border-left-width: 1px;
+  padding-left: calc(1.5rem + 2px);
+}
+
+.auth-required:hover::before {
+  display: block;
 }
 
 .service-card p {
@@ -391,6 +395,19 @@ a:focus {
   border: 1px solid transparent;
   text-decoration: none;
   position: relative;
+  overflow: hidden;
+}
+
+.contact-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--accent-color) 0%, var(--link-color) 100%);
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
 }
 
 .contact-link::after {
@@ -409,7 +426,10 @@ a:focus {
 .contact-link:hover {
   background: var(--hover-background);
   border-color: var(--accent-color);
-  transform: translateX(4px);
+}
+
+.contact-link:hover::before {
+  transform: scaleY(1);
 }
 
 .contact-link:hover::after {
