@@ -14,7 +14,7 @@
   --card-shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.4);
   
   --font-mono: "Inconsolata Variable", monospace;
-  --border-radius: 8px;
+  --border-radius: 4px;
   --transition: all 0.2s ease;
 
   user-select: none;
@@ -146,11 +146,6 @@ code, pre {
 /* Hero Section */
 .hero {
   grid-area: hero;
-  background: linear-gradient(135deg, var(--secondary-background-color) 0%, var(--tertiary-background-color) 100%);
-  border-radius: var(--border-radius);
-  padding: 2rem;
-  box-shadow: var(--card-shadow);
-  border: 1px solid var(--border-color);
 }
 
 .hero code {
@@ -167,15 +162,10 @@ code, pre {
 .profile-image {
   width: 120px;
   height: 120px;
-  border-radius: 50%;
+  border-radius: var(--border-radius);
   object-fit: cover;
   box-shadow: 0 4px 16px rgba(255, 170, 170, 0.3);
   transition: var(--transition);
-}
-
-.profile-image:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 24px rgba(255, 170, 170, 0.4);
 }
 
 .profile-info h1 {
@@ -226,11 +216,11 @@ code, pre {
 }
 
 .service-category {
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 
 .service-category h2 {
-  margin: 0 0 1.5rem 0;
+  margin: 0 0 0.5rem 0;
   font-size: 1.5rem;
   color: var(--accent-color);
   display: flex;
@@ -266,28 +256,33 @@ code, pre {
   position: relative;
   overflow: hidden;
   cursor: pointer;
+  opacity: 0;
 }
 
 .service-card::before {
   content: '';
   position: absolute;
-  top: 0;
+  bottom: 0;
   left: 0;
-  right: 0;
   height: 3px;
+  width: 100%;
+  transform-origin: left;
   background: linear-gradient(90deg, var(--accent-color) 0%, var(--link-color) 100%);
   transform: scaleX(0);
   transition: transform 0.3s ease;
 }
 
+.service-card.auth-required::before {
+  background: linear-gradient(90deg, var(--disabled-color) 0%, var(--disabled-color) 100%);
+}
+
 .service-card:hover {
-  transform: translateY(-2px);
   box-shadow: var(--card-shadow-hover);
   border-color: var(--accent-color);
 }
 
-.service-card:active {
-  transform: translateY(-1px);
+.service-card.auth-required:hover {
+  border-color: var(--disabled-color);
 }
 
 .service-card:hover::before {
@@ -320,10 +315,6 @@ code, pre {
   height: 0.8rem;
   opacity: 0.8;
   color: var(--secondary-text-color);
-}
-
-.auth-required {
-  border-left: 3px solid var(--disabled-color);
 }
 
 .service-card p {
@@ -400,35 +391,33 @@ a:focus {
   gap: 0.8rem;
   padding: 0.8rem;
   background: var(--background-color);
-  border-radius: 6px;
+  border-radius: calc(var(--border-radius) - 1px);
   transition: var(--transition);
   border: 1px solid transparent;
   text-decoration: none;
   position: relative;
 }
 
-.contact-link::after {
+.contact-link::before {
   content: '';
   position: absolute;
   bottom: 0;
-  left: 0.8rem;
-  right: 0.8rem;
-  height: 1px;
-  background: var(--link-color);
-  opacity: 0.3;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  transform-origin: left;
+  background: linear-gradient(90deg, var(--accent-color) 0%, var(--link-color) 100%);
   transform: scaleX(0);
-  transition: transform 0.2s ease;
+  transition: transform 0.3s ease;
 }
 
 .contact-link:hover {
   background: var(--hover-background);
   border-color: var(--accent-color);
-  transform: translateX(4px);
 }
 
-.contact-link:hover::after {
+.contact-link:hover::before {
   transform: scaleX(1);
-  opacity: 0.6;
 }
 
 .contact-icon {
@@ -473,7 +462,7 @@ a:focus {
 .key-details {
   margin-bottom: 1rem;
   background: var(--background-color);
-  border-radius: 6px;
+  border-radius: var(--border-radius);
   border: 1px solid var(--border-color);
   overflow: hidden;
 }
@@ -511,7 +500,7 @@ a:focus {
 code, pre {
   font-family: var(--font-mono);
   background-color: var(--tertiary-background-color);
-  border-radius: 4px;
+  border-radius: var(--border-radius);
 }
 
 code {
@@ -607,7 +596,7 @@ sup {
 :focus-visible {
   outline: 2px solid var(--accent-color);
   outline-offset: 2px;
-  border-radius: 4px;
+  border-radius: 2px;
 }
 
 /* Details marker styling */
