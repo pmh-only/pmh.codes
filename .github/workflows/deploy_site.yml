@@ -23,7 +23,7 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        run: npm install --frozen-lockfile
+        run: npm ci
 
       - name: Deploy to S3
         run: aws --no-verify-ssl --endpoint-url=https://s3.pmh.codes s3 sync . s3://www
