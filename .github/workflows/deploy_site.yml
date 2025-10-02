@@ -6,6 +6,10 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: page-build
+  cancel-in-progress: true
+
 jobs:
   deploy_site:
     runs-on: ubuntu-latest
@@ -22,7 +26,7 @@ jobs:
         run: npm install --frozen-lockfile
 
       - name: Deploy to S3
-        run: aws --no-verify-ssl --endpoint-url=https://s3.pmh.codes s3 sync . s3://www --delete
+        run: aws --no-verify-ssl --endpoint-url=https://s3.pmh.codes s3 sync . s3://www
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
