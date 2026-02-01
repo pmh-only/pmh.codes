@@ -1,23 +1,39 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/webp" href="/favicon.webp" />
 
-    <link rel="stylesheet" href="/node_modules/normalize.css/normalize.css">
-    <link rel="stylesheet" href="/node_modules/@fontsource-variable/inconsolata/index.css">
-    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="/node_modules/normalize.css/normalize.css" />
+    <link
+      rel="stylesheet"
+      href="/node_modules/@fontsource-variable/inconsolata/index.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/node_modules/@fontsource-variable/roboto/index.css"
+    />
+    <link rel="stylesheet" href="/main.css" />
 
     <title>Index of pmh.codes</title>
 
-    <meta name="description" content="Minhyeok Park's personal homelab server with various services including storage, games, monitoring tools, and development resources." />
-    <meta name="keywords" content="homelab, kubernetes, selfhosted, cloud services, minio, minecraft, grafana, authentik" />
+    <meta
+      name="description"
+      content="Minhyeok Park's personal homelab server with various services including storage, games, monitoring tools, and development resources."
+    />
+    <meta
+      name="keywords"
+      content="homelab, kubernetes, selfhosted, cloud services, minio, minecraft, grafana, authentik"
+    />
     <meta name="author" content="Minhyeok Park" />
     <meta name="robots" content="index, follow" />
 
     <meta content="Index of pmh.codes" property="og:title" />
-    <meta content="Minhyeok Park's personal homelab server with various services including storage, games, monitoring tools, and development resources." property="og:description" />
+    <meta
+      content="Minhyeok Park's personal homelab server with various services including storage, games, monitoring tools, and development resources."
+      property="og:description"
+    />
     <meta content="https://pmh.codes" property="og:url" />
     <meta content="https://pmh.codes/favicon.webp" property="og:image" />
     <meta content="website" property="og:type" />
@@ -29,273 +45,375 @@
     <meta name="twitter:site" content="@pmh_only" />
     <meta name="twitter:creator" content="@pmh_only" />
     <meta name="twitter:title" content="Index of pmh.codes" />
-    <meta name="twitter:description" content="Minhyeok Park's personal homelab server with various services including storage, games, monitoring tools, and development resources." />
+    <meta
+      name="twitter:description"
+      content="Minhyeok Park's personal homelab server with various services including storage, games, monitoring tools, and development resources."
+    />
     <meta name="twitter:image" content="https://pmh.codes/favicon.webp" />
 
     <meta content="#ffaaaa" name="theme-color" />
     <meta name="msapplication-TileColor" content="#ffaaaa" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    
+
     <link rel="manifest" href="/manifest.json" />
   </head>
   <body>
     <!-- Floating ambient elements -->
     <div class="floating-elements">
-      <div class="floating-element floating-icon"><i data-lucide="database"></i></div>
-      <div class="floating-element floating-icon"><i data-lucide="shield-check"></i></div>
-      <div class="floating-element floating-icon"><i data-lucide="trending-up"></i></div>
-      <div class="floating-element floating-icon"><i data-lucide="code"></i></div>
-      <div class="floating-element floating-icon"><i data-lucide="git-branch"></i></div>
-      <div class="floating-element floating-icon"><i data-lucide="box"></i></div>
-      <div class="floating-element floating-icon"><i data-lucide="camera"></i></div>
-      <div class="floating-element floating-icon"><i data-lucide="key-round"></i></div>
-      <div class="floating-element floating-icon"><i data-lucide="mail"></i></div>
-      <div class="floating-element floating-icon"><i data-lucide="hard-drive"></i></div>
-      <div class="floating-element floating-icon"><i data-lucide="terminal"></i></div>
-      <div class="floating-element floating-icon"><i data-lucide="activity"></i></div>
-      <div class="floating-element floating-icon"><i data-lucide="bar-chart"></i></div>
-      <div class="floating-element floating-icon"><i data-lucide="gamepad-2"></i></div>
-      <div class="floating-element floating-icon"><i data-lucide="upload"></i></div>
-      <div class="floating-element floating-icon"><i data-lucide="wrench"></i></div>
-      <div class="floating-element floating-icon"><i data-lucide="music"></i></div>
-      <div class="floating-element floating-icon"><i data-lucide="heart"></i></div>
+      <div class="floating-element floating-icon">
+        <i data-lucide="database"></i>
+      </div>
+      <div class="floating-element floating-icon">
+        <i data-lucide="shield-check"></i>
+      </div>
+      <div class="floating-element floating-icon">
+        <i data-lucide="trending-up"></i>
+      </div>
+      <div class="floating-element floating-icon">
+        <i data-lucide="code"></i>
+      </div>
+      <div class="floating-element floating-icon">
+        <i data-lucide="git-branch"></i>
+      </div>
+      <div class="floating-element floating-icon">
+        <i data-lucide="box"></i>
+      </div>
+      <div class="floating-element floating-icon">
+        <i data-lucide="camera"></i>
+      </div>
+      <div class="floating-element floating-icon">
+        <i data-lucide="key-round"></i>
+      </div>
+      <div class="floating-element floating-icon">
+        <i data-lucide="mail"></i>
+      </div>
+      <div class="floating-element floating-icon">
+        <i data-lucide="hard-drive"></i>
+      </div>
+      <div class="floating-element floating-icon">
+        <i data-lucide="terminal"></i>
+      </div>
+      <div class="floating-element floating-icon">
+        <i data-lucide="activity"></i>
+      </div>
+      <div class="floating-element floating-icon">
+        <i data-lucide="bar-chart"></i>
+      </div>
+      <div class="floating-element floating-icon">
+        <i data-lucide="gamepad-2"></i>
+      </div>
+      <div class="floating-element floating-icon">
+        <i data-lucide="upload"></i>
+      </div>
+      <div class="floating-element floating-icon">
+        <i data-lucide="wrench"></i>
+      </div>
+      <div class="floating-element floating-icon">
+        <i data-lucide="music"></i>
+      </div>
+      <div class="floating-element floating-icon">
+        <i data-lucide="heart"></i>
+      </div>
     </div>
-    
+
+    <div class="intro">
+      <div class="text">
+        <p>Hosted in Republic of Korea <img src="/korea.svg" alt="" />, by</p>
+        <h1>Minhyeok Park</h1>
+
+        <div class="actions">
+          <a href="https://pf.pmh.so/#resume" target="_blank"
+            ><button class="accent">
+              <p>Resume</p>
+              <i data-lucide="chevrons-right"></i></button
+          ></a>
+          <a href="https://pf.pmh.so" target="_blank"
+            ><button>
+              <p>Story about me</p>
+              <i data-lucide="chevrons-right"></i></button
+          ></a>
+        </div>
+      </div>
+      <video src="/bgvideo.mkv" autoplay loop muted></video>
+    </div>
+
     <div class="container">
       <header class="hero">
         <div class="profile">
-          <img src="/favicon.webp" alt="Minhyeok Park's profile picture" class="profile-image" />
           <div class="profile-info">
-            <h1>Index of <a href="https://regexr.com/8h7ep" target="_blank" class="domain-link"><code>^(?:[-_\w]+\.)*pmh\.(codes|so)$</code></a></h1>
-            <p class="tagline"><a href="https://github.com/pmh-only" target="_blank">Minhyeok Park</a>'s personal homelab server (actually hosted on Oracle Cloud).</p>
+            <h1>
+              The Services of
+              <a
+                href="https://regexr.com/8h7ep"
+                target="_blank"
+                class="domain-link"
+                ><code>^(?:[-_\w]+\.)*pmh\.(codes|so)$</code></a
+              >
+            </h1>
+            <p class="tagline">
+              <a href="https://github.com/pmh-only" target="_blank"
+                >Minhyeok Park</a
+              >'s personal homelab server (actually hosted on Oracle Cloud).
+            </p>
           </div>
         </div>
       </header>
 
       <main class="services">
         <section class="service-category">
-          <h2><i data-lucide="wine"></i> Fanclub Exclusive</h2>
           <div class="service-grid">
             <div class="service-card">
               <div class="service-header">
                 <i data-lucide="waves-ladder" class="service-icon"></i>
-                <h3><a href="https://pool.pmh.codes" target="_blank">thepool.</a></h3>
+                <h3>
+                  <a href="https://pool.pmh.codes" target="_blank">thepool.</a>
+                </h3>
               </div>
-              <p>Unlimited file share service with reliable parallel upload/download</p>
             </div>
-          </div>
-        </section>
-
-        <section class="service-category">
-          <h2><i data-lucide="rocket"></i> Fancy Stuffs</h2>
-          <div class="service-grid">
             <div class="service-card">
               <div class="service-header">
                 <i data-lucide="bar-chart-3" class="service-icon"></i>
-                <h3><a href="https://visualized.pmh.codes" target="_blank">Visualized</a></h3>
+                <h3>
+                  <a href="https://visualized.pmh.codes" target="_blank"
+                    >Visualized</a
+                  >
+                </h3>
               </div>
-              <p>Realtime & Interactive 3D Visualization of a Kubernetes Cluster</p>
+            </div>
+            <div class="service-card">
+              <div class="service-header">
+                <i
+                  data-lucide="chevrons-left-right-ellipsis"
+                  class="service-icon"
+                ></i>
+                <h3>
+                  <a href="https://here.pmh.codes" target="_blank">here.</a>
+                </h3>
+              </div>
             </div>
             <div class="service-card">
               <div class="service-header">
                 <i data-lucide="git-branch" class="service-icon"></i>
-                <h3><a href="https://argo.pmh.codes" target="_blank">ArgoCD</a></h3>
+                <h3>
+                  <a href="https://argo.pmh.codes" target="_blank">ArgoCD</a>
+                </h3>
               </div>
-              <p>GitOps continuous-deployment controller</p>
             </div>
             <div class="service-card">
               <div class="service-header">
                 <i data-lucide="trending-up" class="service-icon"></i>
-                <h3><a href="https://grafana.pmh.codes" target="_blank">Grafana</a></h3>
+                <h3>
+                  <a href="https://grafana.pmh.codes" target="_blank"
+                    >Grafana</a
+                  >
+                </h3>
               </div>
-              <p>Metrics dashboard for services and hosts</p>
             </div>
-          </div>
-        </section>
-
-        <section class="service-category">
-          <h2><i data-lucide="gamepad-2"></i> Games</h2>
-          <div class="service-grid">
             <div class="service-card">
               <div class="service-header">
                 <i data-lucide="box" class="service-icon"></i>
-                <h3><a href="https://maps.pmh.codes" target="_blank">Minecraft</a></h3>
+                <h3>
+                  <a href="https://maps.pmh.codes" target="_blank">Minecraft</a>
+                  <sup
+                    ><a href="https://files.mc.pmh.codes" target="_blank"
+                      >files</a
+                    >
+                    <i data-lucide="lock" class="inline-lock"></i
+                  ></sup>
+                </h3>
               </div>
-              <p>Multiplayer Minecraft server (<a href="https://maps.mc.pmh.codes/#ablaze2020:0:10:1:88:0.69:0.79:0:0:perspective" target="_blank">since. 2020</a>) <sup><a href="https://files.mc.pmh.codes" target="_blank">files</a> <i data-lucide="lock" class="inline-lock"></i></sup></p>
             </div>
             <div class="service-card">
               <div class="service-header">
                 <i data-lucide="message-circle" class="service-icon"></i>
-                <h3><a href="https://guess.pmh.codes" target="_blank">GuessAiWord</a></h3>
+                <h3>
+                  <a href="https://guess.pmh.codes" target="_blank"
+                    >GuessAiWord</a
+                  >
+                </h3>
               </div>
-              <p>Word guessing game that utilizes OpenAI's models (KR only)</p>
             </div>
-          </div>
-        </section>
-
-        <section class="service-category">
-          <h2><i data-lucide="tool-case"></i> Simple Utils</h2>
-          <div class="service-grid">
             <div class="service-card">
               <div class="service-header">
                 <i data-lucide="wrench" class="service-icon"></i>
-                <h3><a href="https://ptools.pmh.codes" target="_blank">PTools</a></h3>
+                <h3>
+                  <a href="https://ptools.pmh.codes" target="_blank">PTools</a>
+                </h3>
               </div>
-              <p>String-modification toolkit</p>
             </div>
             <div class="service-card">
               <div class="service-header">
                 <i data-lucide="heart" class="service-icon"></i>
-                <h3><a href="https://heart.pmh.codes" target="_blank">Heartbeat</a></h3>
+                <h3>
+                  <a href="https://heart.pmh.codes" target="_blank"
+                    >Heartbeat</a
+                  >
+                </h3>
               </div>
-              <p>Portable health checker for API endpoints</p>
             </div>
             <div class="service-card">
               <div class="service-header">
                 <i data-lucide="utensils" class="service-icon"></i>
-                <h3><a href="https://welplan.pmh.codes" target="_blank">Welplan</a></h3>
+                <h3>
+                  <a href="https://welplan.pmh.codes" target="_blank"
+                    >Welplan</a
+                  >
+                </h3>
               </div>
-              <p>Samsung restaurant menu viewer</p>
             </div>
             <div class="service-card">
               <div class="service-header">
                 <i data-lucide="message-circle" class="service-icon"></i>
-                <h3><a href="https://c.pmh.codes" target="_blank">ChatSolution</a></h3>
+                <h3>
+                  <a href="https://c.pmh.codes" target="_blank">ChatSolution</a>
+                </h3>
               </div>
-              <p>Simple text messaging solution in devtools console</p>
             </div>
             <div class="service-card">
               <div class="service-header">
                 <i data-lucide="alarm-clock" class="service-icon"></i>
-                <h3><a href="https://gohome.pmh.codes" target="_blank">Gohome</a></h3>
+                <h3>
+                  <a href="https://gohome.pmh.codes" target="_blank">Gohome</a>
+                </h3>
               </div>
-              <p>Get-off-work timer</p>
             </div>
-          </div>
-        </section>
-
-        <section class="service-category">
-          <h2><i data-lucide="globe"></i> Other Public Services</h2>
-          <div class="service-grid">
             <div class="service-card">
               <div class="service-header">
                 <i data-lucide="upload" class="service-icon"></i>
                 <h3><a href="https://pub.pmh.codes" target="_blank">Pub</a></h3>
               </div>
-              <p>Public file dumps</p>
             </div>
             <div class="service-card">
               <div class="service-header">
                 <i data-lucide="file-text" class="service-icon"></i>
-                <h3><a href="https://blog.pmh.codes" target="_blank">Blog</a></h3>
+                <h3>
+                  <a href="https://blog.pmh.codes" target="_blank">Blog</a>
+                </h3>
               </div>
-              <p>Previously active technical blog</p>
             </div>
             <div class="service-card">
               <div class="service-header">
                 <i data-lucide="music" class="service-icon"></i>
-                <h3><a href="https://spotify.pmh.codes" target="_blank">Spotify</a></h3>
+                <h3>
+                  <a href="https://spotify.pmh.codes" target="_blank"
+                    >Spotify</a
+                  >
+                </h3>
               </div>
-              <p>Do you like my music taste?</p>
             </div>
             <div class="service-card">
               <div class="service-header">
                 <i data-lucide="key" class="service-icon"></i>
-                <h3><a href="https://keys.pmh.codes" target="_blank">Keysboard</a></h3>
+                <h3>
+                  <a href="https://keys.pmh.codes" target="_blank">Keysboard</a>
+                </h3>
               </div>
-              <p>Simple BBS for Passkey demonstration</p>
             </div>
-          </div>
-        </section>
-
-        <section class="service-category">
-          <h2><i data-lucide="shield"></i> Private Services</h2>
-          <div class="service-grid">
             <div class="service-card auth-required">
               <div class="service-header">
                 <i data-lucide="shield-check" class="service-icon"></i>
-                <h3><a href="https://auth.pmh.codes" target="_blank">Authentik</a></h3>
+                <h3>
+                  <a href="https://auth.pmh.codes" target="_blank">Authentik</a>
+                </h3>
                 <i data-lucide="lock" class="auth-badge"></i>
               </div>
-              <p>SSO authentication service</p>
             </div>
             <div class="service-card auth-required">
               <div class="service-header">
                 <i data-lucide="database" class="service-icon"></i>
-                <h3><a href="https://console.s3.pmh.codes" target="_blank">Minio</a></h3>
+                <h3>
+                  <a href="https://console.s3.pmh.codes" target="_blank"
+                    >Minio</a
+                  >
+                  <sup
+                    ><a href="https://explorer.s3.pmh.codes" target="_blank"
+                      >explorer</a
+                    >
+                    <i data-lucide="lock" class="inline-lock"></i
+                  ></sup>
+                </h3>
                 <i data-lucide="lock" class="auth-badge"></i>
               </div>
-              <p>S3-compatible object storage <sup><a href="https://explorer.s3.pmh.codes" target="_blank">explorer</a> <i data-lucide="lock" class="inline-lock"></i></sup></p>
             </div>
             <div class="service-card auth-required">
               <div class="service-header">
                 <i data-lucide="hard-drive" class="service-icon"></i>
-                <h3><a href="https://drive.pmh.codes" target="_blank">Seafile</a></h3>
+                <h3>
+                  <a href="https://drive.pmh.codes" target="_blank">Seafile</a>
+                </h3>
                 <i data-lucide="lock" class="auth-badge"></i>
               </div>
-              <p>NAS for daily use</p>
             </div>
             <div class="service-card auth-required">
               <div class="service-header">
                 <i data-lucide="camera" class="service-icon"></i>
-                <h3><a href="https://photos.pmh.codes" target="_blank">Immich</a></h3>
+                <h3>
+                  <a href="https://photos.pmh.codes" target="_blank">Immich</a>
+                </h3>
                 <i data-lucide="lock" class="auth-badge"></i>
               </div>
-              <p>Photo and video management solution</p>
             </div>
             <div class="service-card auth-required">
               <div class="service-header">
                 <i data-lucide="key-round" class="service-icon"></i>
-                <h3><a href="https://vault.pmh.codes" target="_blank">Vaultwarden</a></h3>
+                <h3>
+                  <a href="https://vault.pmh.codes" target="_blank"
+                    >Vaultwarden</a
+                  >
+                </h3>
                 <i data-lucide="lock" class="auth-badge"></i>
               </div>
-              <p>Password manager (Bitwarden fork)</p>
             </div>
             <div class="service-card auth-required">
               <div class="service-header">
                 <i data-lucide="mail" class="service-icon"></i>
-                <h3><a href="https://mail.pmh.codes" target="_blank">Roundcube</a></h3>
+                <h3>
+                  <a href="https://mail.pmh.codes" target="_blank">Roundcube</a>
+                </h3>
                 <i data-lucide="lock" class="auth-badge"></i>
               </div>
-              <p>Webmail client for @pmh.codes</p>
             </div>
             <div class="service-card auth-required">
               <div class="service-header">
                 <i data-lucide="code" class="service-icon"></i>
-                <h3><a href="https://ide.pmh.codes" target="_blank">Code Server</a></h3>
+                <h3>
+                  <a href="https://ide.pmh.codes" target="_blank"
+                    >Code Server</a
+                  >
+                </h3>
                 <i data-lucide="lock" class="auth-badge"></i>
               </div>
-              <p>Remote development environment</p>
             </div>
             <div class="service-card auth-required">
               <div class="service-header">
                 <i data-lucide="chart-network" class="service-icon"></i>
-                <h3><a href="https://flows.pmh.codes" target="_blank">Workflows</a></h3>
+                <h3>
+                  <a href="https://flows.pmh.codes" target="_blank"
+                    >Workflows</a
+                  >
+                </h3>
                 <i data-lucide="lock" class="auth-badge"></i>
               </div>
-              <p>n8n workflow designer/runner for automation</p>
             </div>
-          </div>
-        </section>
-
-        <section class="service-category">
-          <h2><i data-lucide="settings"></i> Maintenance</h2>
-          <div class="service-grid">
             <div class="service-card">
               <div class="service-header">
                 <i data-lucide="bar-chart" class="service-icon"></i>
-                <h3><a href="https://traffic.pmh.codes" target="_blank">Goaccess</a></h3>
+                <h3>
+                  <a href="https://traffic.pmh.codes" target="_blank"
+                    >Goaccess</a
+                  >
+                </h3>
               </div>
-              <p>Traffic statistics dashboard</p>
             </div>
             <div class="service-card auth-required">
               <div class="service-header">
                 <i data-lucide="activity" class="service-icon"></i>
-                <h3><a href="https://trace.pmh.codes" target="_blank">Rybbit</a></h3>
+                <h3>
+                  <a href="https://trace.pmh.codes" target="_blank">Rybbit</a>
+                </h3>
                 <i data-lucide="lock" class="auth-badge"></i>
               </div>
-              <p>User telemetry collector</p>
             </div>
           </div>
         </section>
@@ -305,31 +423,59 @@
         <section class="contacts">
           <h2><i data-lucide="phone"></i> Contacts</h2>
           <div class="contact-grid">
-            <a href="https://github.com/pmh-only" target="_blank" class="contact-link">
+            <a
+              href="https://github.com/pmh-only"
+              target="_blank"
+              class="contact-link"
+            >
               <i data-lucide="github" class="contact-icon"></i>
               <span>@pmh-only</span>
             </a>
-            <a href="https://www.youtube.com/@pmh_only" target="_blank" class="contact-link">
+            <a
+              href="https://www.youtube.com/@pmh_only"
+              target="_blank"
+              class="contact-link"
+            >
               <i data-lucide="youtube" class="contact-icon"></i>
               <span>@pmh_only</span>
             </a>
-            <a href="https://www.instagram.com/pmh_only" target="_blank" class="contact-link">
+            <a
+              href="https://www.instagram.com/pmh_only"
+              target="_blank"
+              class="contact-link"
+            >
               <i data-lucide="instagram" class="contact-icon"></i>
               <span>@pmh_only</span>
             </a>
-            <a href="https://x.com/pmh_only" target="_blank" class="contact-link">
+            <a
+              href="https://x.com/pmh_only"
+              target="_blank"
+              class="contact-link"
+            >
               <i data-lucide="twitter" class="contact-icon"></i>
               <span>@pmh_only</span>
             </a>
-            <a href="https://www.linkedin.com/in/pmhonly" target="_blank" class="contact-link">
+            <a
+              href="https://www.linkedin.com/in/pmhonly"
+              target="_blank"
+              class="contact-link"
+            >
               <i data-lucide="linkedin" class="contact-icon"></i>
               <span>@pmhonly</span>
             </a>
-            <a href="https://keybase.io/pmhonly" target="_blank" class="contact-link">
+            <a
+              href="https://keybase.io/pmhonly"
+              target="_blank"
+              class="contact-link"
+            >
               <i data-lucide="key" class="contact-icon"></i>
               <span>@pmhonly</span>
             </a>
-            <a href="mailto:pmh_only@pmh.codes" target="_blank" class="contact-link">
+            <a
+              href="mailto:pmh_only@pmh.codes"
+              target="_blank"
+              class="contact-link"
+            >
               <i data-lucide="mail" class="contact-icon"></i>
               <span>pmh_only@pmh.codes</span>
             </a>
@@ -338,22 +484,37 @@
 
         <section class="crypto-section">
           <h2><i data-lucide="shield-check"></i> Web of Trust</h2>
-          <p>I'm signing my Git commits, documents and email with following keys:</p>
-          
+          <p>
+            I'm signing my Git commits, documents and email with following keys:
+          </p>
+
           <div class="key-container">
             <details class="key-details">
               <summary>[daily use] OpenSSH Public Key (Ed25519)</summary>
               <div class="key-content">
-                <pre>ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHnT1qBtbFhAIMIx2s/lL1zdG79E4QyGMhJH+Ny51o00 pmh_only@pmh.codes</pre>
+                <pre>
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHnT1qBtbFhAIMIx2s/lL1zdG79E4QyGMhJH+Ny51o00 pmh_only@pmh.codes</pre
+                >
               </div>
             </details>
-            
+
             <details class="key-details">
-              <summary>[for something critical] PGP Public Key (RSA4096)</summary>
+              <summary>
+                [for something critical] PGP Public Key (RSA4096)
+              </summary>
               <div class="key-content">
-                <p>Public key is also available at <a href="https://keybase.io/pmhonly" target="_blank">Keybase</a>.</p>
-                <p>fingerprint: <code>CF639E181A7A8A1CA81CBD9F396086721FAB72C2</code></p>
-                <pre>-----BEGIN PGP PUBLIC KEY BLOCK-----
+                <p>
+                  Public key is also available at
+                  <a href="https://keybase.io/pmhonly" target="_blank"
+                    >Keybase</a
+                  >.
+                </p>
+                <p>
+                  fingerprint:
+                  <code>CF639E181A7A8A1CA81CBD9F396086721FAB72C2</code>
+                </p>
+                <pre>
+-----BEGIN PGP PUBLIC KEY BLOCK-----
 
 mQINBGTcvM4BEADk85qNh1M4xw3oA4cTAmbO87Sli+tT05aLJ9XD27odxpKO8trY
 fPum/vlS0hDyqwa6rxHdcr2a9+L4wRqQCmxWhHgnGJe4ZHke/hDoVohuQl2u0O35
@@ -403,28 +564,54 @@ F5m3fyV6LDUJwbCtsQJUIDkC0sgTQMQpABWxb/vZ3990Rhcx7je6/vAJ6nAePiQ1
 em4rXzIC6S3X+5yR/xVckXJeJE/meg/JRDH97TojG8avaYPW1kgYK3MVnQUwG1Fw
 jcZoUzz8H8pvyprHkITpHXSn8n8tphHs4nQGiFzQ4VnrrtByLFjL3ximvJRKcg==
 =Z/GY
------END PGP PUBLIC KEY BLOCK-----</pre>
+-----END PGP PUBLIC KEY BLOCK-----</pre
+                >
               </div>
             </details>
           </div>
-          
-          <p class="trust-link">You can see <a href="https://keyserver.ubuntu.com/pks/lookup?search=pmh_only%40pmh.codes&fingerprint=on&op=index" target="_blank">other people's signatures</a> proving my identity</p>
+
+          <p class="trust-link">
+            You can see
+            <a
+              href="https://keyserver.ubuntu.com/pks/lookup?search=pmh_only%40pmh.codes&fingerprint=on&op=index"
+              target="_blank"
+              >other people's signatures</a
+            >
+            proving my identity
+          </p>
         </section>
       </aside>
 
       <footer class="fun-facts">
         <h2><i data-lucide="zap"></i> Fun Facts</h2>
         <ul class="fact-list">
-          <li><del>&nbsp;Two&nbsp;</del><sup>Three</sup> Oracle Cloud instances orchestrated with Kubernetes</li>
+          <li>
+            <del>&nbsp;Two&nbsp;</del><sup>Three</sup> Oracle Cloud instances
+            orchestrated with Kubernetes
+          </li>
           <li>This domain doesn't use fuckin' CloudFlare's reverse proxy</li>
-          <li>There is a <code>X-Water-Mark</code> header on every responses</li>
-          <li>Kubernetes <a href="https://github.com/pmh-only/lab" target="_blank">manifests are included here</a></li>
-          <li>Passes all modern <a href="https://www.ssllabs.com/ssltest/analyze.html?d=pmh.codes&s=144.24.77.19&latest" target="_blank">TLS requirements</a></li>
+          <li>
+            There is a <code>X-Water-Mark</code> header on every responses
+          </li>
+          <li>
+            Kubernetes
+            <a href="https://github.com/pmh-only/lab" target="_blank"
+              >manifests are included here</a
+            >
+          </li>
+          <li>
+            Passes all modern
+            <a
+              href="https://www.ssllabs.com/ssltest/analyze.html?d=pmh.codes&s=144.24.77.19&latest"
+              target="_blank"
+              >TLS requirements</a
+            >
+          </li>
           <li>SSH port 22 is closed (probably)</li>
         </ul>
       </footer>
     </div>
-    
+
     <script src="/node_modules/lucide/dist/umd/lucide.js"></script>
     <script src="/main.js"></script>
   </body>
