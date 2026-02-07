@@ -40,6 +40,7 @@ html {
   line-height: 1.6;
   position: relative;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -128,6 +129,8 @@ summary {
   color: var(--accent-color);
   background-color: transparent;
   transition: all 0.1s ease-in;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
 }
 
 .intro button:hover {
@@ -154,6 +157,28 @@ summary {
   gap: 6px;
 }
 
+.scroll-indicator {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  color: var(--secondary-text-color);
+  animation: bounce 2s ease infinite;
+  opacity: 0.6;
+  text-decoration: none;
+}
+
+.scroll-indicator svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(6px); }
+}
+
 .container {
   max-width: 1400px;
   margin: 0 auto;
@@ -161,7 +186,6 @@ summary {
   display: grid;
   grid-template-columns: 1fr 300px;
   grid-template-areas:
-    "hero hero"
     "services sidebar";
   gap: 2rem;
 }
@@ -170,7 +194,6 @@ summary {
   .container {
     grid-template-columns: 1fr;
     grid-template-areas:
-      "hero"
       "services"
       "sidebar";
   }
@@ -183,35 +206,18 @@ summary {
   }
 }
 
-/* Hero Section */
-.hero {
-  grid-area: hero;
+/* Services Header */
+.services-header {
+  margin-bottom: 1rem;
 }
 
-.hero code {
+.services-tagline {
+  font-size: 0.9rem;
+  color: var(--secondary-text-color);
+}
+
+.services-tagline code {
   user-select: none;
-}
-
-.profile {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  flex-wrap: wrap;
-}
-
-.profile-image {
-  width: 120px;
-  height: 120px;
-  border-radius: var(--border-radius);
-  object-fit: cover;
-  box-shadow: 0 4px 16px rgba(255, 170, 170, 0.3);
-  transition: var(--transition);
-}
-
-.profile-info h1 {
-  margin: 0 0 0.5rem 0;
-  font-size: 1.8rem;
-  font-weight: 600;
 }
 
 .domain-link {
@@ -225,12 +231,6 @@ summary {
   color: var(--link-color);
   border-bottom-style: solid;
   border-bottom-color: var(--link-color);
-}
-
-.tagline {
-  margin: 0;
-  font-size: 1.1rem;
-  color: var(--secondary-text-color);
 }
 
 /* Services Section */
@@ -247,7 +247,12 @@ summary {
   padding: 1rem 1.25rem;
 }
 
-.service-category h2 {
+.service-category:last-child {
+  margin-bottom: 0;
+}
+
+/* Shared section heading */
+.section-heading {
   margin: 0 0 0.75rem 0;
   font-size: 0.85rem;
   font-weight: 600;
@@ -261,10 +266,16 @@ summary {
   border-bottom: 1px solid var(--border-color);
 }
 
-.service-category h2 svg {
+.section-heading svg {
   width: 1rem;
   height: 1rem;
   opacity: 0.7;
+}
+
+.service-count {
+  font-weight: 400;
+  opacity: 0.5;
+  font-size: 0.75rem;
 }
 
 .service-list {
@@ -284,6 +295,11 @@ summary {
   transition: var(--transition);
   white-space: nowrap;
   border-radius: var(--border-radius);
+}
+
+.service-item .service-name {
+  min-width: 8rem;
+  flex-shrink: 0;
 }
 
 .service-item .service-desc {
@@ -309,10 +325,27 @@ summary {
   margin-left: -0.25rem;
 }
 
+.service-item:nth-child(even) {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.service-item::after {
+  content: "\2192";
+  color: var(--secondary-text-color);
+  opacity: 0;
+  transition: var(--transition);
+  margin-left: 0.5rem;
+  flex-shrink: 0;
+}
+
 .service-item:hover {
   background: var(--hover-background);
   color: var(--text-color);
   text-decoration: none;
+}
+
+.service-item:hover::after {
+  opacity: 1;
 }
 
 .service-item:hover svg:first-child {
@@ -341,10 +374,10 @@ summary {
 .service-category.cat-games .service-item svg:first-child { color: var(--cat-games); }
 .service-category.cat-private .service-item svg:first-child { color: var(--cat-private); }
 
-.service-category.cat-public h2 { color: var(--cat-public); }
-.service-category.cat-infra h2 { color: var(--cat-infra); }
-.service-category.cat-games h2 { color: var(--cat-games); }
-.service-category.cat-private h2 { color: var(--cat-private); }
+.service-category.cat-public .section-heading { color: var(--cat-public); }
+.service-category.cat-infra .section-heading { color: var(--cat-infra); }
+.service-category.cat-games .section-heading { color: var(--cat-games); }
+.service-category.cat-private .section-heading { color: var(--cat-private); }
 
 .service-category.cat-public { border-color: color-mix(in srgb, var(--cat-public) 25%, var(--border-color)); }
 .service-category.cat-infra { border-color: color-mix(in srgb, var(--cat-infra) 25%, var(--border-color)); }
@@ -363,6 +396,14 @@ summary {
 
   .service-item.private {
     border-style: dashed;
+  }
+
+  .service-item .service-name {
+    min-width: 0;
+  }
+
+  .service-item::after {
+    display: none;
   }
 
   .service-item .service-desc {
@@ -416,29 +457,7 @@ a:focus {
   align-self: start;
 }
 
-.contacts {
-  margin-bottom: 1.5rem;
-}
 
-.contacts h2 {
-  margin: 0 0 0.75rem 0;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--secondary-text-color);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.contacts h2 svg {
-  width: 1rem;
-  height: 1rem;
-  opacity: 0.7;
-}
 
 .contact-grid {
   display: flex;
@@ -475,31 +494,20 @@ a:focus {
   color: var(--accent-color);
 }
 
+/* Platform-specific icon colors */
+.contact-github .contact-icon { color: #e0e0e0; }
+.contact-youtube .contact-icon { color: #ff4444; }
+.contact-instagram .contact-icon { color: #e1306c; }
+.contact-twitter .contact-icon { color: #8ecdf8; }
+.contact-linkedin .contact-icon { color: #0a66c2; }
+.contact-keybase .contact-icon { color: #ff6f21; }
+.contact-email .contact-icon { color: #a8d8a8; }
+
 /* Crypto Section */
 .crypto-section {
-  margin-bottom: 1.5rem;
   min-width: 0;
 }
 
-.crypto-section h2 {
-  margin: 0 0 0.75rem 0;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--secondary-text-color);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.crypto-section h2 svg {
-  width: 1rem;
-  height: 1rem;
-  opacity: 0.7;
-}
 
 .crypto-section > p {
   margin: 0.75rem 0;
@@ -602,30 +610,15 @@ pre {
   color: var(--text-color);
 }
 
+/* Sidebar card shared style */
+.sidebar section {
+  background: var(--secondary-background-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+}
+
 /* Fun Facts (sidebar terminal block) */
-.fun-facts {
-  margin-bottom: 1.5rem;
-}
-
-.fun-facts h2 {
-  margin: 0 0 0.75rem 0;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--secondary-text-color);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.fun-facts h2 svg {
-  width: 1rem;
-  height: 1rem;
-  opacity: 0.7;
-}
 
 .terminal-block {
   background: var(--background-color);
@@ -734,25 +727,6 @@ details[open] summary::before {
 
 /* Mobile optimizations */
 @media (max-width: 640px) {
-  .profile {
-    flex-direction: column;
-    text-align: center;
-    gap: 1rem;
-  }
-
-  .profile-image {
-    width: 100px;
-    height: 100px;
-  }
-
-  .profile-info h1 {
-    font-size: 1.5rem;
-  }
-
-  .hero {
-    padding: 1.5rem;
-  }
-
   .service-item {
     padding: 0.4rem 0.7rem;
     font-size: 0.85rem;
@@ -871,7 +845,6 @@ pre::-webkit-scrollbar-thumb:hover,
   .container {
     grid-template-columns: 1fr;
     grid-template-areas:
-      "hero"
       "services"
       "sidebar";
   }

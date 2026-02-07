@@ -15,7 +15,7 @@ function renderService(service) {
 
   return `            <a href="${escapeHtml(service.url)}" target="_blank" class="${cls}">
               <i data-lucide="${escapeHtml(service.icon)}"></i>
-              <span>${escapeHtml(service.name)}</span>
+              <span class="service-name">${escapeHtml(service.name)}</span>
               <span class="service-desc">${escapeHtml(service.desc)}</span>${lock}
             </a>`;
 }
@@ -25,7 +25,7 @@ function renderCategory(cat) {
   const items = cat.services.map(renderService).join('\n');
 
   return `        <section class="service-category ${escapeHtml(cat.cssClass)}">
-          <h2><i data-lucide="${escapeHtml(cat.icon)}"></i> ${escapeHtml(cat.label)}</h2>
+          <h2 class="section-heading"><i data-lucide="${escapeHtml(cat.icon)}"></i> ${escapeHtml(cat.label)} <span class="service-count">(${cat.services.length})</span></h2>
           <div class="${listClass}">
 ${items}
           </div>

@@ -78,40 +78,27 @@
         </div>
       </div>
       <video src="/bgvideo.mkv" autoplay loop muted aria-hidden="true"></video>
+      <a href="#content" class="scroll-indicator" aria-label="Scroll to content">
+        <i data-lucide="chevron-down"></i>
+      </a>
     </div>
 
-    <div class="container">
-      <header class="hero">
-        <div class="profile">
-          <div class="profile-info">
-            <h1>
-              The Services of
-
-              <code
-                ><a
-                  href="https://regexr.com/8h7ep"
-                  target="_blank"
-                  class="domain-link"
-                  >^(?:[-_\w]+\.)*pmh\.(codes|so)$</a
-                ></code
-              >
-            </h1>
-            <p class="tagline">
-              <a href="https://github.com/pmh-only" target="_blank"
-                >Minhyeok Park</a
-              >'s personal homelab server (actually hosted on Oracle Cloud).
-            </p>
-          </div>
-        </div>
-      </header>
-
+    <div class="container" id="content">
       <main class="services">
+        <div class="services-header">
+          <p class="services-tagline">
+            Services of
+            <code><a href="https://regexr.com/8h7ep" target="_blank" class="domain-link">^(?:[-_\w]+\.)*pmh\.(codes|so)$</a></code>
+            &mdash;
+            <a href="https://github.com/pmh-only" target="_blank">Minhyeok Park</a>'s homelab on Oracle Cloud.
+          </p>
+        </div>
         <!-- SERVICES -->
       </main>
 
       <aside class="sidebar">
         <section class="fun-facts">
-          <h2><i data-lucide="zap"></i> Fun Facts</h2>
+          <h2 class="section-heading"><i data-lucide="zap"></i> Fun Facts</h2>
           <div class="terminal-block">
             <p><span class="terminal-prompt">$</span> Three Oracle Cloud instances orchestrated with Kubernetes</p>
             <p><span class="terminal-prompt">$</span> No CloudFlare reverse proxy &mdash; direct to origin</p>
@@ -123,61 +110,33 @@
         </section>
 
         <section class="contacts">
-          <h2><i data-lucide="phone"></i> Contacts</h2>
+          <h2 class="section-heading"><i data-lucide="phone"></i> Contacts</h2>
           <div class="contact-grid">
-            <a
-              href="https://github.com/pmh-only"
-              target="_blank"
-              class="contact-link"
-            >
+            <a href="https://github.com/pmh-only" target="_blank" class="contact-link contact-github">
               <i data-lucide="github" class="contact-icon"></i>
               <span>@pmh-only</span>
             </a>
-            <a
-              href="https://www.youtube.com/@pmh_only"
-              target="_blank"
-              class="contact-link"
-            >
+            <a href="https://www.youtube.com/@pmh_only" target="_blank" class="contact-link contact-youtube">
               <i data-lucide="youtube" class="contact-icon"></i>
               <span>@pmh_only</span>
             </a>
-            <a
-              href="https://www.instagram.com/pmh_only"
-              target="_blank"
-              class="contact-link"
-            >
+            <a href="https://www.instagram.com/pmh_only" target="_blank" class="contact-link contact-instagram">
               <i data-lucide="instagram" class="contact-icon"></i>
               <span>@pmh_only</span>
             </a>
-            <a
-              href="https://x.com/pmh_only"
-              target="_blank"
-              class="contact-link"
-            >
+            <a href="https://x.com/pmh_only" target="_blank" class="contact-link contact-twitter">
               <i data-lucide="twitter" class="contact-icon"></i>
               <span>@pmh_only</span>
             </a>
-            <a
-              href="https://www.linkedin.com/in/pmhonly"
-              target="_blank"
-              class="contact-link"
-            >
+            <a href="https://www.linkedin.com/in/pmhonly" target="_blank" class="contact-link contact-linkedin">
               <i data-lucide="linkedin" class="contact-icon"></i>
               <span>@pmhonly</span>
             </a>
-            <a
-              href="https://keybase.io/pmhonly"
-              target="_blank"
-              class="contact-link"
-            >
+            <a href="https://keybase.io/pmhonly" target="_blank" class="contact-link contact-keybase">
               <i data-lucide="key" class="contact-icon"></i>
               <span>@pmhonly</span>
             </a>
-            <a
-              href="mailto:pmh_only@pmh.codes"
-              target="_blank"
-              class="contact-link"
-            >
+            <a href="mailto:pmh_only@pmh.codes" target="_blank" class="contact-link contact-email">
               <i data-lucide="mail" class="contact-icon"></i>
               <span>pmh_only@pmh.codes</span>
             </a>
@@ -185,7 +144,7 @@
         </section>
 
         <section class="crypto-section">
-          <h2><i data-lucide="shield-check"></i> Web of Trust</h2>
+          <h2 class="section-heading"><i data-lucide="shield-check"></i> Web of Trust</h2>
           <p>
             I'm signing my Git commits, documents and email with following keys:
           </p>
