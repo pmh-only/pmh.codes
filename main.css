@@ -13,11 +13,14 @@
   --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   --card-shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.4);
 
+  --cat-public: #ffbbbb;
+  --cat-infra: #a8d8a8;
+  --cat-games: #a8c8ff;
+  --cat-private: #ffcb8e;
+
   --font-mono: "Inconsolata Variable", monospace;
   --border-radius: 4px;
   --transition: all 0.2s ease;
-
-  user-select: none;
 }
 
 * {
@@ -50,66 +53,10 @@ p {
   margin: 0;
 }
 
-/* Floating Ambient Elements */
-.floating-elements {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: -1;
-  overflow: hidden;
-}
 
-.floating-element {
-  position: absolute;
-  opacity: 0.15;
-  animation: floatAround var(--duration) ease-in-out infinite;
-  left: var(--start-x);
-  top: var(--start-y);
-}
-
-.floating-icon {
-  width: 24px;
-  height: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.floating-icon svg {
-  width: 18px;
-  height: 18px;
-  color: var(--icon-color, var(--accent-color));
-  opacity: 0.8;
-  transition: transform 0.3s ease;
-}
-
-/* Theme-based color classes */
-.floating-icon.theme-accent svg {
-  color: var(--accent-color);
-}
-
-.floating-icon.theme-link svg {
-  color: var(--link-color);
-}
-
-.floating-icon.theme-visited svg {
-  color: var(--link-visited);
-}
-
-.floating-icon.theme-secondary svg {
-  color: var(--secondary-text-color);
-}
-
-.floating-icon.theme-border svg {
-  color: var(--border-color);
-}
-
-code,
-pre {
-  user-select: all;
+button,
+summary {
+  user-select: none;
 }
 
 ::selection {
@@ -126,10 +73,18 @@ pre {
 
 .intro > video {
   width: 100%;
-  height: 30vh;
+  height: 45vh;
   object-fit: cover;
   object-position: center;
   background-color: #373836;
+}
+
+.intro::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(transparent 30%, var(--background-color));
+  pointer-events: none;
 }
 
 .intro .text {
@@ -168,7 +123,7 @@ pre {
   display: flex;
   align-items: center;
   gap: 6px;
-  border: var(--accent-color) dotted 1px;
+  border: var(--accent-color) solid 2px;
   cursor: pointer;
   color: var(--accent-color);
   background-color: transparent;
@@ -207,8 +162,7 @@ pre {
   grid-template-columns: 1fr 300px;
   grid-template-areas:
     "hero hero"
-    "services sidebar"
-    "footer sidebar";
+    "services sidebar";
   gap: 2rem;
 }
 
@@ -218,8 +172,7 @@ pre {
     grid-template-areas:
       "hero"
       "services"
-      "sidebar"
-      "footer";
+      "sidebar";
   }
 }
 
@@ -288,6 +241,10 @@ pre {
 .service-category {
   margin-bottom: 1.5rem;
   opacity: 0;
+  background: var(--secondary-background-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
 }
 
 .service-category h2 {
@@ -312,23 +269,30 @@ pre {
 
 .service-list {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+  flex-direction: column;
+  gap: 0;
 }
 
 .service-item {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 0.85rem;
-  background: var(--secondary-background-color);
-  border: 1px solid var(--border-color);
-  border-radius: 100px;
+  gap: 0.75rem;
+  padding: 0.55rem 0.85rem;
   text-decoration: none;
   color: var(--text-color);
   font-size: 0.9rem;
   transition: var(--transition);
   white-space: nowrap;
+  border-radius: var(--border-radius);
+}
+
+.service-item .service-desc {
+  color: var(--secondary-text-color);
+  font-size: 0.8rem;
+  margin-left: auto;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .service-item svg {
@@ -347,23 +311,20 @@ pre {
 
 .service-item:hover {
   background: var(--hover-background);
-  border-color: var(--accent-color);
   color: var(--text-color);
   text-decoration: none;
 }
 
-.service-item:hover i:first-child {
+.service-item:hover svg:first-child {
   color: var(--link-color);
 }
 
 .service-item.private {
   opacity: 0.7;
-  border-style: dashed;
 }
 
 .service-item.private:hover {
   opacity: 1;
-  border-style: solid;
 }
 
 .private-list .service-item {
@@ -374,90 +335,42 @@ pre {
   opacity: 1;
 }
 
-/* Service item tooltips */
-.service-item[data-desc] {
-  position: relative;
-}
+/* Category accent colors */
+.service-category.cat-public .service-item svg:first-child { color: var(--cat-public); }
+.service-category.cat-infra .service-item svg:first-child { color: var(--cat-infra); }
+.service-category.cat-games .service-item svg:first-child { color: var(--cat-games); }
+.service-category.cat-private .service-item svg:first-child { color: var(--cat-private); }
 
-.service-item[data-desc]::after {
-  content: attr(data-desc);
-  position: absolute;
-  bottom: calc(100% + 8px);
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 0.5rem 0.75rem;
-  background: var(--tertiary-background-color);
-  border: 1px solid var(--border-color);
-  border-radius: var(--border-radius);
-  font-size: 0.8rem;
-  color: var(--secondary-text-color);
-  white-space: nowrap;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.2s ease;
-  z-index: 100;
-  pointer-events: none;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
+.service-category.cat-public h2 { color: var(--cat-public); }
+.service-category.cat-infra h2 { color: var(--cat-infra); }
+.service-category.cat-games h2 { color: var(--cat-games); }
+.service-category.cat-private h2 { color: var(--cat-private); }
 
-.service-item[data-desc]::before {
-  content: "";
-  position: absolute;
-  bottom: calc(100% + 4px);
-  left: 50%;
-  transform: translateX(-50%);
-  border: 6px solid transparent;
-  border-top-color: var(--border-color);
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.2s ease;
-  z-index: 101;
-}
-
-.service-item[data-desc]:hover::after {
-  opacity: 1;
-  visibility: visible;
-}
-
-.service-item[data-desc]:hover::before {
-  opacity: 1;
-  visibility: visible;
-}
+.service-category.cat-public { border-color: color-mix(in srgb, var(--cat-public) 25%, var(--border-color)); }
+.service-category.cat-infra { border-color: color-mix(in srgb, var(--cat-infra) 25%, var(--border-color)); }
+.service-category.cat-games { border-color: color-mix(in srgb, var(--cat-games) 25%, var(--border-color)); }
+.service-category.cat-private { border-color: color-mix(in srgb, var(--cat-private) 25%, var(--border-color)); }
 
 @media (max-width: 640px) {
-  .service-list {
-    flex-direction: column;
-    gap: 0.4rem;
-  }
-
   .service-item {
-    width: 100%;
-    flex-wrap: wrap;
     padding: 0.6rem 0.85rem;
+    flex-wrap: wrap;
+    row-gap: 0.15rem;
+    background: var(--secondary-background-color);
+    border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
-    row-gap: 0.2rem;
   }
 
-  .service-item[data-desc]::before {
-    display: none;
+  .service-item.private {
+    border-style: dashed;
   }
 
-  .service-item[data-desc]::after {
-    position: static;
-    transform: none;
+  .service-item .service-desc {
     width: 100%;
-    padding: 0;
-    padding-left: 1.5rem;
-    background: none;
-    border: none;
-    box-shadow: none;
-    font-size: 0.75rem;
-    color: var(--secondary-text-color);
-    opacity: 1;
-    visibility: visible;
+    margin-left: 0;
+    padding-left: 1.75rem;
     white-space: normal;
     line-height: 1.3;
-    order: 3;
   }
 
   .service-item.private .lock-icon {
@@ -498,6 +411,9 @@ a:focus {
   gap: 2rem;
   min-width: 0;
   overflow: hidden;
+  position: sticky;
+  top: 2rem;
+  align-self: start;
 }
 
 .contacts {
@@ -686,9 +602,8 @@ pre {
   color: var(--text-color);
 }
 
-/* Footer */
+/* Fun Facts (sidebar terminal block) */
 .fun-facts {
-  grid-area: footer;
   margin-bottom: 1.5rem;
 }
 
@@ -712,31 +627,28 @@ pre {
   opacity: 0.7;
 }
 
-.fact-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.fact-list li {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 0.85rem;
-  background: var(--secondary-background-color);
+.terminal-block {
+  background: var(--background-color);
   border: 1px solid var(--border-color);
-  border-radius: 100px;
-  font-size: 0.9rem;
-  transition: var(--transition);
-  color: var(--text-color);
+  border-radius: var(--border-radius);
+  padding: 0.75rem 1rem;
+  font-size: 0.8rem;
+  line-height: 1.8;
 }
 
-.fact-list li:hover {
-  background: var(--hover-background);
-  border-color: var(--accent-color);
+.terminal-block p {
+  color: var(--secondary-text-color);
+}
+
+.terminal-block code {
+  font-size: 0.8rem;
+  padding: 0.1rem 0.35rem;
+}
+
+.terminal-prompt {
+  color: var(--accent-color);
+  margin-right: 0.5rem;
+  font-weight: 600;
 }
 
 /* Special styling */
@@ -786,33 +698,6 @@ details[open] summary::before {
   content: "[-] ";
 }
 
-/* Floating Element Animations */
-@keyframes floatAround {
-  0% {
-    transform: translate(0, 0) rotate(var(--icon-rotation, 0deg));
-    opacity: 0.15;
-  }
-  25% {
-    transform: translate(30px, -20px)
-      rotate(calc(var(--icon-rotation, 0deg) + 90deg));
-    opacity: 0.25;
-  }
-  50% {
-    transform: translate(-15px, 35px)
-      rotate(calc(var(--icon-rotation, 0deg) + 180deg));
-    opacity: 0.1;
-  }
-  75% {
-    transform: translate(20px, 10px)
-      rotate(calc(var(--icon-rotation, 0deg) + 270deg));
-    opacity: 0.2;
-  }
-  100% {
-    transform: translate(0, 0) rotate(calc(var(--icon-rotation, 0deg) + 360deg));
-    opacity: 0.15;
-  }
-}
-
 /* Loading animation */
 @keyframes fadeIn {
   from {
@@ -838,6 +723,13 @@ details[open] summary::before {
 }
 .service-category:nth-child(4) {
   animation-delay: 0.2s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service-category {
+    opacity: 1;
+    animation: none;
+  }
 }
 
 /* Mobile optimizations */
@@ -875,18 +767,6 @@ details[open] summary::before {
     line-height: 1;
   }
 
-  /* Fun facts mobile */
-  .fact-list {
-    flex-direction: column;
-    gap: 0.4rem;
-  }
-
-  .fact-list li {
-    width: 100%;
-    padding: 0.6rem 0.85rem;
-    border-radius: var(--border-radius);
-  }
-
   /* Contacts mobile */
   .contact-grid {
     flex-direction: column;
@@ -907,6 +787,21 @@ details[open] summary::before {
   .key-details {
     width: 100%;
   }
+}
+
+/* Site Footer */
+.site-footer {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--secondary-text-color);
+  border-top: 1px solid var(--border-color);
+}
+
+.site-footer p {
+  margin: 0.25rem 0;
 }
 
 /* Custom Scrollbars */
@@ -978,8 +873,7 @@ pre::-webkit-scrollbar-thumb:hover,
     grid-template-areas:
       "hero"
       "services"
-      "sidebar"
-      "footer";
+      "sidebar";
   }
 
   .service-item {

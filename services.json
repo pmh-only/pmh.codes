@@ -1,0 +1,209 @@
+{
+  "categories": [
+    {
+      "id": "public",
+      "label": "Public",
+      "icon": "globe",
+      "cssClass": "cat-public",
+      "services": [
+        {
+          "name": "thepool.",
+          "url": "https://pool.pmh.codes",
+          "icon": "waves-ladder",
+          "desc": "Unlimited file sharing service with parallel upload and download support"
+        },
+        {
+          "name": "Visualized",
+          "url": "https://visualized.pmh.codes",
+          "icon": "bar-chart-3",
+          "desc": "Realtime 3D visualization of the Kubernetes cluster topology and workloads"
+        },
+        {
+          "name": "here.",
+          "url": "https://here.pmh.codes",
+          "icon": "chevrons-left-right-ellipsis",
+          "desc": "Expose your localhost to the internet without any configuration pain"
+        },
+        {
+          "name": "GuessAiWord",
+          "url": "https://guess.pmh.codes",
+          "icon": "message-circle",
+          "desc": "AI-powered word guessing game built with OpenAI (Korean language only)"
+        },
+        {
+          "name": "PTools",
+          "url": "https://ptools.pmh.codes",
+          "icon": "wrench",
+          "desc": "Web-based string encoding, decoding, and transformation toolkit"
+        },
+        {
+          "name": "Heartbeat",
+          "url": "https://heart.pmh.codes",
+          "icon": "heart",
+          "desc": "Lightweight uptime and health monitoring for API endpoints"
+        },
+        {
+          "name": "Welplan",
+          "url": "https://welplan.pmh.codes",
+          "icon": "utensils",
+          "desc": "Daily cafeteria menu viewer for Samsung office restaurants"
+        },
+        {
+          "name": "ChatSolution",
+          "url": "https://c.pmh.codes",
+          "icon": "message-circle",
+          "desc": "Real-time text messaging through the browser devtools console"
+        },
+        {
+          "name": "Gohome",
+          "url": "https://gohome.pmh.codes",
+          "icon": "alarm-clock",
+          "desc": "Countdown timer to track remaining work hours until you can go home"
+        },
+        {
+          "name": "Pub",
+          "url": "https://pub.pmh.codes",
+          "icon": "upload",
+          "desc": "Publicly accessible file hosting and download directory"
+        },
+        {
+          "name": "Blog",
+          "url": "https://blog.pmh.codes",
+          "icon": "file-text",
+          "desc": "Technical blog with posts on infrastructure, DevOps, and development"
+        },
+        {
+          "name": "Spotify",
+          "url": "https://spotify.pmh.codes",
+          "icon": "music",
+          "desc": "Live Spotify now-playing widget showing my current listening activity"
+        },
+        {
+          "name": "Keysboard",
+          "url": "https://keys.pmh.codes",
+          "icon": "key",
+          "desc": "Bulletin board system demonstrating WebAuthn passkey authentication"
+        }
+      ]
+    },
+    {
+      "id": "infrastructure",
+      "label": "Infrastructure",
+      "icon": "server",
+      "cssClass": "cat-infra",
+      "services": [
+        {
+          "name": "ArgoCD",
+          "url": "https://argo.pmh.codes",
+          "icon": "git-branch",
+          "desc": "GitOps-based continuous deployment controller for Kubernetes workloads"
+        },
+        {
+          "name": "Grafana",
+          "url": "https://grafana.pmh.codes",
+          "icon": "trending-up",
+          "desc": "Observability dashboard for cluster metrics, logs, and service health"
+        },
+        {
+          "name": "Goaccess",
+          "url": "https://traffic.pmh.codes",
+          "icon": "bar-chart",
+          "desc": "Real-time web traffic analytics and access log visualization"
+        },
+        {
+          "name": "Rybbit",
+          "url": "https://trace.pmh.codes",
+          "icon": "activity",
+          "desc": "Privacy-focused web analytics and user telemetry collection platform",
+          "private": true
+        }
+      ]
+    },
+    {
+      "id": "games",
+      "label": "Games",
+      "icon": "gamepad-2",
+      "cssClass": "cat-games",
+      "services": [
+        {
+          "name": "Minecraft",
+          "url": "https://maps.pmh.codes",
+          "icon": "box",
+          "desc": "Long-running multiplayer Minecraft server with live map, active since 2020"
+        }
+      ]
+    },
+    {
+      "id": "private",
+      "label": "Private",
+      "icon": "lock",
+      "cssClass": "cat-private",
+      "allPrivate": true,
+      "services": [
+        {
+          "name": "Authentik",
+          "url": "https://auth.pmh.codes",
+          "icon": "shield-check",
+          "desc": "Single sign-on identity provider and authentication gateway",
+          "private": true
+        },
+        {
+          "name": "Minio",
+          "url": "https://console.s3.pmh.codes",
+          "icon": "database",
+          "desc": "Self-hosted S3-compatible object storage management console",
+          "private": true
+        },
+        {
+          "name": "S3 Explorer",
+          "url": "https://explorer.s3.pmh.codes",
+          "icon": "folder-search",
+          "desc": "Visual file browser for navigating S3 storage buckets and objects",
+          "private": true
+        },
+        {
+          "name": "Seafile",
+          "url": "https://drive.pmh.codes",
+          "icon": "hard-drive",
+          "desc": "Network-attached storage drive for daily file sync and sharing",
+          "private": true
+        },
+        {
+          "name": "Immich",
+          "url": "https://photos.pmh.codes",
+          "icon": "camera",
+          "desc": "Self-hosted photo and video management with automatic backup",
+          "private": true
+        },
+        {
+          "name": "Vaultwarden",
+          "url": "https://vault.pmh.codes",
+          "icon": "key-round",
+          "desc": "Self-hosted password manager and secrets vault (Bitwarden-compatible)",
+          "private": true
+        },
+        {
+          "name": "Roundcube",
+          "url": "https://mail.pmh.codes",
+          "icon": "mail",
+          "desc": "Full-featured webmail client for the @pmh.codes email domain",
+          "private": true
+        },
+        {
+          "name": "Code Server",
+          "url": "https://ide.pmh.codes",
+          "icon": "code",
+          "desc": "Browser-based VS Code remote development environment",
+          "private": true
+        },
+        {
+          "name": "Workflows",
+          "url": "https://flows.pmh.codes",
+          "icon": "chart-network",
+          "desc": "Visual workflow automation platform powered by n8n",
+          "private": true
+        }
+      ]
+    }
+  ]
+}

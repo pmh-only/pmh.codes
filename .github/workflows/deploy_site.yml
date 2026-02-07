@@ -25,6 +25,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Build
+        run: npm run build
+
       - name: Deploy to S3
         run: aws --no-verify-ssl --endpoint-url=https://s3.pmh.codes s3 sync . s3://www
         env:
