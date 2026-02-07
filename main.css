@@ -265,11 +265,13 @@ pre {
   color: var(--accent-color);
   text-decoration: none;
   transition: var(--transition);
-  border-bottom: 1px dotted var(--accent-color);
+  border-bottom: 1px dotted var(--disabled-color);
 }
 
 .domain-link:hover {
+  color: var(--link-color);
   border-bottom-style: solid;
+  border-bottom-color: var(--link-color);
 }
 
 .tagline {
@@ -302,7 +304,7 @@ pre {
   border-bottom: 1px solid var(--border-color);
 }
 
-.service-category h2 i {
+.service-category h2 svg {
   width: 1rem;
   height: 1rem;
   opacity: 0.7;
@@ -329,7 +331,7 @@ pre {
   white-space: nowrap;
 }
 
-.service-item i {
+.service-item svg {
   width: 1rem;
   height: 1rem;
   color: var(--accent-color);
@@ -494,11 +496,12 @@ a:focus {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .contacts {
-  padding: 1rem 0;
-  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 1.5rem;
 }
 
 .contacts h2 {
@@ -511,42 +514,55 @@ a:focus {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
 }
 
-.contacts h2 i {
+.contacts h2 svg {
   width: 1rem;
   height: 1rem;
   opacity: 0.7;
 }
 
 .contact-grid {
-  display: grid;
-  gap: 0.8rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 .contact-link {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
-  padding: 0.4rem 0;
-  transition: var(--transition);
+  gap: 0.5rem;
+  padding: 0.5rem 0.85rem;
+  background: var(--secondary-background-color);
+  border: 1px solid var(--border-color);
+  border-radius: 100px;
   text-decoration: none;
+  color: var(--text-color);
+  font-size: 0.9rem;
+  transition: var(--transition);
+  white-space: nowrap;
 }
 
 .contact-link:hover {
-  color: var(--accent-color);
+  background: var(--hover-background);
+  border-color: var(--accent-color);
+  color: var(--text-color);
+  text-decoration: none;
 }
 
 .contact-icon {
-  width: 1.2rem;
-  height: 1.2rem;
+  width: 1rem;
+  height: 1rem;
   flex-shrink: 0;
-  color: var(--link-color);
+  color: var(--accent-color);
 }
 
 /* Crypto Section */
 .crypto-section {
-  padding: 1rem 0;
+  margin-bottom: 1.5rem;
+  min-width: 0;
 }
 
 .crypto-section h2 {
@@ -559,54 +575,92 @@ a:focus {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
 }
 
-.crypto-section h2 i {
+.crypto-section h2 svg {
   width: 1rem;
   height: 1rem;
   opacity: 0.7;
 }
 
-.crypto-section p {
-  margin: 0 0 1rem 0;
+.crypto-section > p {
+  margin: 0.75rem 0;
   color: var(--secondary-text-color);
   font-size: 0.9rem;
 }
 
 .key-container {
-  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  min-width: 0;
 }
 
 .key-details {
-  margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: var(--secondary-background-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+  overflow: hidden;
 }
 
 .key-details summary {
-  padding: 0.5rem 0;
+  padding: 0.5rem 0.85rem;
   cursor: pointer;
   transition: var(--transition);
   user-select: none;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .key-details summary:hover {
+  background: var(--hover-background);
   color: var(--accent-color);
+}
+
+.key-details[open] {
+  border-color: var(--accent-color);
 }
 
 .key-details[open] summary {
   color: var(--accent-color);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .key-content {
-  padding: 0.5rem 0;
+  padding: 0.75rem;
+  overflow-x: auto;
+  max-width: 100%;
 }
 
 .key-content p {
-  margin: 0 0 1rem 0;
+  margin: 0 0 0.75rem 0;
+  font-size: 0.85rem;
+}
+
+.key-content p:last-child {
+  margin-bottom: 0;
+}
+
+.key-content pre {
+  max-width: 100%;
+  overflow-x: scroll;
+  white-space: pre;
+  margin: 0;
 }
 
 .trust-link {
   font-size: 0.9rem;
-  margin: 0 !important;
+  margin: 0.75rem 0 0 0 !important;
+  color: var(--secondary-text-color);
 }
 
 /* Code styling */
@@ -635,8 +689,7 @@ pre {
 /* Footer */
 .fun-facts {
   grid-area: footer;
-  padding: 1rem 0;
-  border-top: 1px solid var(--border-color);
+  margin-bottom: 1.5rem;
 }
 
 .fun-facts h2 {
@@ -649,9 +702,11 @@ pre {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
 }
 
-.fun-facts h2 i {
+.fun-facts h2 svg {
   width: 1rem;
   height: 1rem;
   opacity: 0.7;
@@ -661,25 +716,27 @@ pre {
   list-style: none;
   padding: 0;
   margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 .fact-list li {
-  padding: 0.3rem 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.85rem;
+  background: var(--secondary-background-color);
+  border: 1px solid var(--border-color);
+  border-radius: 100px;
+  font-size: 0.9rem;
   transition: var(--transition);
-  position: relative;
-  padding-left: 1.2rem;
-  color: var(--secondary-text-color);
-}
-
-.fact-list li::before {
-  content: "—";
-  position: absolute;
-  left: 0;
-  color: var(--border-color);
+  color: var(--text-color);
 }
 
 .fact-list li:hover {
-  color: var(--text-color);
+  background: var(--hover-background);
+  border-color: var(--accent-color);
 }
 
 /* Special styling */
@@ -723,7 +780,6 @@ details summary::before {
   left: 0.5rem;
   color: var(--accent-color);
   font-weight: bold;
-  width: 1rem;
 }
 
 details[open] summary::before {
@@ -814,10 +870,42 @@ details[open] summary::before {
     gap: 0.4rem;
   }
 
-
   .intro h1 {
     font-size: 60px;
     line-height: 1;
+  }
+
+  /* Fun facts mobile */
+  .fact-list {
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .fact-list li {
+    width: 100%;
+    padding: 0.6rem 0.85rem;
+    border-radius: var(--border-radius);
+  }
+
+  /* Contacts mobile */
+  .contact-grid {
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .contact-link {
+    width: 100%;
+    padding: 0.6rem 0.85rem;
+    border-radius: var(--border-radius);
+  }
+
+  /* Web of trust mobile */
+  .key-container {
+    flex-direction: column;
+  }
+
+  .key-details {
+    width: 100%;
   }
 }
 
