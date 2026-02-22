@@ -25,12 +25,6 @@
           "desc": "Expose your localhost to the internet without any configuration pain"
         },
         {
-          "name": "GuessAiWord",
-          "url": "https://guess.pmh.codes",
-          "icon": "message-circle",
-          "desc": "AI-powered word guessing game built with OpenAI (Korean language only)"
-        },
-        {
           "name": "PTools",
           "url": "https://ptools.pmh.codes",
           "icon": "wrench",
@@ -130,6 +124,12 @@
           "url": "https://maps.pmh.codes",
           "icon": "box",
           "desc": "Long-running multiplayer Minecraft server with live map, active since 2020"
+        },
+        {
+          "name": "GuessAiWord",
+          "url": "https://guess.pmh.codes",
+          "icon": "message-circle",
+          "desc": "AI-powered word guessing game built with OpenAI (Korean language only)"
         }
       ]
     },
