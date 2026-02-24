@@ -130,6 +130,12 @@
           "url": "https://guess.pmh.codes",
           "icon": "message-circle",
           "desc": "AI-powered word guessing game built with OpenAI (Korean language only)"
+        },
+        {
+          "name": "UnityLearn",
+          "url": "https://unitylearn.pmh.codes",
+          "icon": "ungroup",
+          "desc": "Simple jump game with annoying camera position"
         }
       ]
     },
