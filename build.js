@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const template = fs.readFileSync(path.join(__dirname, 'index.template.html'), 'utf-8');
+const ampTemplate = fs.readFileSync(path.join(__dirname, 'amp.template.html'), 'utf-8');
 const { categories } = JSON.parse(fs.readFileSync(path.join(__dirname, 'services.json'), 'utf-8'));
 
 function escapeHtml(str) {
@@ -33,7 +34,13 @@ ${items}
 }
 
 const servicesHtml = categories.map(renderCategory).join('\n\n');
-const output = template.replace('        <!-- SERVICES -->', servicesHtml);
 
+const output = template.replace('        <!-- SERVICES -->', servicesHtml);
 fs.writeFileSync(path.join(__dirname, 'index.html'), output);
 console.log('Built index.html from template + services.json');
+
+const ampDir = path.join(__dirname, 'amp');
+if (!fs.existsSync(ampDir)) fs.mkdirSync(ampDir);
+const ampOutput = ampTemplate.replace('        <!-- SERVICES -->', servicesHtml);
+fs.writeFileSync(path.join(ampDir, 'index.html'), ampOutput);
+console.log('Built amp/index.html from amp.template.html + services.json');
