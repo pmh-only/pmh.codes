@@ -2,7 +2,6 @@ const fs = require('fs');
 const path = require('path');
 
 const template = fs.readFileSync(path.join(__dirname, 'index.template.html'), 'utf-8');
-const ampTemplate = fs.readFileSync(path.join(__dirname, 'amp.template.html'), 'utf-8');
 const { categories } = JSON.parse(fs.readFileSync(path.join(__dirname, 'services.json'), 'utf-8'));
 
 function escapeHtml(str) {
@@ -39,8 +38,22 @@ const output = template.replace('        <!-- SERVICES -->', servicesHtml);
 fs.writeFileSync(path.join(__dirname, 'index.html'), output);
 console.log('Built index.html from template + services.json');
 
-const ampDir = path.join(__dirname, 'amp');
-if (!fs.existsSync(ampDir)) fs.mkdirSync(ampDir);
-const ampOutput = ampTemplate.replace('        <!-- SERVICES -->', servicesHtml);
-fs.writeFileSync(path.join(ampDir, 'index.html'), ampOutput);
-console.log('Built amp/index.html from amp.template.html + services.json');
+const publicUrls = categories
+  .flatMap(cat => cat.services)
+  .filter(s => !s.private)
+  .map(s => `  <url>\n    <loc>${s.url}/</loc>\n    <changefreq>monthly</changefreq>\n    <priority>0.6</priority>\n  </url>`)
+  .join('\n');
+
+const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://pmh.codes/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+${publicUrls}
+</urlset>
+`;
+
+fs.writeFileSync(path.join(__dirname, 'sitemap.xml'), sitemap);
+console.log('Built sitemap.xml from services.json');
