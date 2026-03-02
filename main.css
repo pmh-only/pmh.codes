@@ -328,7 +328,7 @@ summary {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.65);
+  background: rgba(0, 0, 0, 0.6);
   pointer-events: none;
 }
 
@@ -343,8 +343,14 @@ summary {
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
-  max-width: 1600px;
-  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  max-width: 1800px;
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 20%,
+    black 92%,
+    transparent
+  );
 }
 
 .know-the-man::before,
