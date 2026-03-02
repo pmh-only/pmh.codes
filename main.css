@@ -13,7 +13,8 @@
   --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   --card-shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.4);
 
-  --cat-public: #ffbbbb;
+  --cat-personal: #d4b8ff;
+  --cat-tools: #ffbbbb;
   --cat-infra: #a8d8a8;
   --cat-games: #a8c8ff;
   --cat-private: #ffcb8e;
@@ -279,36 +280,39 @@ summary {
 }
 
 .service-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 0.5rem;
 }
 
 .service-item {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 0.75rem;
-  padding: 0.55rem 0.85rem;
+  gap: 0.35rem 0.75rem;
+  padding: 0.75rem 1rem;
   text-decoration: none;
   color: var(--text-color);
   font-size: 0.9rem;
   transition: var(--transition);
-  white-space: nowrap;
   border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
 }
 
 .service-item .service-name {
-  min-width: 8rem;
-  flex-shrink: 0;
+  flex: 1;
+  min-width: 0;
 }
 
 .service-item .service-desc {
   color: var(--secondary-text-color);
-  font-size: 0.8rem;
-  margin-left: auto;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  font-size: 0.78rem;
+  flex-basis: 100%;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  line-height: 1.4;
+  padding-left: 1.75rem;
 }
 
 .service-item svg {
@@ -325,27 +329,10 @@ summary {
   margin-left: -0.25rem;
 }
 
-.service-item:nth-child(even) {
-  background: rgba(255, 255, 255, 0.02);
-}
-
-.service-item::after {
-  content: "\2192";
-  color: var(--secondary-text-color);
-  opacity: 0;
-  transition: var(--transition);
-  margin-left: 0.5rem;
-  flex-shrink: 0;
-}
-
 .service-item:hover {
   background: var(--hover-background);
   color: var(--text-color);
   text-decoration: none;
-}
-
-.service-item:hover::after {
-  opacity: 1;
 }
 
 .service-item:hover svg:first-child {
@@ -369,54 +356,40 @@ summary {
 }
 
 /* Category accent colors */
-.service-category.cat-public .service-item svg:first-child { color: var(--cat-public); }
+.service-category.cat-personal .service-item svg:first-child { color: var(--cat-personal); }
+.service-category.cat-tools .service-item svg:first-child { color: var(--cat-tools); }
 .service-category.cat-infra .service-item svg:first-child { color: var(--cat-infra); }
 .service-category.cat-games .service-item svg:first-child { color: var(--cat-games); }
 .service-category.cat-private .service-item svg:first-child { color: var(--cat-private); }
 
-.service-category.cat-public .section-heading { color: var(--cat-public); }
+.service-category.cat-personal .section-heading { color: var(--cat-personal); }
+.service-category.cat-tools .section-heading { color: var(--cat-tools); }
 .service-category.cat-infra .section-heading { color: var(--cat-infra); }
 .service-category.cat-games .section-heading { color: var(--cat-games); }
 .service-category.cat-private .section-heading { color: var(--cat-private); }
 
-.service-category.cat-public { border-color: color-mix(in srgb, var(--cat-public) 25%, var(--border-color)); }
+.service-category.cat-personal { border-color: color-mix(in srgb, var(--cat-personal) 25%, var(--border-color)); }
+.service-category.cat-tools { border-color: color-mix(in srgb, var(--cat-tools) 25%, var(--border-color)); }
 .service-category.cat-infra { border-color: color-mix(in srgb, var(--cat-infra) 25%, var(--border-color)); }
 .service-category.cat-games { border-color: color-mix(in srgb, var(--cat-games) 25%, var(--border-color)); }
 .service-category.cat-private { border-color: color-mix(in srgb, var(--cat-private) 25%, var(--border-color)); }
 
 @media (max-width: 640px) {
+  .service-list {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+  }
+
   .service-item {
     padding: 0.6rem 0.85rem;
-    flex-wrap: wrap;
     row-gap: 0.15rem;
-    background: var(--secondary-background-color);
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius);
-  }
-
-  .service-item.private {
-    border-style: dashed;
-  }
-
-  .service-item .service-name {
-    min-width: 0;
-  }
-
-  .service-item::after {
-    display: none;
   }
 
   .service-item .service-desc {
-    width: 100%;
-    margin-left: 0;
     padding-left: 1.75rem;
-    white-space: normal;
     line-height: 1.3;
   }
 
-  .service-item.private .lock-icon {
-    margin-left: auto;
-  }
 }
 
 /* Links */

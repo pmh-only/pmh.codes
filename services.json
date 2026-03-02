@@ -1,22 +1,48 @@
 {
   "categories": [
     {
-      "id": "public",
-      "label": "Public",
-      "icon": "globe",
-      "cssClass": "cat-public",
+      "id": "personal",
+      "label": "Personal",
+      "icon": "user",
+      "cssClass": "cat-personal",
+      "services": [
+        {
+          "name": "Blog",
+          "url": "https://blog.pmh.codes",
+          "icon": "file-text",
+          "desc": "Technical blog with posts on infrastructure, DevOps, and development"
+        },
+        {
+          "name": "Spotify",
+          "url": "https://spotify.pmh.codes",
+          "icon": "music",
+          "desc": "Live Spotify now-playing widget showing my current listening activity"
+        },
+        {
+          "name": "Welplan",
+          "url": "https://welplan.pmh.codes",
+          "icon": "utensils",
+          "desc": "Daily cafeteria menu viewer for Samsung office restaurants"
+        },
+        {
+          "name": "Gohome",
+          "url": "https://gohome.pmh.codes",
+          "icon": "alarm-clock",
+          "desc": "Countdown timer to track remaining work hours until you can go home"
+        }
+      ]
+    },
+    {
+      "id": "tools",
+      "label": "Tools",
+      "icon": "wrench",
+      "cssClass": "cat-tools",
       "services": [
         {
           "name": "thepool.",
           "url": "https://pool.pmh.codes",
           "icon": "waves-ladder",
           "desc": "Unlimited file sharing service with parallel upload and download support"
-        },
-        {
-          "name": "Visualized",
-          "url": "https://visualized.pmh.codes",
-          "icon": "bar-chart-3",
-          "desc": "Realtime 3D visualization of the Kubernetes cluster topology and workloads"
         },
         {
           "name": "here.",
@@ -31,52 +57,22 @@
           "desc": "Web-based string encoding, decoding, and transformation toolkit"
         },
         {
-          "name": "Heartbeat",
-          "url": "https://heart.pmh.codes",
-          "icon": "heart",
-          "desc": "Lightweight uptime and health monitoring for API endpoints"
-        },
-        {
-          "name": "Welplan",
-          "url": "https://welplan.pmh.codes",
-          "icon": "utensils",
-          "desc": "Daily cafeteria menu viewer for Samsung office restaurants"
-        },
-        {
           "name": "ChatSolution",
           "url": "https://c.pmh.codes",
           "icon": "message-circle",
           "desc": "Real-time text messaging through the browser devtools console"
         },
         {
-          "name": "Gohome",
-          "url": "https://gohome.pmh.codes",
-          "icon": "alarm-clock",
-          "desc": "Countdown timer to track remaining work hours until you can go home"
+          "name": "Keysboard",
+          "url": "https://keys.pmh.codes",
+          "icon": "key",
+          "desc": "Bulletin board system demonstrating WebAuthn passkey authentication"
         },
         {
           "name": "Pub",
           "url": "https://pub.pmh.codes",
           "icon": "upload",
           "desc": "Publicly accessible file hosting and download directory"
-        },
-        {
-          "name": "Blog",
-          "url": "https://blog.pmh.codes",
-          "icon": "file-text",
-          "desc": "Technical blog with posts on infrastructure, DevOps, and development"
-        },
-        {
-          "name": "Spotify",
-          "url": "https://spotify.pmh.codes",
-          "icon": "music",
-          "desc": "Live Spotify now-playing widget showing my current listening activity"
-        },
-        {
-          "name": "Keysboard",
-          "url": "https://keys.pmh.codes",
-          "icon": "key",
-          "desc": "Bulletin board system demonstrating WebAuthn passkey authentication"
         }
       ]
     },
@@ -86,6 +82,18 @@
       "icon": "server",
       "cssClass": "cat-infra",
       "services": [
+        {
+          "name": "Visualized",
+          "url": "https://visualized.pmh.codes",
+          "icon": "bar-chart-3",
+          "desc": "Realtime 3D visualization of the Kubernetes cluster topology and workloads"
+        },
+        {
+          "name": "Heartbeat",
+          "url": "https://heart.pmh.codes",
+          "icon": "heart",
+          "desc": "Lightweight uptime and health monitoring for API endpoints"
+        },
         {
           "name": "ArgoCD",
           "url": "https://argo.pmh.codes",

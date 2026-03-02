@@ -15,8 +15,8 @@ function renderService(service) {
 
   return `            <a href="${escapeHtml(service.url)}" target="_blank" class="${cls}">
               <i data-lucide="${escapeHtml(service.icon)}"></i>
-              <span class="service-name">${escapeHtml(service.name)}</span>
-              <span class="service-desc">${escapeHtml(service.desc)}</span>${lock}
+              <span class="service-name">${escapeHtml(service.name)}</span>${lock}
+              <span class="service-desc">${escapeHtml(service.desc)}</span>
             </a>`;
 }
 
