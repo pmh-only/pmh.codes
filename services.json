@@ -29,6 +29,12 @@
           "url": "https://gohome.pmh.codes",
           "icon": "alarm-clock",
           "desc": "Countdown timer to track remaining work hours until you can go home"
+        },
+        {
+          "name": "Radar",
+          "url": "https://radar.pmh.codes",
+          "icon": "radar",
+          "desc": "Live ADS-B aircraft radar view powered by a self-hosted antenna"
         }
       ]
     },
@@ -57,6 +63,18 @@
           "desc": "Web-based string encoding, decoding, and transformation toolkit"
         },
         {
+          "name": "Link",
+          "url": "https://link.pmh.codes",
+          "icon": "link",
+          "desc": "Personal URL shortener and redirect service"
+        },
+        {
+          "name": "PDF",
+          "url": "https://pdf.pmh.codes",
+          "icon": "file-type",
+          "desc": "PDF manipulation tools — merge, split, compress, and convert"
+        },
+        {
           "name": "ChatSolution",
           "url": "https://c.pmh.codes",
           "icon": "message-circle",
@@ -73,6 +91,12 @@
           "url": "https://pub.pmh.codes",
           "icon": "upload",
           "desc": "Publicly accessible file hosting and download directory"
+        },
+        {
+          "name": "Run",
+          "url": "https://run.pmh.codes",
+          "icon": "server",
+          "desc": "IaaS hosting platform for exclusive users"
         }
       ]
     },
@@ -144,6 +168,12 @@
           "url": "https://unitylearn.pmh.codes",
           "icon": "ungroup",
           "desc": "Simple jump game with annoying camera position"
+        },
+        {
+          "name": "NotAI.kr",
+          "url": "https://not.ai.kr",
+          "icon": "bot",
+          "desc": "Game where you convince an AI that you're human, not an over-engineered bot"
         }
       ]
     },
@@ -215,6 +245,20 @@
           "url": "https://flows.pmh.codes",
           "icon": "chart-network",
           "desc": "Visual workflow automation platform powered by n8n",
+          "private": true
+        },
+        {
+          "name": "Kopia",
+          "url": "https://backup.pmh.codes",
+          "icon": "archive",
+          "desc": "Self-hosted backup solution with deduplication and snapshot management",
+          "private": true
+        },
+        {
+          "name": "Velero",
+          "url": "https://velero.pmh.codes",
+          "icon": "shield",
+          "desc": "Kubernetes cluster backup and disaster recovery management UI",
           "private": true
         }
       ]
