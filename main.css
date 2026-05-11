@@ -157,7 +157,7 @@ summary {
 
 .service-count {
   font-weight: 400;
-  opacity: 0.5;
+  color: var(--secondary-text-color);
   font-size: 0.75rem;
 }
 
@@ -222,7 +222,7 @@ summary {
 }
 
 .service-item.private {
-  opacity: 0.7;
+  opacity: 0.85;
 }
 
 .service-item.private:hover {
@@ -230,7 +230,7 @@ summary {
 }
 
 .private-list .service-item {
-  opacity: 0.6;
+  opacity: 0.85;
 }
 
 .private-list .service-item:hover {
