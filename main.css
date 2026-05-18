@@ -290,3 +290,142 @@ a:focus {
     display: none;
   }
 }
+
+.test {
+  height: 100vh;
+}
+
+/* Navbar */
+.nav-toggle {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5rem;
+  height: 5rem;
+  background: transparent;
+  border: none;
+  color: var(--secondary-text-color);
+  cursor: pointer;
+  transition: color 0.2s ease;
+  padding: 0;
+}
+
+.nav-toggle:hover {
+  color: var(--accent-color);
+}
+
+.site-nav.is-open .nav-toggle {
+  color: var(--accent-color);
+}
+
+.nav-icon-close {
+  display: none;
+}
+
+.site-nav.is-open .nav-icon-open {
+  display: none;
+}
+
+.site-nav.is-open .nav-icon-close {
+  display: block;
+}
+
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  background: rgba(10, 10, 10, 0.2);
+  backdrop-filter: blur(12px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 4rem 3rem;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.site-nav.is-open .nav-overlay {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+  align-items: flex-end;
+}
+
+.nav-links li {
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.nav-link {
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+  font-family: var(--font-barlow);
+  font-weight: 900;
+  font-style: italic;
+  font-size: clamp(3.5rem, 10vw, 7rem);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: rgba(240, 240, 240, 0.15);
+  padding: 0;
+  transition: color 0.2s ease, padding-right 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  color: #fff;
+  padding-right: 1rem;
+  text-decoration: none;
+  outline: none;
+}
+
+.nav-link:visited {
+  color: rgba(240, 240, 240, 0.15);
+}
+
+.nav-link:visited:hover {
+  color: #fff;
+}
+
+.nav-link-index {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--secondary-text-color);
+  align-self: center;
+  min-width: 2ch;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover .nav-link-index,
+.nav-link:focus .nav-link-index {
+  color: var(--accent-color);
+}
+
+/* Active section state */
+.nav-link.is-active {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.nav-link.is-active .nav-link-index {
+  color: var(--accent-color);
+}
