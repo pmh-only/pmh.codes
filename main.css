@@ -201,6 +201,114 @@ p {
   background: rgba(255, 170, 170, 0.06);
 }
 
+.ktm-about {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4rem;
+  padding-bottom: 4rem;
+}
+
+.ktm-photocards {
+  position: relative;
+  width: 520px;
+  height: 400px;
+  flex-shrink: 0;
+}
+
+.ktm-photocard {
+  position: absolute;
+  width: 240px;
+  height: 320px;
+  background: #f4f0eb;
+  padding: 12px 12px 48px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55), 0 2px 6px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  user-select: none;
+}
+
+.ktm-photocard-media {
+  width: 100%;
+  flex: 1;
+  overflow: hidden;
+  display: block;
+}
+
+.ktm-photocard img,
+.ktm-photocard video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+
+.ktm-photocard-label {
+  font-family: var(--font-barlow);
+  font-style: italic;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  color: #555;
+  text-align: center;
+  padding-top: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ktm-photocard {
+  cursor: pointer;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+}
+
+.ktm-photocard--1 {
+  top: 30px;
+  left: 0;
+  transform: rotate(-6deg);
+  z-index: 0;
+}
+
+.ktm-photocard--2 {
+  top: 8px;
+  left: 140px;
+  transform: rotate(1deg);
+  z-index: 2;
+}
+
+.ktm-photocard--3 {
+  top: 22px;
+  left: 275px;
+  transform: rotate(5deg);
+  z-index: 1;
+}
+
+.ktm-photocard.is-active {
+  z-index: 3;
+  box-shadow: 0 24px 56px rgba(0, 0, 0, 0.7), 0 4px 12px rgba(0, 0, 0, 0.4);
+  transform: rotate(0deg) translateY(-16px) !important;
+}
+
+.ktm-bio {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 420px;
+  text-align: right;
+  color: var(--secondary-text-color);
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+
+@media (max-width: 820px) {
+  .ktm-about {
+    flex-direction: column-reverse;
+    align-items: flex-end;
+    gap: 2.5rem;
+  }
+}
+
 @media (max-width: 640px) {
   .ktm-hero-bg {
     height: 35vh;

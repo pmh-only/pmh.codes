@@ -1,6 +1,16 @@
 // Initialize Lucide icons
 lucide.createIcons();
 
+// Photocard click-to-highlight
+document.querySelectorAll('.ktm-photocard').forEach((card) => {
+  card.addEventListener('click', () => {
+    const isAlreadyActive = card.classList.contains('is-active');
+    document.querySelectorAll('.ktm-photocard').forEach((c) => c.classList.remove('is-active'));
+    if (!isAlreadyActive) card.classList.add('is-active');
+  });
+});
+
+
 // Navbar toggle
 const nav = document.getElementById('site-nav');
 const navOverlay = document.getElementById('nav-overlay');
