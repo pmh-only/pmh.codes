@@ -1,7 +1,7 @@
 {
   "scripts": {
     "build": "node build.js",
-    "start": "serve ."
+    "dev": "browser-sync start --server --files \"index.html\" --files \"main.css\" --files \"main.js\""
   },
   "dependencies": {
     "@fontsource-variable/inconsolata": "^5.2.6",
@@ -11,6 +11,6 @@
     "normalize.css": "^8.0.1"
   },
   "devDependencies": {
-    "serve": "^14.2.5"
+    "browser-sync": "^3.0.4"
   }
 }
