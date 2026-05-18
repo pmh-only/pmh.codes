@@ -202,11 +202,28 @@ p {
 }
 
 .ktm-about {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: flex-end;
   gap: 4rem;
   padding-bottom: 4rem;
+}
+
+.ktm-about-bg {
+  position: absolute;
+  bottom: 0;
+  right: -0.05em;
+  font-family: var(--font-barlow);
+  font-weight: 900;
+  font-style: italic;
+  font-size: clamp(6rem, 22vw, 16rem);
+  line-height: 0.85;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.03);
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
 }
 
 .ktm-photocards {
@@ -260,7 +277,11 @@ p {
 
 .ktm-photocard {
   cursor: pointer;
-  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease, z-index 0s;
+}
+
+.ktm-photocard:hover {
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.7), 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
 .ktm-photocard--1 {
@@ -270,6 +291,11 @@ p {
   z-index: 0;
 }
 
+.ktm-photocard--1:hover {
+  transform: rotate(-4deg) translateY(-10px);
+  z-index: 3;
+}
+
 .ktm-photocard--2 {
   top: 8px;
   left: 140px;
@@ -277,11 +303,21 @@ p {
   z-index: 2;
 }
 
+.ktm-photocard--2:hover {
+  transform: rotate(0deg) translateY(-10px);
+  z-index: 3;
+}
+
 .ktm-photocard--3 {
   top: 22px;
   left: 275px;
   transform: rotate(5deg);
   z-index: 1;
+}
+
+.ktm-photocard--3:hover {
+  transform: rotate(3deg) translateY(-10px);
+  z-index: 3;
 }
 
 .ktm-photocard.is-active {
