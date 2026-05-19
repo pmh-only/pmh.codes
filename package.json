@@ -1,7 +1,7 @@
 {
   "scripts": {
     "build": "node build.js",
-    "dev": "browser-sync start --server --files \"index.html\" --files \"main.css\" --files \"main.js\""
+    "dev": "browser-sync start --server --files \"*\""
   },
   "dependencies": {
     "@fontsource-variable/inconsolata": "^5.2.6",
