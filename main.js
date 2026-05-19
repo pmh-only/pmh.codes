@@ -1,3 +1,34 @@
+// Cursor bubble
+const bubble = document.createElement('div');
+bubble.className = 'cursor-bubble is-hidden';
+document.body.appendChild(bubble);
+
+let mouseX = 0, mouseY = 0;
+let bubbleX = 0, bubbleY = 0;
+
+document.addEventListener('mousemove', (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+  bubble.classList.remove('is-hidden');
+});
+
+document.addEventListener('mouseleave', () => bubble.classList.add('is-hidden'));
+
+(function animateBubble() {
+  bubbleX += (mouseX - bubbleX) * 0.08;
+  bubbleY += (mouseY - bubbleY) * 0.08;
+  bubble.style.left = bubbleX + 'px';
+  bubble.style.top = bubbleY + 'px';
+  requestAnimationFrame(animateBubble);
+})();
+
+// Auto-update age
+const birthDate = new Date('2005-01-30');
+const today = new Date();
+let age = today.getFullYear() - birthDate.getFullYear();
+if (today < new Date(today.getFullYear(), birthDate.getMonth(), birthDate.getDate())) age--;
+document.getElementById('age').textContent = age;
+
 // Initialize Lucide icons
 lucide.createIcons();
 

@@ -435,6 +435,26 @@ a:focus {
   }
 }
 
+/* Cursor bubble */
+.cursor-bubble {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 187, 187, 0.07) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.4s ease;
+  will-change: transform;
+}
+
+.cursor-bubble.is-hidden {
+  opacity: 0;
+}
+
 /* Skew divider */
 .skew-divider {
   height: 5rem;
