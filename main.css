@@ -435,6 +435,16 @@ a:focus {
   }
 }
 
+/* Skew divider */
+.skew-divider {
+  height: 5rem;
+  background: linear-gradient(
+    to bottom right,
+    var(--background-color) 50%,
+    #0e0e0e 50%
+  );
+}
+
 /* Trophies */
 .trophies {
   padding: 6rem 3rem;
