@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://pmh.codes/sitemap.xml

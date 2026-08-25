@@ -1,0 +1,203 @@
+---
+import "normalize.css";
+import "@fontsource-variable/inconsolata";
+import "@fontsource/barlow-condensed/900.css";
+import "@fontsource/barlow-condensed/900-italic.css";
+import "@fontsource/barlow-condensed/700-italic.css";
+import "../styles/global.css";
+import { Image } from "astro:assets";
+
+import Age from "../components/Age";
+import CursorBubble from "../components/CursorBubble";
+import Navbar from "../components/Navbar";
+import Photocards from "../components/Photocards";
+import irelandTrophy from "../assets/trophys/ireland/trophy.png";
+import shanghaiTrophyClosed from "../assets/trophys/shanghai/close.png";
+import shanghaiTrophyOpen from "../assets/trophys/shanghai/open.png";
+import taipeiTrophy from "../assets/trophys/taiwan.png";
+
+const title = "Minhyeok Park — WorldSkills 2026 Cloud Computing · Team Korea | pmh.codes";
+const description = "Minhyeok Park — WorldSkills 2026 Cloud Computing competitor for Team Korea. Gold Medalist at WorldSkills Asia 2025 Taipei, National MVP among 6,000+ competitors, homelab engineer on Kubernetes.";
+const socialDescription = "Minhyeok Park — WorldSkills 2026 Cloud Computing competitor for Team Korea. Gold Medalist at WorldSkills Asia 2025 Taipei, National MVP among 6,000+ competitors.";
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://pmh.codes/#person",
+      name: "Minhyeok Park",
+      url: "https://pmh.codes",
+      email: "pmh_only@pmh.codes",
+      jobTitle: "Cloud Computing Specialist & WorldSkills Competitor",
+      birthDate: "2005",
+      nationality: "Korean",
+      image: "https://pmh.codes/favicon.webp",
+      description: "WorldSkills 2026 Cloud Computing competitor representing Team Korea. Gold Medalist at WorldSkills Asia 2025 Taipei and National MVP among 6,000+ competitors.",
+      award: [
+        "Gold Medal — WorldSkills Asia 2025, Taipei",
+        "MVP — National WorldSkills Competition (Republic of Korea), 6,000+ competitors",
+        "Gold Medal — National WorldSkills Competition (Republic of Korea)",
+      ],
+      memberOf: {
+        "@type": "Organization",
+        name: "Team Korea — WorldSkills 2026",
+        url: "https://worldskills.org",
+      },
+      sameAs: [
+        "https://github.com/pmh-only",
+        "https://www.linkedin.com/in/pmhonly",
+        "https://x.com/pmh_only",
+        "https://www.youtube.com/@pmh_only",
+        "https://keybase.io/pmhonly",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://pmh.codes/#website",
+      name: "pmh.codes",
+      url: "https://pmh.codes",
+      description: "Minhyeok Park — WorldSkills 2026 Cloud Computing competitor, Team Korea. Personal homelab on Oracle Cloud running Kubernetes.",
+      author: { "@id": "https://pmh.codes/#person" },
+    },
+  ],
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/webp" href="/favicon.webp" />
+    <title>{title}</title>
+    <link rel="canonical" href="https://pmh.codes/" />
+
+    <meta name="description" content={description} />
+    <meta name="keywords" content="worldskills 2026, cloud computing, team korea, minhyeok park, worldskills asia 2025, gold medal, homelab, kubernetes" />
+    <meta name="author" content="Minhyeok Park" />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={socialDescription} />
+    <meta property="og:url" content="https://pmh.codes" />
+    <meta property="og:image" content="https://pmh.codes/favicon.webp" />
+    <meta property="og:image:alt" content="Minhyeok Park's pmh.codes homelab logo" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="pmh.codes" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image:width" content="460" />
+    <meta property="og:image:height" content="460" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@pmh_only" />
+    <meta name="twitter:creator" content="@pmh_only" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={socialDescription} />
+    <meta name="twitter:image" content="https://pmh.codes/favicon.webp" />
+    <meta name="twitter:image:alt" content="Minhyeok Park's pmh.codes homelab logo" />
+
+    <meta name="theme-color" content="#ffaaaa" />
+    <meta name="msapplication-TileColor" content="#ffaaaa" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="apple-touch-icon" href="/favicon.webp" />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <Navbar client:load />
+
+    <main id="main-content" tabindex="-1">
+      <div class="ktm-hero-bg" aria-hidden="true">
+        <div class="ktm-video-wrap">
+          <video src="/bgvideo.mp4" autoplay loop muted playsinline preload="metadata" class="ktm-video-bg"></video>
+          <video src="/bgvideo.mp4" autoplay loop muted playsinline preload="metadata" class="ktm-video-fg"></video>
+        </div>
+      </div>
+
+      <section class="know-the-man" id="know" aria-label="About Minhyeok Park" tabindex="-1">
+        <div class="ktm-inner">
+          <div class="ktm-header-row">
+            <div class="ktm-nation">
+              <img src="/korea.svg" alt="Republic of Korea" width="32" height="22" />
+              <span>REPUBLIC OF KOREA</span>
+            </div>
+          </div>
+
+          <div class="ktm-hero">
+            <h1 class="ktm-name">
+              MINHYEOK<br /><span class="ktm-bg-year" aria-hidden="true">#05&nbsp;</span><em>PARK</em>
+            </h1>
+          </div>
+
+          <div class="ktm-tags">
+            <span class="ktm-tag">CLOUD COMPUTING</span>
+            <span class="ktm-tag">TEAM KOREA</span>
+            <span class="ktm-tag ktm-tag-rookie">★ SUPER ROOKIE</span>
+          </div>
+
+          <div class="ktm-about">
+            <span class="ktm-about-bg" aria-hidden="true">About</span>
+            <Photocards client:visible={{ rootMargin: "200px" }} />
+
+            <div class="ktm-bio">
+              <p>I'm a <Age client:idle />-year-old cloud engineer from Korea, competing in WorldSkills 2026 as the national representative for Cloud Computing. I won gold at WorldSkills Asia 2025 in Taipei and was named MVP among 6,000+ competitors at the national selection.</p>
+              <p>Outside of competition, I run a self-hosted homelab on Oracle Cloud — a bare-metal Kubernetes cluster where I build and break things daily. I care deeply about infrastructure-as-code, observability, and making systems that are boring in the best possible way.</p>
+              <p>Currently training full-time for Shanghai 2026.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="skew-divider" aria-hidden="true"></div>
+
+      <section class="trophies" aria-label="Trophies and Awards">
+        <div class="trophies-inner">
+          <span class="trophies-bg" aria-hidden="true">Awards</span>
+          <div class="trophy-shelf">
+            <div class="trophy-card trophy-card--single">
+              <div class="trophy-single-wrap trophy-single-wrap--square">
+                <Image src={taipeiTrophy} alt="WorldSkills Asia 2025 Taipei trophy" width={240} loading="lazy" decoding="async" />
+              </div>
+              <span class="trophy-label">WORLDSKILLS ASIA 2025 · TAIPEI</span>
+            </div>
+            <div class="trophy-card trophy-card--case">
+              <div class="trophy-case-wrap">
+                <Image class="trophy-case-img trophy-case-img--close" src={shanghaiTrophyClosed} alt="WorldSkills 2026 Shanghai trophy case closed" width={480} loading="lazy" decoding="async" />
+                <Image class="trophy-case-img trophy-case-img--open" src={shanghaiTrophyOpen} alt="" aria-hidden="true" width={480} loading="lazy" decoding="async" />
+              </div>
+              <span class="trophy-label">WORLDSKILLS CHINA · SHANGHAI INVITATIONAL</span>
+            </div>
+            <div class="trophy-card trophy-card--single">
+              <div class="trophy-single-wrap">
+                <Image src={irelandTrophy} alt="WorldSkills Ireland 2026 trophy" width={240} loading="lazy" decoding="async" />
+              </div>
+              <span class="trophy-label">WORLDSKILLS IRELAND 2026</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="test" id="work" tabindex="-1"></section>
+      <section class="test" id="projects" tabindex="-1"></section>
+      <section class="test" id="contact" tabindex="-1"></section>
+    </main>
+
+    <CursorBubble client:media="(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)" />
+    <script>
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+      const updateVideoPlayback = () => {
+        document.querySelectorAll("video").forEach((video) => {
+          if (reducedMotion.matches) {
+            video.pause();
+          } else {
+            void video.play().catch(() => undefined);
+          }
+        });
+      };
+
+      updateVideoPlayback();
+      reducedMotion.addEventListener("change", updateVideoPlayback);
+    </script>
+  </body>
+</html>

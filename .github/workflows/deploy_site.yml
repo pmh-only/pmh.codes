@@ -1,6 +1,7 @@
 name: Deploy Site
 on:
   push:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -13,22 +14,32 @@ concurrency:
 jobs:
   deploy_site:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
 
       - name: Set up Node.js
         uses: actions/setup-node@v5
         with:
           node-version: "24"
+          cache: pnpm
 
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
+
+      - name: Build site
+        run: pnpm build
 
       - name: Deploy to S3
         run: |
           aws configure set default.s3.max_concurrent_requests 50
-          aws --no-verify-ssl --endpoint-url=https://s3.pmh.codes s3 sync . s3://www/
+          aws --no-verify-ssl --endpoint-url=https://s3.pmh.codes s3 sync dist/_astro/ s3://www/_astro/ --delete --cache-control "public,max-age=31536000,immutable"
+          aws --no-verify-ssl --endpoint-url=https://s3.pmh.codes s3 sync dist/ s3://www/ --delete --exclude "_astro/*" --cache-control "public,max-age=3600"
+          aws --no-verify-ssl --endpoint-url=https://s3.pmh.codes s3 cp dist/index.html s3://www/index.html --content-type "text/html; charset=utf-8" --cache-control "no-cache"
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

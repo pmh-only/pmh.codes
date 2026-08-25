@@ -9,7 +9,6 @@
 
   --font-mono: "Inconsolata Variable", monospace;
   --font-barlow: "Barlow Condensed", var(--font-mono);
-  --transition: all 0.2s ease;
 }
 
 * {
@@ -17,6 +16,7 @@
 }
 
 html {
+  color-scheme: dark;
   font-family: var(--font-mono);
   font-size: 16px;
   font-weight: 400;
@@ -30,6 +30,7 @@ html {
   position: relative;
   overflow-x: hidden;
   scroll-behavior: smooth;
+  scroll-padding-top: 1rem;
 }
 
 body {
@@ -38,9 +39,32 @@ body {
   position: relative;
 }
 
+main:focus,
+section:focus {
+  outline: none;
+}
+
 p {
   padding: 0;
   margin: 0;
+}
+
+.skip-link {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 10000;
+  padding: 0.65rem 1rem;
+  color: #111;
+  background: var(--accent-color);
+  font-weight: 700;
+  transform: translateY(calc(-100% - 2rem));
+  transition: transform 0.2s ease;
+}
+
+.skip-link:focus {
+  color: #111;
+  transform: translateY(0);
 }
 
 ::selection {
@@ -243,6 +267,10 @@ p {
   display: flex;
   flex-direction: column;
   user-select: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  text-align: initial;
 }
 
 .ktm-photocard-media {
@@ -362,7 +390,7 @@ a {
   text-decoration: underline;
   text-decoration-color: rgba(197, 197, 255, 0.3);
   text-underline-offset: 2px;
-  transition: var(--transition);
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
 }
 
 a:hover {
@@ -403,7 +431,7 @@ a:focus {
   background: var(--border-color);
   border-radius: 6px;
   border: 2px solid var(--background-color);
-  transition: var(--transition);
+  transition: background 0.2s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -470,6 +498,8 @@ a:focus {
   padding: 6rem 3rem;
   position: relative;
   background: #0e0e0e;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 800px;
 }
 
 .trophies-inner {
@@ -493,18 +523,6 @@ a:focus {
   user-select: none;
   white-space: nowrap;
   z-index: 1;
-}
-
-.trophies-title {
-  font-family: var(--font-barlow);
-  font-weight: 900;
-  font-style: italic;
-  font-size: clamp(2.5rem, 7vw, 5rem);
-  letter-spacing: -0.01em;
-  text-transform: uppercase;
-  color: #fff;
-  text-align: right;
-  margin: 0 0 3rem;
 }
 
 .trophy-shelf {
@@ -627,18 +645,6 @@ a:focus {
   color: var(--accent-color);
 }
 
-.nav-icon-close {
-  display: none;
-}
-
-.site-nav.is-open .nav-icon-open {
-  display: none;
-}
-
-.site-nav.is-open .nav-icon-close {
-  display: block;
-}
-
 .nav-overlay {
   position: fixed;
   inset: 0;
@@ -658,6 +664,12 @@ a:focus {
 .site-nav.is-open .nav-overlay {
   opacity: 1;
   pointer-events: all;
+}
+
+.nav-overlay.is-flashing {
+  opacity: 1;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
 }
 
 .nav-links {
@@ -733,4 +745,25 @@ a:focus {
 
 .nav-link.is-active .nav-link-index {
   color: var(--accent-color);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .cursor-bubble {
+    display: none;
+  }
+
+  .ktm-photocard,
+  .trophy-case-img,
+  .trophy-single-wrap--square,
+  .nav-toggle,
+  .nav-overlay,
+  .nav-link,
+  .nav-link-index,
+  .skip-link {
+    transition-duration: 0.01ms;
+  }
 }

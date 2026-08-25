@@ -1,7 +1,7 @@
 {
-  "name": "pmh.codes - Personal Homelab",
+  "name": "Minhyeok Park - pmh.codes",
   "short_name": "pmh.codes",
-  "description": "Minhyeok Park's personal homelab server with various services",
+  "description": "Minhyeok Park, Team Korea's WorldSkills 2026 Cloud Computing competitor",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#1a1a1a",
@@ -13,13 +13,13 @@
   "icons": [
     {
       "src": "/favicon.webp",
-      "sizes": "512x512",
+      "sizes": "460x460",
       "type": "image/webp",
       "purpose": "any"
     },
     {
       "src": "/favicon.webp",
-      "sizes": "512x512",
+      "sizes": "460x460",
       "type": "image/webp",
       "purpose": "maskable"
     }
