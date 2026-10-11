@@ -1,0 +1,26 @@
+---
+import { categories } from '../../services.json';
+---
+
+{categories.map(category => (
+  <section class:list={['service-category', category.cssClass]}>
+    <h2 class="section-heading">
+      <i data-lucide={category.icon}></i> {category.label}
+      <span class="service-count">({category.services.length})</span>
+    </h2>
+    <div class:list={['service-list', { 'private-list': 'allPrivate' in category && category.allPrivate }]}>
+      {category.services.map(service => (
+        <a
+          href={service.url}
+          target="_blank"
+          class:list={['service-item', { private: 'private' in service && service.private }]}
+        >
+          <i data-lucide={service.icon}></i>
+          <span class="service-name">{service.name}</span>
+          {'private' in service && service.private && <i data-lucide="lock" class="lock-icon"></i>}
+          <span class="service-desc">{service.desc}</span>
+        </a>
+      ))}
+    </div>
+  </section>
+))}

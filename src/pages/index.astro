@@ -1,32 +1,20 @@
+---
+import Services from '../components/Services.astro';
+import 'normalize.css';
+import '@fontsource-variable/inconsolata';
+import '@fontsource-variable/roboto';
+import '@fontsource/barlow-condensed/900.css';
+import '@fontsource/barlow-condensed/900-italic.css';
+import '@fontsource/barlow-condensed/700-italic.css';
+import '../styles/main.css';
+---
+
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/webp" href="/favicon.webp" />
-
-    <link rel="stylesheet" href="/node_modules/normalize.css/normalize.css" />
-    <link
-      rel="stylesheet"
-      href="/node_modules/@fontsource-variable/inconsolata/index.css"
-    />
-    <link
-      rel="stylesheet"
-      href="/node_modules/@fontsource-variable/roboto/index.css"
-    />
-    <link
-      rel="stylesheet"
-      href="/node_modules/@fontsource/barlow-condensed/900.css"
-    />
-    <link
-      rel="stylesheet"
-      href="/node_modules/@fontsource/barlow-condensed/900-italic.css"
-    />
-    <link
-      rel="stylesheet"
-      href="/node_modules/@fontsource/barlow-condensed/700-italic.css"
-    />
-    <link rel="stylesheet" href="/main.css" />
 
     <title>
       Minhyeok Park — WorldSkills 2026 Cloud Computing · Team Korea | pmh.codes
@@ -89,7 +77,7 @@
     <link rel="manifest" href="/manifest.json" />
     <link rel="apple-touch-icon" href="/favicon.webp" />
 
-    <script type="application/ld+json">
+    <script is:inline type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@graph": [
@@ -191,7 +179,7 @@
             >'s homelab on Oracle Cloud.
           </p>
         </div>
-        <!-- SERVICES -->
+        <Services />
       </main>
 
       <aside class="sidebar">
@@ -401,7 +389,8 @@ jcZoUzz8H8pvyprHkITpHXSn8n8tphHs4nQGiFzQ4VnrrtByLFjL3ximvJRKcg==
       <p>&copy; 2026 Minhyeok Park</p>
     </footer>
 
-    <script src="/node_modules/lucide/dist/umd/lucide.js"></script>
-    <script src="/main.js"></script>
+    <script>
+      import '../scripts/main.js';
+    </script>
   </body>
 </html>

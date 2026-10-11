@@ -17,21 +17,25 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v5
 
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+
       - name: Set up Node.js
         uses: actions/setup-node@v5
         with:
-          node-version: "20"
+          node-version: "24"
+          cache: pnpm
 
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
 
       - name: Build
-        run: npm run build
+        run: pnpm run build
 
       - name: Deploy to S3
         run: |
           aws configure set default.s3.max_concurrent_requests 50
-          aws --no-verify-ssl --endpoint-url=https://s3.pmh.codes s3 sync . s3://www/
+          aws --no-verify-ssl --endpoint-url=https://s3.pmh.codes s3 sync dist/ s3://www/
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

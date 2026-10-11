@@ -1,18 +1,17 @@
 {
+  "packageManager": "pnpm@12.11.2",
   "scripts": {
-    "build": "node build.js",
-    "dev": "node dev.js",
-    "start": "npm run build && serve ."
+    "build": "astro build",
+    "dev": "astro dev",
+    "preview": "astro preview",
+    "start": "pnpm run build && astro preview"
   },
   "dependencies": {
-    "@fontsource-variable/inconsolata": "^5.2.6",
-    "@fontsource-variable/roboto": "^5.2.9",
-    "@fontsource/barlow-condensed": "^5.2.8",
+    "@fontsource-variable/inconsolata": "^5.3.0",
+    "@fontsource-variable/roboto": "^5.3.0",
+    "@fontsource/barlow-condensed": "^5.3.0",
+    "astro": "^7.3.8",
     "lucide": "^0.544.0",
     "normalize.css": "^8.0.1"
-  },
-  "devDependencies": {
-    "browser-sync": "^3.0.4",
-    "serve": "^14.2.5"
   }
 }
