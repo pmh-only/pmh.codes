@@ -317,6 +317,7 @@ summary {
   background: #080808;
   height: 50vh;
   min-height: 320px;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 3rem), 0 100%);
 }
 
 .ktm-video-wrap {
@@ -344,7 +345,7 @@ summary {
   position: relative;
   z-index: 10;
   padding: 3rem 3rem 0;
-  margin-top: -18rem;
+  margin-top: -21rem;
 }
 
 .ktm-video-bg,
@@ -467,11 +468,12 @@ summary {
 @media (max-width: 640px) {
   .ktm-hero-bg {
     height: 35vh;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 1.5rem), 0 100%);
   }
 
   .know-the-man {
     padding: 2.5rem 1.5rem 0rem;
-    margin-top: -11.5rem;
+    margin-top: -13.5rem;
   }
 }
 
