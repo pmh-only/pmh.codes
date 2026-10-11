@@ -1,6 +1,13 @@
 ---
 import { categories } from '../../services.json';
 import Icon from './Icon.astro';
+
+function hostnameParts(url: string) {
+  const hostname = new URL(url).hostname;
+  return hostname.endsWith('.pmh.codes')
+    ? { prefix: hostname.slice(0, -'.pmh.codes'.length), suffix: '.pmh.codes' }
+    : { prefix: hostname, suffix: '' };
+}
 ---
 
 {categories.map(category => (
@@ -17,7 +24,10 @@ import Icon from './Icon.astro';
           class:list={['service-item', { private: 'private' in service && service.private }]}
         >
           <Icon name={service.icon} />
-          <span class="service-name">{service.name}</span>
+          <span class="service-identity">
+            <span class="service-name">{service.name}</span>
+            <span class="service-hostname"><span class="service-subdomain">{hostnameParts(service.url).prefix}</span>{hostnameParts(service.url).suffix}</span>
+          </span>
           {'private' in service && service.private && <Icon name="lock" class="lock-icon" />}
           <span class="service-desc">{service.desc}</span>
         </a>
