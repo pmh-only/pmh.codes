@@ -1,0 +1,33 @@
+---
+import { icons } from 'lucide';
+
+interface Props {
+  name: string;
+  class?: string;
+}
+
+const { name, class: className } = Astro.props;
+const iconName = name.split('-').map(part => part.charAt(0).toUpperCase() + part.slice(1)).join('');
+const nodes = icons[iconName as keyof typeof icons];
+if (!nodes) throw new Error(`Unknown Lucide icon: ${name}`);
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class:list={['lucide', `lucide-${name}`, className]}
+  aria-hidden="true"
+  focusable="false"
+>
+  {nodes.map(([tag, attributes]) => {
+    const Tag = tag;
+    return <Tag {...attributes} />;
+  })}
+</svg>

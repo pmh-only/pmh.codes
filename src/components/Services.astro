@@ -1,11 +1,12 @@
 ---
 import { categories } from '../../services.json';
+import Icon from './Icon.astro';
 ---
 
 {categories.map(category => (
   <section class:list={['service-category', category.cssClass]}>
     <h2 class="section-heading">
-      <i data-lucide={category.icon}></i> {category.label}
+      <Icon name={category.icon} /> {category.label}
       <span class="service-count">({category.services.length})</span>
     </h2>
     <div class:list={['service-list', { 'private-list': 'allPrivate' in category && category.allPrivate }]}>
@@ -15,9 +16,9 @@ import { categories } from '../../services.json';
           target="_blank"
           class:list={['service-item', { private: 'private' in service && service.private }]}
         >
-          <i data-lucide={service.icon}></i>
+          <Icon name={service.icon} />
           <span class="service-name">{service.name}</span>
-          {'private' in service && service.private && <i data-lucide="lock" class="lock-icon"></i>}
+          {'private' in service && service.private && <Icon name="lock" class="lock-icon" />}
           <span class="service-desc">{service.desc}</span>
         </a>
       ))}

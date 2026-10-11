@@ -1,5 +1,6 @@
 ---
 import Services from '../components/Services.astro';
+import Icon from '../components/Icon.astro';
 import 'normalize.css';
 import '@fontsource-variable/inconsolata';
 import '@fontsource-variable/roboto';
@@ -7,6 +8,9 @@ import '@fontsource/barlow-condensed/900.css';
 import '@fontsource/barlow-condensed/900-italic.css';
 import '@fontsource/barlow-condensed/700-italic.css';
 import '../styles/main.css';
+import inconsolataFont from '@fontsource-variable/inconsolata/files/inconsolata-latin-wght-normal.woff2?url';
+import barlowLabelFont from '@fontsource/barlow-condensed/files/barlow-condensed-latin-700-italic.woff2?url';
+import barlowItalicFont from '@fontsource/barlow-condensed/files/barlow-condensed-latin-900-italic.woff2?url';
 ---
 
 <!doctype html>
@@ -15,6 +19,10 @@ import '../styles/main.css';
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/webp" href="/favicon.webp" />
+    <link rel="preload" as="image" href="/bgvideo-poster.webp" fetchpriority="high" />
+    <link rel="preload" as="font" type="font/woff2" href={inconsolataFont} crossorigin="anonymous" />
+    <link rel="preload" as="font" type="font/woff2" href={barlowLabelFont} crossorigin="anonymous" />
+    <link rel="preload" as="font" type="font/woff2" href={barlowItalicFont} crossorigin="anonymous" />
 
     <title>
       Minhyeok Park — WorldSkills 2026 Cloud Computing · Team Korea | pmh.codes
@@ -125,8 +133,8 @@ import '../styles/main.css';
   <body>
     <div class="ktm-hero-bg" aria-hidden="true">
       <div class="ktm-video-wrap">
-        <video src="/bgvideo.mkv" autoplay loop muted class="ktm-video-bg"></video>
-        <video src="/bgvideo.mkv" autoplay loop muted class="ktm-video-fg"></video>
+        <video src="/bgvideo.mkv" poster="/bgvideo-poster.webp" preload="auto" autoplay loop muted playsinline class="ktm-video-bg"></video>
+        <video src="/bgvideo.mkv" poster="/bgvideo-poster.webp" preload="auto" autoplay loop muted playsinline class="ktm-video-fg"></video>
       </div>
     </div>
 
@@ -152,11 +160,6 @@ import '../styles/main.css';
           </h2>
         </div>
 
-        <div class="ktm-tags">
-          <span class="ktm-tag">CLOUD COMPUTING</span>
-          <span class="ktm-tag">TEAM KOREA</span>
-          <span class="ktm-tag ktm-tag-rookie">★ SUPER ROOKIE</span>
-        </div>
       </div>
     </section>
 
@@ -183,51 +186,15 @@ import '../styles/main.css';
       </main>
 
       <aside class="sidebar">
-        <section class="fun-facts">
-          <h2 class="section-heading"><i data-lucide="zap"></i> Fun Facts</h2>
-          <div class="terminal-block">
-            <p>
-              <span class="terminal-prompt">$</span> Three Oracle Cloud
-              instances orchestrated with Kubernetes
-            </p>
-            <p>
-              <span class="terminal-prompt">$</span> No CloudFlare reverse proxy
-              &mdash; direct to origin
-            </p>
-            <p>
-              <span class="terminal-prompt">$</span>
-              <code>X-Water-Mark</code> header on every response
-            </p>
-            <p>
-              <span class="terminal-prompt">$</span> K8s
-              <a href="https://github.com/pmh-only/lab" target="_blank"
-                >manifests are public</a
-              >
-            </p>
-            <p>
-              <span class="terminal-prompt">$</span> Passes all modern
-              <a
-                href="https://www.ssllabs.com/ssltest/analyze.html?d=pmh.codes&s=144.24.77.19&latest"
-                target="_blank"
-                >TLS requirements</a
-              >
-            </p>
-            <p>
-              <span class="terminal-prompt">$</span> SSH port 22 is closed
-              (probably)
-            </p>
-          </div>
-        </section>
-
         <section class="contacts">
-          <h2 class="section-heading"><i data-lucide="phone"></i> Contacts</h2>
+          <h2 class="section-heading"><Icon name="phone" /> Contacts</h2>
           <div class="contact-grid">
             <a
               href="https://github.com/pmh-only"
               target="_blank"
               class="contact-link contact-github"
             >
-              <i data-lucide="github" class="contact-icon"></i>
+              <Icon name="github" class="contact-icon" />
               <span>@pmh-only</span>
             </a>
             <a
@@ -235,7 +202,7 @@ import '../styles/main.css';
               target="_blank"
               class="contact-link contact-youtube"
             >
-              <i data-lucide="youtube" class="contact-icon"></i>
+              <Icon name="youtube" class="contact-icon" />
               <span>@pmh_only</span>
             </a>
             <a
@@ -243,7 +210,7 @@ import '../styles/main.css';
               target="_blank"
               class="contact-link contact-instagram"
             >
-              <i data-lucide="instagram" class="contact-icon"></i>
+              <Icon name="instagram" class="contact-icon" />
               <span>@pmh_only</span>
             </a>
             <a
@@ -251,7 +218,7 @@ import '../styles/main.css';
               target="_blank"
               class="contact-link contact-twitter"
             >
-              <i data-lucide="twitter" class="contact-icon"></i>
+              <Icon name="twitter" class="contact-icon" />
               <span>@pmh_only</span>
             </a>
             <a
@@ -259,7 +226,7 @@ import '../styles/main.css';
               target="_blank"
               class="contact-link contact-linkedin"
             >
-              <i data-lucide="linkedin" class="contact-icon"></i>
+              <Icon name="linkedin" class="contact-icon" />
               <span>@pmhonly</span>
             </a>
             <a
@@ -267,7 +234,7 @@ import '../styles/main.css';
               target="_blank"
               class="contact-link contact-keybase"
             >
-              <i data-lucide="key" class="contact-icon"></i>
+              <Icon name="key" class="contact-icon" />
               <span>@pmhonly</span>
             </a>
             <a
@@ -275,7 +242,7 @@ import '../styles/main.css';
               target="_blank"
               class="contact-link contact-email"
             >
-              <i data-lucide="mail" class="contact-icon"></i>
+              <Icon name="mail" class="contact-icon" />
               <span>pmh_only@pmh.codes</span>
             </a>
           </div>
@@ -283,7 +250,7 @@ import '../styles/main.css';
 
         <section class="crypto-section">
           <h2 class="section-heading">
-            <i data-lucide="shield-check"></i> Web of Trust
+            <Icon name="shield-check" /> Web of Trust
           </h2>
           <p>
             I'm signing my Git commits, documents and email with following keys:
@@ -389,8 +356,5 @@ jcZoUzz8H8pvyprHkITpHXSn8n8tphHs4nQGiFzQ4VnrrtByLFjL3ximvJRKcg==
       <p>&copy; 2026 Minhyeok Park</p>
     </footer>
 
-    <script>
-      import '../scripts/main.js';
-    </script>
   </body>
 </html>
