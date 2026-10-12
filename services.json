@@ -34,22 +34,65 @@
           "name": "Radar",
           "url": "https://radar.pmh.codes",
           "icon": "radar",
-          "desc": "Live ADS-B aircraft radar view powered by a self-hosted antenna"
+          "desc": "Live ADS-B aircraft radar view powered by a self-hosted antenna",
+          "alternates": [
+            {
+              "url": "https://ads.pmh.codes",
+              "type": "alias"
+            }
+          ]
+        },
+        {
+          "name": "Invest",
+          "url": "https://invest.pmh.codes",
+          "icon": "chart-no-axes-combined",
+          "desc": "Investment document dashboard for market news, portfolio reviews, and trading scenarios and plans"
+        },
+        {
+          "name": "Oshi",
+          "url": "https://oshi.pmh.codes",
+          "icon": "heart",
+          "desc": "Gallery of favorite VTubers with portraits and links to their social profiles"
+        },
+        {
+          "name": "Pay",
+          "url": "https://pay.pmh.codes",
+          "icon": "badge-dollar-sign",
+          "desc": "Experimental advertising page with embedded Google AdSense placements"
+        },
+        {
+          "name": "stmt.",
+          "url": "https://stmt.pmh.codes",
+          "icon": "message-square-text",
+          "desc": "Public statements and question-and-answer responses from @pmh_only"
+        },
+        {
+          "name": "Dawarich",
+          "url": "https://track.pmh.codes",
+          "icon": "map-pinned",
+          "desc": "Private location-history workspace with maps, trips, statistics, and insights",
+          "private": true
+        },
+        {
+          "name": "pmh.codes",
+          "url": "https://pmh.codes",
+          "icon": "house",
+          "desc": "Personal homepage and directory of pmh.codes homelab services",
+          "alternates": [
+            {
+              "url": "https://pmh.so",
+              "type": "redirect"
+            }
+          ]
         }
       ]
     },
     {
       "id": "tools",
-      "label": "Tools",
+      "label": "Tools & Automation",
       "icon": "wrench",
       "cssClass": "cat-tools",
       "services": [
-        {
-          "name": "thepool.",
-          "url": "https://pool.pmh.codes",
-          "icon": "waves-ladder",
-          "desc": "Unlimited file sharing service with parallel upload and download support"
-        },
         {
           "name": "here.",
           "url": "https://here.pmh.codes",
@@ -75,37 +118,126 @@
           "desc": "PDF manipulation tools — merge, split, compress, and convert"
         },
         {
-          "name": "ChatSolution",
-          "url": "https://c.pmh.codes",
-          "icon": "message-circle",
-          "desc": "Real-time text messaging through the browser devtools console"
+          "name": "F1 Nametag Maker",
+          "url": "https://f1.pmh.codes/",
+          "icon": "flag",
+          "desc": "Create Formula 1-style nametags with editable text, colors, sizing, and custom backgrounds"
         },
         {
-          "name": "Keysboard",
-          "url": "https://keys.pmh.codes",
-          "icon": "key",
-          "desc": "Bulletin board system demonstrating WebAuthn passkey authentication"
+          "name": "Web-Um",
+          "url": "https://um.pmh.codes",
+          "icon": "terminal",
+          "desc": "Browser-based Umjunsik (엄랭) interpreter with adjustable execution speed"
         },
         {
-          "name": "Pub",
-          "url": "https://pub.pmh.codes",
-          "icon": "upload",
-          "desc": "Publicly accessible file hosting and download directory"
+          "name": "AWS Summit 2026 Planner",
+          "url": "https://s26plan.pmh.codes",
+          "icon": "calendar-days",
+          "desc": "AWS Summit Seoul 2026 schedule planner with session search and filters for day, room, level, and language"
+        },
+        {
+          "name": "Bro",
+          "url": "https://bro.pmh.codes",
+          "icon": "bot",
+          "desc": "Project activity dashboard tracking Discord requests, OpenCode responses, and job status"
+        },
+        {
+          "name": "Connect",
+          "url": "https://connect.pmh.codes",
+          "icon": "plug",
+          "desc": "Authenticated Connect service accessed through pmh.codes single sign-on",
+          "private": true
+        },
+        {
+          "name": "Solver",
+          "url": "https://solver.pmh.codes",
+          "icon": "sparkles",
+          "desc": "Private AI assistant workspace with organization-based OIDC sign-in",
+          "private": true
+        },
+        {
+          "name": "Code Server",
+          "url": "https://ide.pmh.codes",
+          "icon": "code",
+          "desc": "Browser-based VS Code remote development environment",
+          "private": true
+        },
+        {
+          "name": "Workflows",
+          "url": "https://flows.pmh.codes",
+          "icon": "chart-network",
+          "desc": "Visual workflow automation platform powered by n8n",
+          "private": true
+        },
+        {
+          "name": "OpenCode",
+          "url": "https://opencode.pmh.codes",
+          "icon": "terminal",
+          "desc": "Sign-in-protected OpenCode workspace for AI-assisted development",
+          "private": true
+        },
+        {
+          "name": "Codex LB",
+          "url": "https://codex.pmh.codes",
+          "icon": "git-branch",
+          "desc": "Codex load-balancer dashboard for account health, quotas, and request logs",
+          "private": true
+        },
+        {
+          "name": "Meta",
+          "url": "https://meta.pmh.codes",
+          "icon": "panels-top-left",
+          "desc": "Authenticated Meta workspace accessed through pmh.codes single sign-on",
+          "private": true
+        },
+        {
+          "name": "Remote",
+          "url": "https://remote.pmh.codes",
+          "icon": "monitor",
+          "desc": "Sign-in-protected remote workspace using pmh.codes single sign-on",
+          "private": true
+        },
+        {
+          "name": "Termix",
+          "url": "https://terms.pmh.codes",
+          "icon": "terminal",
+          "desc": "Self-hosted SSH and remote desktop management with OIDC sign-in",
+          "private": true
+        },
+        {
+          "name": "ONLYOFFICE Docs",
+          "url": "https://office.pmh.codes",
+          "icon": "file-text",
+          "desc": "Document editing and collaboration server for integrated office applications",
+          "private": true
+        },
+        {
+          "name": "Link API",
+          "url": "https://linkapi.pmh.codes",
+          "icon": "webhook",
+          "desc": "API endpoint for the Link URL-shortening service; the root URL is not a web interface",
+          "hidden": true
+        }
+      ]
+    },
+    {
+      "id": "infrastructure",
+      "label": "Infrastructure & Monitoring",
+      "icon": "server",
+      "cssClass": "cat-infra",
+      "services": [
+        {
+          "name": "Architecture",
+          "url": "https://arch.pmh.codes/",
+          "icon": "network",
+          "desc": "Zoomable architecture overview of the pmh.codes homelab infrastructure"
         },
         {
           "name": "Run",
           "url": "https://run.pmh.codes",
           "icon": "server",
           "desc": "IaaS hosting platform for exclusive users"
-        }
-      ]
-    },
-    {
-      "id": "infrastructure",
-      "label": "Infrastructure",
-      "icon": "server",
-      "cssClass": "cat-infra",
-      "services": [
+        },
         {
           "name": "Visualized",
           "url": "https://visualized.pmh.codes",
@@ -142,12 +274,57 @@
           "icon": "activity",
           "desc": "Privacy-focused web analytics and user telemetry collection platform",
           "private": true
+        },
+        {
+          "name": "Velero",
+          "url": "https://velero.pmh.codes",
+          "icon": "shield",
+          "desc": "Kubernetes cluster backup and disaster recovery management UI",
+          "private": true
+        },
+        {
+          "name": "AS218822 Console",
+          "url": "https://bgp.pmh.codes",
+          "icon": "network",
+          "desc": "Public read-only console for BGP routing, traffic, reachability, and infrastructure telemetry"
+        },
+        {
+          "name": "Looking Glass",
+          "url": "https://lg.pmh.codes",
+          "icon": "scan-search",
+          "desc": "AS218822 looking-glass endpoint; the root URL currently returns a not-found response"
+        },
+        {
+          "name": "ArgoCD Image Updater",
+          "url": "https://update.pmh.codes",
+          "icon": "refresh-cw",
+          "desc": "Image-update service endpoint for ArgoCD deployments",
+          "private": true
+        },
+        {
+          "name": "DNS over HTTPS",
+          "url": "https://doh.pmh.codes",
+          "icon": "globe-lock",
+          "desc": "Encrypted DNS service with client setup instructions and a /dns-query endpoint"
+        },
+        {
+          "name": "Technitium DNS",
+          "url": "https://names.pmh.codes",
+          "icon": "network",
+          "desc": "Technitium DNS Server management console with account and OpenID Connect sign-in",
+          "private": true
+        },
+        {
+          "name": "LibreSpeed",
+          "url": "https://speed.pmh.codes",
+          "icon": "gauge",
+          "desc": "Browser-based internet speed test for download, upload, and connection stability"
         }
       ]
     },
     {
       "id": "games",
-      "label": "Games",
+      "label": "Games & Fun",
       "icon": "gamepad-2",
       "cssClass": "cat-games",
       "services": [
@@ -155,7 +332,22 @@
           "name": "Minecraft",
           "url": "https://maps.pmh.codes",
           "icon": "box",
-          "desc": "Long-running multiplayer Minecraft server with live map, active since 2020"
+          "desc": "Long-running multiplayer Minecraft server with live map, active since 2020",
+          "alternates": [
+            {
+              "url": "https://mc.pmh.codes",
+              "type": "alias"
+            },
+            {
+              "url": "https://map.mc.pmh.codes",
+              "type": "alias"
+            },
+            {
+              "url": "https://hawal.pmh.so",
+              "type": "alias",
+              "unavailable": true
+            }
+          ]
         },
         {
           "name": "GuessAiWord",
@@ -174,35 +366,66 @@
           "url": "https://not.ai.kr",
           "icon": "bot",
           "desc": "Game where you convince an AI that you're human, not an over-engineered bot"
+        },
+        {
+          "name": "Cortisol Gauge",
+          "url": "https://cortisol.pmh.codes",
+          "icon": "gauge",
+          "desc": "Interactive stress-themed gauge with random clips and playful cortisol spikes"
+        },
+        {
+          "name": "Gift",
+          "url": "https://gift.pmh.codes/",
+          "icon": "bomb",
+          "desc": "Interactive bomb-countdown toy with a clickable fuse"
+        },
+        {
+          "name": "fih.",
+          "url": "https://fih.pmh.codes",
+          "icon": "fish",
+          "desc": "Looping video toy with random visual effects and playback speeds on click"
+        },
+        {
+          "name": "Minecraft Datapacks",
+          "url": "https://datapacks.pmh.codes",
+          "icon": "folder-open",
+          "desc": "Minecraft datapack file browser powered by Filestash",
+          "alternates": [
+            {
+              "url": "https://datapacks.mc.pmh.codes",
+              "type": "alias"
+            },
+            {
+              "url": "https://datapacks.mc.pmh.so",
+              "type": "alias"
+            }
+          ]
         }
       ]
     },
     {
-      "id": "private",
-      "label": "Private",
-      "icon": "lock",
-      "cssClass": "cat-private",
-      "allPrivate": true,
+      "id": "storage",
+      "label": "Storage & Media",
+      "icon": "hard-drive",
+      "cssClass": "cat-infra",
       "services": [
         {
-          "name": "Authentik",
-          "url": "https://auth.pmh.codes",
-          "icon": "shield-check",
-          "desc": "Single sign-on identity provider and authentication gateway",
-          "private": true
+          "name": "thepool.",
+          "url": "https://pool.pmh.codes",
+          "icon": "waves-ladder",
+          "desc": "Unlimited file sharing service with parallel upload and download support"
         },
         {
-          "name": "Minio",
-          "url": "https://console.s3.pmh.codes",
+          "name": "Pub",
+          "url": "https://pub.pmh.codes",
+          "icon": "upload",
+          "desc": "Publicly accessible file hosting and download directory"
+        },
+        {
+          "name": "RustFS",
+          "url": "https://rustfs.pmh.codes",
           "icon": "database",
           "desc": "Self-hosted S3-compatible object storage management console",
-          "private": true
-        },
-        {
-          "name": "S3 Explorer",
-          "url": "https://explorer.s3.pmh.codes",
-          "icon": "folder-search",
-          "desc": "Visual file browser for navigating S3 storage buckets and objects",
           "private": true
         },
         {
@@ -220,11 +443,67 @@
           "private": true
         },
         {
-          "name": "Vaultwarden",
-          "url": "https://vault.pmh.codes",
-          "icon": "key-round",
-          "desc": "Self-hosted password manager and secrets vault (Bitwarden-compatible)",
+          "name": "Kopia",
+          "url": "https://backup.pmh.codes",
+          "icon": "archive",
+          "desc": "Self-hosted backup solution with deduplication and snapshot management",
           "private": true
+        },
+        {
+          "name": "Doclane",
+          "url": "https://books.pmh.codes",
+          "icon": "book-open",
+          "desc": "Document workspace with account sign-in",
+          "private": true
+        },
+        {
+          "name": "S3 API",
+          "url": "https://s3.pmh.codes",
+          "icon": "database",
+          "desc": "S3-compatible object-storage API endpoint requiring authorized access",
+          "private": true,
+          "hidden": true
+        },
+        {
+          "name": "a-c S3 Bucket",
+          "url": "https://a-c.s3.pmh.codes",
+          "icon": "package",
+          "desc": "Public S3 bucket endpoint listing objects in the a-c bucket",
+          "hidden": true
+        },
+        {
+          "name": "a-s S3 Bucket",
+          "url": "https://a-s.s3.pmh.codes",
+          "icon": "package",
+          "desc": "Access-controlled S3 bucket endpoint for a-s objects",
+          "private": true,
+          "hidden": true
+        }
+      ]
+    },
+    {
+      "id": "communication",
+      "label": "Communication",
+      "icon": "message-circle",
+      "cssClass": "cat-games",
+      "services": [
+        {
+          "name": "enc",
+          "url": "https://enc.pmh.codes",
+          "icon": "lock-keyhole",
+          "desc": "Browser-based encrypted messaging with shareable contact profiles and optional anonymous sending"
+        },
+        {
+          "name": "ChatSolution",
+          "url": "https://c.pmh.codes",
+          "icon": "message-circle",
+          "desc": "Real-time text messaging through the browser devtools console"
+        },
+        {
+          "name": "Keysboard",
+          "url": "https://keys.pmh.codes",
+          "icon": "key",
+          "desc": "Bulletin board system demonstrating WebAuthn passkey authentication"
         },
         {
           "name": "Roundcube",
@@ -234,31 +513,38 @@
           "private": true
         },
         {
-          "name": "Code Server",
-          "url": "https://ide.pmh.codes",
-          "icon": "code",
-          "desc": "Browser-based VS Code remote development environment",
+          "name": "Mail Demo",
+          "url": "https://maildemo.pmh.codes",
+          "icon": "mail",
+          "desc": "In-memory mail demo for exploring inboxes, compose, drafts, contacts, threads, and attachments"
+        }
+      ]
+    },
+    {
+      "id": "security",
+      "label": "Identity & Security",
+      "icon": "shield-check",
+      "cssClass": "cat-private",
+      "services": [
+        {
+          "name": "Code Relay",
+          "url": "https://otp.pmh.codes",
+          "icon": "key-round",
+          "desc": "Protected verification-code inbox for SMS and email OTPs, with Bitwarden TOTP access",
           "private": true
         },
         {
-          "name": "Workflows",
-          "url": "https://flows.pmh.codes",
-          "icon": "chart-network",
-          "desc": "Visual workflow automation platform powered by n8n",
+          "name": "Authentik",
+          "url": "https://auth.pmh.codes",
+          "icon": "shield-check",
+          "desc": "Single sign-on identity provider and authentication gateway",
           "private": true
         },
         {
-          "name": "Kopia",
-          "url": "https://backup.pmh.codes",
-          "icon": "archive",
-          "desc": "Self-hosted backup solution with deduplication and snapshot management",
-          "private": true
-        },
-        {
-          "name": "Velero",
-          "url": "https://velero.pmh.codes",
-          "icon": "shield",
-          "desc": "Kubernetes cluster backup and disaster recovery management UI",
+          "name": "Vaultwarden",
+          "url": "https://vault.pmh.codes",
+          "icon": "key-round",
+          "desc": "Self-hosted password manager and secrets vault (Bitwarden-compatible)",
           "private": true
         }
       ]

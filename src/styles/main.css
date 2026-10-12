@@ -1,3 +1,5 @@
+@import './service-nav.css';
+
 :root {
   --accent-color: #ffbbbb;
   --link-color: #c5c5ff;
@@ -175,12 +177,46 @@ summary {
   color: var(--text-color);
   font-size: 0.9rem;
   transition: var(--transition);
+}
+
+.service-entry {
+  min-width: 0;
   border-bottom: 1px solid var(--border-color);
 }
 
-.service-item:last-child {
+.service-entry:last-child {
   border-bottom: 0;
 }
+
+.service-alternates {
+  margin: -0.15rem 0.5rem 0.65rem 2.25rem;
+  font-size: 0.75rem;
+  color: var(--secondary-text-color);
+}
+
+.service-alternates summary {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  width: fit-content;
+  cursor: pointer;
+  padding: 0.2rem 0;
+}
+
+.service-alternates summary svg {
+  width: 0.8rem;
+  height: 0.8rem;
+  transition: transform 0.2s ease;
+}
+
+.service-alternates[open] summary svg { transform: rotate(90deg); }
+.service-alternates ul { list-style: none; padding: 0; margin: 0.35rem 0 0; }
+.service-alternates li { display: flex; flex-wrap: wrap; align-items: center; gap: 0.3rem 0.6rem; padding: 0.25rem 0; }
+.service-alternates a, .service-alternates a:visited { color: var(--secondary-text-color); text-decoration: none; overflow-wrap: anywhere; }
+.service-alternates a:hover { text-decoration: underline; }
+.alternate-type { display: inline-flex; align-items: center; gap: 0.25rem; font-size: 0.7rem; }
+.alternate-type svg { width: 0.7rem; height: 0.7rem; }
+.alternate-unavailable { color: var(--accent-color); font-size: 0.7rem; }
 
 .service-item:visited {
   color: var(--text-color);
@@ -322,6 +358,8 @@ summary {
   .service-item .lock-icon {
     grid-column: 3;
   }
+
+  .service-alternates { margin-left: 2rem; }
 }
 
 .ktm-hero-bg {
@@ -522,7 +560,7 @@ a:focus {
   gap: 1.75rem;
   min-width: 0;
   position: sticky;
-  top: 2rem;
+  top: 5.5rem;
   align-self: start;
 }
 

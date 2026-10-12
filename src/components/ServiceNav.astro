@@ -1,0 +1,65 @@
+---
+import { visibleCategories as categories } from '../lib/services';
+import Icon from './Icon.astro';
+import { hostnameParts } from '../lib/hostname';
+---
+
+<header class="service-nav" data-service-nav>
+  <div class="service-nav-inner">
+    <a class="service-nav-brand" href="/">pmh<span>.codes</span></a>
+    <button class="service-nav-toggle" type="button" aria-label="Browse services" aria-controls="service-launcher" aria-expanded="false">
+      <Icon name="layout-grid" />
+      <span>Services</span>
+    </button>
+    <div class="service-nav-search">
+      <Icon name="search" />
+      <label class="visually-hidden" for="service-search">Search services</label>
+      <input id="service-search" type="search" placeholder="Search services" autocomplete="off" spellcheck="false" aria-controls="service-launcher" aria-expanded="false" aria-keyshortcuts="/ Control+K Meta+K Alt+S" />
+      <button class="service-search-clear" type="button" aria-label="Clear search" hidden><Icon name="x" /></button>
+      <kbd>/</kbd>
+    </div>
+    <div id="service-launcher" class="service-launcher" role="region" aria-label="Services launcher" hidden>
+      <nav class="launcher-categories" aria-label="Service categories">
+        <button type="button" data-filter="all" aria-pressed="true"><Icon name="layout-grid" />All services</button>
+        <button type="button" data-filter="recent" aria-pressed="false"><Icon name="history" />Recently visited</button>
+        <div class="launcher-category-divider"></div>
+        {categories.map(category => (
+          <button type="button" data-filter={category.id} aria-pressed="false"><Icon name={category.icon} />{category.label}</button>
+        ))}
+      </nav>
+      <section class="launcher-content">
+        <div class="launcher-heading">
+          <h2>All services</h2>
+          <button type="button" class="launcher-close" aria-label="Close services"><Icon name="x" /></button>
+        </div>
+        <p class="launcher-count" role="status" aria-live="polite"></p>
+        <div class="launcher-results">
+          {categories.flatMap(category => category.services.map(service => (
+            <a
+              class="launcher-result"
+              href={service.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-category={category.id}
+              data-alternate-urls={JSON.stringify((service.alternates ?? []).map(address => new URL(address.url).href))}
+              data-search={`${service.name} ${new URL(service.url).hostname} ${(service.alternates ?? []).map(address => new URL(address.url).hostname).join(' ')} ${service.desc} ${category.label}`.toLowerCase()}
+            >
+              <Icon name={service.icon} />
+              <span class="launcher-result-text">
+                <span class="launcher-result-name">{service.name}<span class="launcher-hostname"><span class="service-subdomain">{hostnameParts(service.url).prefix}</span>{hostnameParts(service.url).suffix}</span></span>
+                <span class="launcher-result-desc">{service.desc}</span>
+                {service.alternates && service.alternates.length > 0 && <span class="launcher-alternate-count">{service.alternates.length} alternate {service.alternates.length === 1 ? 'address' : 'addresses'}</span>}
+              </span>
+              {(('allPrivate' in category && category.allPrivate) || ('private' in service && service.private)) && <Icon name="lock" class="launcher-lock" />}
+            </a>
+          )))}
+          <p class="launcher-empty" hidden>No matching services.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</header>
+
+<script>
+  import '../scripts/service-nav.js';
+</script>

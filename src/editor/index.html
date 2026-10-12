@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Services editor — pmh.codes</title>
+  <style>
+    :root { color-scheme: dark; font-family: system-ui, sans-serif; color: #eee; background: #1a1a1a; }
+    * { box-sizing: border-box; }
+    body { max-width: 1100px; margin: auto; padding: 24px; }
+    h1 { margin: 0; font-size: 24px; }
+    p { color: #aaa; line-height: 1.5; }
+    header, .toolbar, .actions { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+    header { justify-content: space-between; margin-bottom: 24px; }
+    button, input, select, textarea { font: inherit; border: 1px solid #555; border-radius: 4px; padding: 10px; color: inherit; background: #252525; }
+    button { cursor: pointer; }
+    button:hover { border-color: #ffbbbb; }
+    button:disabled { opacity: .45; cursor: default; }
+    button.primary { background: #ffbbbb; color: #1a1a1a; border-color: #ffbbbb; }
+    button.danger { color: #ffbbbb; }
+    :focus-visible { outline: 2px solid #ffbbbb; outline-offset: 3px; }
+    .layout { display: grid; grid-template-columns: minmax(220px, 1fr) minmax(0, 2fr); gap: 28px; margin-top: 24px; }
+    #services { display: flex; flex-direction: column; gap: 4px; }
+    #services button { text-align: left; overflow-wrap: anywhere; }
+    #services button[aria-pressed="true"] { border-color: #ffbbbb; background: #333; }
+    #services small { display: block; margin-top: 4px; color: #aaa; }
+    form { display: grid; gap: 16px; }
+    label { display: grid; gap: 6px; font-size: 14px; }
+    input, textarea { width: 100%; }
+    textarea { min-height: 100px; resize: vertical; }
+    .check { display: flex; align-items: center; gap: 8px; }
+    .check input { width: auto; }
+    .hint { font-size: 13px; color: #aaa; }
+    fieldset { min-width: 0; border: 1px solid #555; border-radius: 4px; padding: 16px; }
+    legend { padding: 0 6px; }
+    #alternates { display: grid; gap: 16px; margin-bottom: 12px; }
+    .alternate-editor { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; padding-bottom: 12px; border-bottom: 1px solid #444; }
+    .alternate-editor .check { grid-column: 1; }
+    .alternate-editor button { justify-self: start; }
+    @media (max-width: 640px) { .alternate-editor { grid-template-columns: minmax(0, 1fr); } }
+    #status { min-height: 24px; margin: 16px 0; }
+    #status[data-error="true"] { color: #ffbbbb; }
+    [hidden] { display: none !important; }
+    @media (max-width: 640px) { body { padding: 16px; } .layout { grid-template-columns: minmax(0, 1fr); } }
+  </style>
+</head>
+<body>
+  <header>
+    <div><h1>Services editor</h1><p>Local only. Changes stay in memory until you save to <code>services.json</code>.</p></div>
+    <div class="actions"><a href="/" target="_blank" rel="noopener">Preview site ↗</a><button id="reload">Reload file</button><button id="save" class="primary" disabled>Save changes</button></div>
+  </header>
+  <div class="toolbar"><label>Category<select id="category" aria-label="Category"></select></label><button id="edit-category" disabled>Edit category</button><button id="add-category" disabled>Add category</button><button id="add" disabled>Add service</button><span id="count" class="hint"></span></div>
+  <p id="status" role="status" aria-live="polite">Loading services…</p>
+  <form id="category-form" hidden>
+    <h2>Edit category</h2>
+    <label>Category name<input name="label" required /></label>
+    <label>Category ID<input name="id" required pattern="[a-z0-9]+(-[a-z0-9]+)*" /></label>
+    <label>Category icon<input name="icon" required /></label>
+    <label>Category color<select name="cssClass" aria-label="Category color"><option value="cat-personal">Purple</option><option value="cat-tools">Pink</option><option value="cat-infra">Green</option><option value="cat-games">Blue</option><option value="cat-private">Amber</option></select></label>
+    <label class="check"><input name="allPrivate" type="checkbox" />All services in this category are private</label>
+    <div class="actions"><button id="category-up" type="button">Move category up</button><button id="category-down" type="button">Move category down</button><button id="delete-category" type="button" class="danger">Delete category</button><button id="close-category" type="button">Done</button></div>
+  </form>
+  <div class="layout">
+    <nav id="services" aria-label="Services"></nav>
+    <section>
+      <p id="empty">Select a service to edit, or add a new one.</p>
+      <form id="form" hidden>
+        <label>Name<input name="name" required maxlength="200" /></label>
+        <label>URL<input name="url" type="url" required placeholder="https://blog.pmh.codes" /></label>
+        <label>Lucide icon<input name="icon" required placeholder="file-text" /></label><span class="hint">Use the kebab-case icon name, for example shield-check or music.</span>
+        <label>Description<textarea name="desc" required></textarea></label>
+        <label class="check"><input name="private" type="checkbox" />Private service (excluded from sitemap)</label>
+        <label class="check"><input name="hidden" type="checkbox" />Hide from directory, search, and sitemap</label>
+        <fieldset>
+          <legend>Alternate addresses</legend>
+          <p class="hint">Aliases serve the same app directly. Redirects forward to the primary URL. Neither is included in the sitemap.</p>
+          <div id="alternates"></div>
+          <button id="add-address" type="button">Add address</button>
+        </fieldset>
+        <div class="actions"><button id="up" type="button">Move up</button><button id="down" type="button">Move down</button><button id="delete" type="button" class="danger">Delete service</button></div>
+      </form>
+    </section>
+  </div>
+  <script>
+    const $ = id => document.getElementById(id);
+    const form = $('form');
+    const categoryForm = $('category-form');
+    let data, revision, categoryIndex = 0, selected = -1, dirty = false, saving = false;
+    const category = () => data.categories[categoryIndex];
+    const service = () => category().services[selected];
+    function status(message, error = false) { $('status').textContent = message; $('status').dataset.error = String(error); }
+    function markDirty() { dirty = true; $('save').disabled = false; status('Unsaved changes'); }
+    function renderCategories() {
+      $('category').replaceChildren(...data.categories.map((item, index) => { const option = document.createElement('option'); option.value = index; option.textContent = item.label || 'Untitled category'; return option; }));
+      $('category').value = categoryIndex;
+      $('category-up').disabled = categoryIndex === 0;
+      $('category-down').disabled = categoryIndex === data.categories.length - 1;
+      $('delete-category').disabled = data.categories.length === 1;
+    }
+    function renderCategoryForm() {
+      for (const key of ['label', 'id', 'icon', 'cssClass']) categoryForm.elements.namedItem(key).value = category()[key];
+      categoryForm.elements.namedItem('allPrivate').checked = Boolean(category().allPrivate);
+      renderCategories();
+    }
+    function renderList() {
+      $('services').replaceChildren();
+      category().services.forEach((item, index) => {
+        const button = document.createElement('button');
+        button.type = 'button'; button.setAttribute('aria-pressed', String(index === selected));
+        const name = document.createElement('span'); name.textContent = (item.name || 'Untitled service') + (item.hidden ? ' · Hidden' : '');
+        const url = document.createElement('small'); url.textContent = item.url || 'No URL yet';
+        button.append(name, url); button.addEventListener('click', () => { selected = index; render(); });
+        $('services').append(button);
+      });
+      $('count').textContent = `${category().services.length} services`;
+      $('up').disabled = selected <= 0;
+      $('down').disabled = selected < 0 || selected >= category().services.length - 1;
+    }
+    function render() {
+      renderList();
+      form.hidden = selected < 0; $('empty').hidden = selected >= 0;
+      if (selected < 0) return;
+      const item = service();
+      for (const key of ['name', 'url', 'icon', 'desc']) form.elements.namedItem(key).value = item[key];
+      form.elements.namedItem('private').checked = Boolean(item.private || category().allPrivate);
+      form.elements.namedItem('private').disabled = Boolean(category().allPrivate);
+      form.elements.namedItem('hidden').checked = Boolean(item.hidden);
+      renderAlternates();
+    }
+    function renderAlternates() {
+      $('alternates').replaceChildren();
+      (service().alternates || []).forEach((address, index) => {
+        const row = document.createElement('div'); row.className = 'alternate-editor';
+        const urlLabel = document.createElement('label'); urlLabel.textContent = `Alternate URL ${index + 1}`;
+        const url = document.createElement('input'); url.type = 'url'; url.required = true; url.value = address.url;
+        url.addEventListener('input', () => { address.url = url.value; markDirty(); });
+        urlLabel.append(url);
+        const typeLabel = document.createElement('label'); typeLabel.textContent = 'Address type';
+        const type = document.createElement('select'); type.setAttribute('aria-label', `Address type ${index + 1}`);
+        for (const value of ['alias', 'redirect']) { const option = document.createElement('option'); option.value = value; option.textContent = value === 'alias' ? 'Alias' : 'Redirect'; type.append(option); }
+        type.value = address.type;
+        type.addEventListener('change', () => { address.type = type.value; markDirty(); });
+        typeLabel.append(type);
+        const unavailableLabel = document.createElement('label'); unavailableLabel.className = 'check';
+        const unavailable = document.createElement('input'); unavailable.type = 'checkbox'; unavailable.checked = Boolean(address.unavailable);
+        unavailable.setAttribute('aria-label', `Unavailable ${index + 1}`);
+        unavailable.addEventListener('change', () => { if (unavailable.checked) address.unavailable = true; else delete address.unavailable; markDirty(); });
+        unavailableLabel.append(unavailable, 'Unavailable');
+        const remove = document.createElement('button'); remove.type = 'button'; remove.className = 'danger'; remove.textContent = 'Remove address'; remove.setAttribute('aria-label', `Remove address ${index + 1}`);
+        remove.addEventListener('click', () => { service().alternates.splice(index, 1); if (!service().alternates.length) delete service().alternates; markDirty(); renderAlternates(); });
+        row.append(urlLabel, typeLabel, unavailableLabel, remove); $('alternates').append(row);
+      });
+    }
+    $('add-address').addEventListener('click', () => {
+      service().alternates ??= [];
+      service().alternates.push({ url: 'https://', type: 'alias' });
+      markDirty(); renderAlternates(); $('alternates').lastElementChild.querySelector('input').focus();
+    });
+    async function load() {
+      try {
+        const response = await fetch('/__services/data'); const payload = await response.json();
+        if (!response.ok) throw new Error(payload.error);
+        data = payload.data; revision = payload.revision; dirty = false; selected = -1;
+        categoryIndex = Math.min(categoryIndex, data.categories.length - 1);
+        renderCategories(); categoryForm.hidden = true;
+        $('save').disabled = true; $('add').disabled = false;
+        $('edit-category').disabled = false; $('add-category').disabled = false;
+        status('Loaded services.json.'); render();
+      } catch (error) { status(error.message, true); }
+    }
+    form.addEventListener('submit', event => event.preventDefault());
+    form.addEventListener('input', event => {
+      const field = event.target;
+      if (!['name', 'url', 'icon', 'desc', 'private', 'hidden'].includes(field.name)) return;
+      if (field.name === 'private' || field.name === 'hidden') {
+        if (field.checked) service()[field.name] = true; else delete service()[field.name];
+      } else service()[field.name] = field.value;
+      markDirty(); renderList();
+    });
+    categoryForm.addEventListener('submit', event => event.preventDefault());
+    categoryForm.addEventListener('input', event => {
+      const field = event.target;
+      if (!['label', 'id', 'icon', 'cssClass', 'allPrivate'].includes(field.name)) return;
+      if (field.name === 'allPrivate') {
+        if (field.checked) category().allPrivate = true; else delete category().allPrivate;
+      } else category()[field.name] = field.value;
+      markDirty(); renderCategories(); render();
+    });
+    $('category').addEventListener('change', () => { categoryIndex = Number($('category').value); selected = -1; renderCategoryForm(); render(); });
+    $('edit-category').addEventListener('click', () => { categoryForm.hidden = false; renderCategoryForm(); });
+    $('close-category').addEventListener('click', () => { categoryForm.hidden = true; });
+    $('add-category').addEventListener('click', () => {
+      let id = 'new-category', suffix = 1;
+      while (data.categories.some(c => c.id === id)) id = `new-category-${suffix++}`;
+      data.categories.push({ id, label: 'New category', icon: 'folder', cssClass: 'cat-personal', services: [] });
+      categoryIndex = data.categories.length - 1; selected = -1;
+      categoryForm.hidden = false; markDirty(); renderCategoryForm(); render();
+      categoryForm.elements.namedItem('label').focus();
+    });
+    $('delete-category').addEventListener('click', () => {
+      if (data.categories.length === 1 || !confirm(`Delete ${category().label} and its ${category().services.length} services? This is not saved yet.`)) return;
+      data.categories.splice(categoryIndex, 1); categoryIndex = Math.min(categoryIndex, data.categories.length - 1); selected = -1;
+      markDirty(); renderCategoryForm(); render();
+    });
+    function moveCategory(direction) {
+      const next = categoryIndex + direction;
+      if (next < 0 || next >= data.categories.length) return;
+      [data.categories[categoryIndex], data.categories[next]] = [data.categories[next], data.categories[categoryIndex]];
+      categoryIndex = next; markDirty(); renderCategoryForm(); render();
+    }
+    $('category-up').addEventListener('click', () => moveCategory(-1));
+    $('category-down').addEventListener('click', () => moveCategory(1));
+    $('add').addEventListener('click', () => {
+      const item = { name: '', url: 'https://', icon: 'globe', desc: '' };
+      if (category().allPrivate) item.private = true;
+      category().services.push(item); selected = category().services.length - 1;
+      markDirty(); render(); form.elements.namedItem('name').focus();
+    });
+    $('delete').addEventListener('click', () => {
+      if (!confirm(`Delete ${service().name || 'this service'}? This is not saved yet.`)) return;
+      category().services.splice(selected, 1); selected = -1; markDirty(); render();
+    });
+    function move(direction) {
+      const next = selected + direction;
+      if (next < 0 || next >= category().services.length) return;
+      const items = category().services;
+      [items[selected], items[next]] = [items[next], items[selected]];
+      selected = next; markDirty(); render();
+    }
+    $('up').addEventListener('click', () => move(-1));
+    $('down').addEventListener('click', () => move(1));
+    $('reload').addEventListener('click', () => { if (!dirty || confirm('Discard unsaved changes and reload services.json?')) load(); });
+    $('save').addEventListener('click', async () => {
+      if (saving) return;
+      const invalid = data.categories.flatMap(c => c.services).some(s => !s.name.trim() || !s.desc.trim() || !s.icon.trim());
+      if (invalid) return status('Every service needs a name, description, and icon.', true);
+      saving = true; $('save').disabled = true;
+      const snapshot = JSON.stringify(data);
+      try {
+        const response = await fetch('/__services/data', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ data: JSON.parse(snapshot), revision }) });
+        const payload = await response.json();
+        if (!response.ok) throw new Error(payload.error);
+        revision = payload.revision; dirty = snapshot !== JSON.stringify(data);
+        status(dirty ? 'Saved. Newer edits are still unsaved.' : 'Saved to services.json. The site preview updates automatically.');
+      } catch (error) { status(error.message, true); }
+      finally { saving = false; $('save').disabled = !dirty; }
+    });
+    window.addEventListener('beforeunload', event => { if (dirty) { event.preventDefault(); event.returnValue = ''; } });
+    load();
+  </script>
+</body>
+</html>

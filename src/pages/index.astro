@@ -1,6 +1,7 @@
 ---
 import Services from '../components/Services.astro';
 import Icon from '../components/Icon.astro';
+import ServiceNav from '../components/ServiceNav.astro';
 import 'normalize.css';
 import '@fontsource-variable/inconsolata';
 import '@fontsource-variable/roboto';
@@ -131,6 +132,7 @@ import barlowItalicFont from '@fontsource/barlow-condensed/files/barlow-condense
     </script>
   </head>
   <body>
+    <ServiceNav />
     <div class="ktm-hero-bg" aria-hidden="true">
       <div class="ktm-video-wrap">
         <video src="/bgvideo.mkv" poster="/bgvideo-poster.webp" preload="auto" autoplay loop muted playsinline class="ktm-video-bg"></video>

@@ -1,9 +1,11 @@
 import { defineConfig } from 'astro/config';
+import servicesEditor from './scripts/services-editor.mjs';
 
 export default defineConfig({
   site: 'https://pmh.codes',
   output: 'static',
   compressHTML: true,
+  integrations: [servicesEditor()],
   vite: {
     plugins: [{
       name: 'fontsource-no-swap',

@@ -1,0 +1,27 @@
+---
+import Icon from './Icon.astro';
+import { hostnameParts } from '../lib/hostname';
+import type { AlternateAddress } from '../lib/services';
+
+interface Props {
+  addresses: AlternateAddress[];
+  primary: string;
+}
+
+const { addresses, primary } = Astro.props;
+---
+
+<details class="service-alternates">
+  <summary><Icon name="chevron-right" /><span>{addresses.length} alternate {addresses.length === 1 ? 'address' : 'addresses'}</span></summary>
+  <ul>
+    {addresses.map(address => (
+      <li>
+        <a href={address.url} target="_blank" rel="noopener noreferrer" data-primary-url={primary}>
+          <span class="service-subdomain">{hostnameParts(address.url).prefix}</span>{hostnameParts(address.url).suffix}
+        </a>
+        <span class="alternate-type"><Icon name={address.type === 'redirect' ? 'corner-down-right' : 'link'} />{address.type === 'redirect' ? 'Redirect' : 'Alias'}</span>
+        {address.unavailable && <span class="alternate-unavailable">Unavailable</span>}
+      </li>
+    ))}
+  </ul>
+</details>

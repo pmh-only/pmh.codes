@@ -1,13 +1,8 @@
 ---
-import { categories } from '../../services.json';
+import { visibleCategories as categories } from '../lib/services';
 import Icon from './Icon.astro';
-
-function hostnameParts(url: string) {
-  const hostname = new URL(url).hostname;
-  return hostname.endsWith('.pmh.codes')
-    ? { prefix: hostname.slice(0, -'.pmh.codes'.length), suffix: '.pmh.codes' }
-    : { prefix: hostname, suffix: '' };
-}
+import AlternateAddresses from './AlternateAddresses.astro';
+import { hostnameParts } from '../lib/hostname';
 ---
 
 {categories.map(category => (
@@ -18,19 +13,23 @@ function hostnameParts(url: string) {
     </h2>
     <div class:list={['service-list', { 'private-list': 'allPrivate' in category && category.allPrivate }]}>
       {category.services.map(service => (
+        <div class="service-entry">
         <a
           href={service.url}
           target="_blank"
-          class:list={['service-item', { private: 'private' in service && service.private }]}
+          rel="noopener noreferrer"
+          class:list={['service-item', { private: ('allPrivate' in category && category.allPrivate) || ('private' in service && service.private) }]}
         >
           <Icon name={service.icon} />
           <span class="service-identity">
             <span class="service-name">{service.name}</span>
             <span class="service-hostname"><span class="service-subdomain">{hostnameParts(service.url).prefix}</span>{hostnameParts(service.url).suffix}</span>
           </span>
-          {'private' in service && service.private && <Icon name="lock" class="lock-icon" />}
+          {(('allPrivate' in category && category.allPrivate) || ('private' in service && service.private)) && <Icon name="lock" class="lock-icon" />}
           <span class="service-desc">{service.desc}</span>
         </a>
+        {service.alternates && service.alternates.length > 0 && <AlternateAddresses addresses={service.alternates} primary={service.url} />}
+        </div>
       ))}
     </div>
   </section>

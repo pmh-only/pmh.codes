@@ -1,6 +1,7 @@
 {
   "packageManager": "pnpm@12.11.2",
   "scripts": {
+    "test": "node --test scripts/services-editor.test.mjs",
     "build": "astro build",
     "dev": "astro dev",
     "preview": "astro preview",
