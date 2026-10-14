@@ -1,5 +1,5 @@
 ---
-import Services from '../components/Services.astro';
+import Resume from '../components/Resume.astro';
 import Icon from '../components/Icon.astro';
 import ServiceNav from '../components/ServiceNav.astro';
 import 'normalize.css';
@@ -26,14 +26,14 @@ import barlowItalicFont from '@fontsource/barlow-condensed/files/barlow-condense
     <link rel="preload" as="font" type="font/woff2" href={barlowItalicFont} crossorigin="anonymous" />
 
     <title>
-      Minhyeok Park — WorldSkills 2026 Cloud Computing · Team Korea | pmh.codes
+      Minhyeok Park — Cloud Architect & Backend Programmer | pmh.codes
     </title>
 
     <link rel="canonical" href="https://pmh.codes/" />
 
     <meta
       name="description"
-      content="Minhyeok Park — WorldSkills 2026 Cloud Computing competitor for Team Korea. Gold Medalist at WorldSkills Asia 2025 Taipei, National MVP among 6,000+ competitors, homelab engineer on Kubernetes."
+      content="Minhyeok Park — Cloud Architect at Samsung Electronics, backend programmer, and WorldSkills 2026 Cloud Computing silver medalist. AWS, Kubernetes, TypeScript, and Go."
     />
     <meta
       name="keywords"
@@ -42,11 +42,11 @@ import barlowItalicFont from '@fontsource/barlow-condensed/files/barlow-condense
     <meta name="author" content="Minhyeok Park" />
 
     <meta
-      content="Minhyeok Park — WorldSkills 2026 Cloud Computing · Team Korea | pmh.codes"
+      content="Minhyeok Park — Cloud Architect & Backend Programmer | pmh.codes"
       property="og:title"
     />
     <meta
-      content="Minhyeok Park — WorldSkills 2026 Cloud Computing competitor for Team Korea. Gold Medalist at WorldSkills Asia 2025 Taipei, National MVP among 6,000+ competitors."
+      content="Cloud Architect at Samsung Electronics, backend programmer, and WorldSkills 2026 Cloud Computing silver medalist. Explore my experience, awards, and open-source projects."
       property="og:description"
     />
     <meta content="https://pmh.codes" property="og:url" />
@@ -66,11 +66,11 @@ import barlowItalicFont from '@fontsource/barlow-condensed/files/barlow-condense
     <meta name="twitter:creator" content="@pmh_only" />
     <meta
       name="twitter:title"
-      content="Minhyeok Park — WorldSkills 2026 Cloud Computing · Team Korea | pmh.codes"
+      content="Minhyeok Park — Cloud Architect & Backend Programmer | pmh.codes"
     />
     <meta
       name="twitter:description"
-      content="Minhyeok Park — WorldSkills 2026 Cloud Computing competitor for Team Korea. Gold Medalist at WorldSkills Asia 2025 Taipei, National MVP among 6,000+ competitors."
+      content="Cloud Architect at Samsung Electronics, backend programmer, and WorldSkills 2026 Cloud Computing silver medalist. Explore my experience, awards, and open-source projects."
     />
     <meta name="twitter:image" content="https://pmh.codes/favicon.webp" />
     <meta
@@ -96,12 +96,18 @@ import barlowItalicFont from '@fontsource/barlow-condensed/files/barlow-condense
             "name": "Minhyeok Park",
             "url": "https://pmh.codes",
             "email": "pmh_only@pmh.codes",
-            "jobTitle": "Cloud Computing Specialist & WorldSkills Competitor",
+            "jobTitle": "Cloud Architect & Backend Programmer",
+            "worksFor": {
+              "@type": "Organization",
+              "name": "Samsung Electronics"
+            },
             "birthDate": "2005",
             "nationality": "Korean",
             "image": "https://pmh.codes/favicon.webp",
-            "description": "WorldSkills 2026 Cloud Computing competitor representing Team Korea. Gold Medalist at WorldSkills Asia 2025 Taipei and National MVP among 6,000+ competitors.",
+            "description": "Cloud Architect at Samsung Electronics and backend programmer working with AWS, Kubernetes, TypeScript, and Go. WorldSkills 2026 Cloud Computing silver medalist representing Team Korea.",
             "award": [
+              "Silver Medal — WorldSkills 2026 Shanghai, Cloud Computing",
+              "International Winner — WorldSkills Ireland",
               "Gold Medal — WorldSkills Asia 2025, Taipei",
               "MVP — National WorldSkills Competition (Republic of Korea), 6,000+ competitors",
               "Gold Medal — National WorldSkills Competition (Republic of Korea)"
@@ -124,7 +130,7 @@ import barlowItalicFont from '@fontsource/barlow-condensed/files/barlow-condense
             "@id": "https://pmh.codes/#website",
             "name": "pmh.codes",
             "url": "https://pmh.codes",
-            "description": "Minhyeok Park — WorldSkills 2026 Cloud Computing competitor, Team Korea. Personal homelab on Oracle Cloud running Kubernetes.",
+            "description": "Minhyeok Park's resume: cloud architecture, backend development, WorldSkills awards, and open-source projects.",
             "author": { "@id": "https://pmh.codes/#person" }
           }
         ]
@@ -155,36 +161,19 @@ import barlowItalicFont from '@fontsource/barlow-condensed/files/barlow-condense
         </div>
 
         <div class="ktm-hero">
-          <h2 class="ktm-name">
+          <h1 class="ktm-name">
             MINHYEOK<br /><span class="ktm-bg-year" aria-hidden="true"
               >#05&nbsp;</span
             ><em>PARK</em>
-          </h2>
+          </h1>
         </div>
 
       </div>
     </section>
 
     <div class="container" id="content">
-        <div class="services-header">
-          <p class="services-tagline">
-            Welcome to
-            <code
-              ><a
-                href="https://regexr.com/8h7ep"
-                target="_blank"
-                class="domain-link"
-                >^(?:[-_\w]+\.)*pmh\.(codes|so)$</a
-              ></code
-            >!
-            &mdash;
-            <a href="https://github.com/pmh-only" target="_blank"
-              >Minhyeok Park</a
-            >'s homelab on Oracle Cloud.
-          </p>
-        </div>
-      <main class="services">
-        <Services />
+      <main class="resume" aria-label="Resume">
+        <Resume />
       </main>
 
       <aside class="sidebar">

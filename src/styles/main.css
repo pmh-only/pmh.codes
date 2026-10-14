@@ -72,8 +72,7 @@ summary {
   display: grid;
   grid-template-columns: 1fr 300px;
   grid-template-areas:
-    "header header"
-    "services sidebar";
+    "resume sidebar";
   gap: 1rem 2rem;
 }
 
@@ -81,8 +80,7 @@ summary {
   .container {
     grid-template-columns: 1fr;
     grid-template-areas:
-      "header"
-      "services"
+      "resume"
       "sidebar";
   }
 }
@@ -92,6 +90,115 @@ summary {
     padding: 1rem;
     gap: 1rem;
   }
+}
+
+/* Resume */
+.resume {
+  grid-area: resume;
+  min-width: 0;
+}
+
+.resume-intro {
+  margin-bottom: 2rem;
+}
+
+.resume-eyebrow {
+  color: var(--accent-color);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.resume-intro h2 {
+  margin: 0.5rem 0 1rem;
+  font-size: clamp(1.8rem, 4vw, 2.75rem);
+  line-height: 1.15;
+}
+
+.resume-intro > p:not(.resume-eyebrow) {
+  max-width: 70ch;
+  margin-bottom: 0.75rem;
+  color: var(--secondary-text-color);
+}
+
+.resume-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 1.25rem 0 0;
+}
+
+.resume-skills li {
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 0.2rem 0.75rem;
+  color: var(--accent-color);
+  font-size: 0.85rem;
+}
+
+.resume-section {
+  margin-bottom: 2rem;
+}
+
+.resume-entry,
+.resume-awards li {
+  padding: 0.8rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.resume-entry:last-child,
+.resume-awards li:last-child {
+  border-bottom: 0;
+}
+
+.resume-entry-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.25rem 1rem;
+}
+
+.resume h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.resume-entry p,
+.resume-awards p,
+.resume-detail,
+.resume-source {
+  color: var(--secondary-text-color);
+  font-size: 0.9rem;
+}
+
+.resume-date,
+.resume-source {
+  font-size: 0.8rem;
+}
+
+.resume-entry .resume-detail {
+  margin-top: 0.4rem;
+}
+
+.resume-awards {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.resume-projects h3 a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.resume-projects h3 svg {
+  width: 0.9rem;
+  height: 0.9rem;
 }
 
 /* Services Header */
@@ -922,7 +1029,7 @@ pre::-webkit-scrollbar-thumb:hover,
   .container {
     grid-template-columns: 1fr;
     grid-template-areas:
-      "services"
+      "resume"
       "sidebar";
   }
 

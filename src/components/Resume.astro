@@ -1,0 +1,81 @@
+---
+import Icon from './Icon.astro';
+
+const skills = ['AWS', 'Kubernetes', 'TypeScript', 'Go'];
+const awards = [
+  ['Silver Medal', 'WorldSkills 2026 Shanghai · Cloud Computing'],
+  ['International Winner', 'WorldSkills Ireland · Technological University Dublin'],
+  ['Gold Medal', 'WorldSkills Asia · Ministry of Labor of Taiwan'],
+  ['National MVP', 'WorldSkills Korea · President of Korea'],
+  ['National Gold Medal', 'WorldSkills Korea · Ministry of Employment and Labor'],
+  ['Smart-teen App Challenge', 'SK Planet'],
+];
+const projects = [
+  { name: 'Homelab', url: 'https://github.com/pmh-only/lab', description: 'Kubernetes resource manifests for my personal homelab.' },
+  { name: 'Arch Linux Mirror', url: 'https://github.com/pmh-only/ftp', description: 'The Arch Linux package mirror I operate at ftp.io.kr.' },
+  { name: 'AS218822', url: 'https://as218822.net', description: 'My independently operated autonomous system network.' },
+  { name: 'Welplan2', url: 'https://github.com/pmh-only/welplan2', description: 'An API wrapper and web app for Samsung Electronics cafeteria menus from Samsung Welstory and Shinsegae Food.' },
+  { name: 'Mail', url: 'https://github.com/pmh-only/mail', description: 'A next-generation webmail client built with TypeScript.' },
+];
+---
+
+<div class="resume-intro">
+  <p class="resume-eyebrow">Cloud Architect &amp; Backend Programmer</p>
+  <h2>Building in the cloud.<br />Learning by doing.</h2>
+  <p>I'm Minhyeok Park, a cloud architect at Samsung Electronics based in the Republic of Korea. I work with AWS, Kubernetes, TypeScript, and Go, and represent Team Korea in WorldSkills Cloud Computing.</p>
+  <p>Outside of work and competition, I build open-source software and operate my own infrastructure, including a Kubernetes homelab, an Arch Linux mirror, and an autonomous system network.</p>
+  <ul class="resume-skills" aria-label="Core technologies">
+    {skills.map(skill => <li>{skill}</li>)}
+  </ul>
+</div>
+
+<section class="resume-section" aria-labelledby="experience-heading">
+  <h2 class="section-heading" id="experience-heading"><Icon name="briefcase" /> Experience</h2>
+  <article class="resume-entry">
+    <div class="resume-entry-heading">
+      <h3>Cloud Architect</h3>
+      <p class="resume-date">Mar 2024 — Present</p>
+    </div>
+    <p>Samsung Electronics · Suwon, Republic of Korea</p>
+  </article>
+  <article class="resume-entry">
+    <div class="resume-entry-heading">
+      <h3>Team Korea · Cloud Computing</h3>
+      <p class="resume-date">Sep 2025 — Oct 2026</p>
+    </div>
+    <p>WorldSkills Korea</p>
+    <p class="resume-detail">Representing Korea in Skill 53: Cloud Computing at WorldSkills 2026 Shanghai.</p>
+  </article>
+</section>
+
+<section class="resume-section" aria-labelledby="awards-heading">
+  <h2 class="section-heading" id="awards-heading"><Icon name="trophy" /> Awards &amp; Recognition</h2>
+  <ul class="resume-awards">
+    {awards.map(([award, organization]) => (
+      <li><h3>{award}</h3><p>{organization}</p></li>
+    ))}
+  </ul>
+</section>
+
+<section class="resume-section" aria-labelledby="projects-heading">
+  <h2 class="section-heading" id="projects-heading"><Icon name="code" /> Selected Projects</h2>
+  <div class="resume-projects">
+    {projects.map(project => (
+      <article class="resume-entry">
+        <h3><a href={project.url} target="_blank" rel="noopener noreferrer">{project.name}<Icon name="arrow-up-right" /></a></h3>
+        <p>{project.description}</p>
+      </article>
+    ))}
+  </div>
+</section>
+
+<section class="resume-section" aria-labelledby="background-heading">
+  <h2 class="section-heading" id="background-heading"><Icon name="graduation-cap" /> Background</h2>
+  <article class="resume-entry">
+    <h3>KITRI Best of the Best</h3>
+    <p>10th cohort</p>
+  </article>
+  <p class="resume-detail">Languages: Korean &amp; English · Time zone: Asia/Seoul</p>
+</section>
+
+<p class="resume-source">Based on my <a href="https://github.com/pmh-only" target="_blank" rel="noopener noreferrer">GitHub profile</a>.</p>
