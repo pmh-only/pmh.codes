@@ -289,6 +289,12 @@
           "desc": "Public read-only console for BGP routing, traffic, reachability, and infrastructure telemetry"
         },
         {
+          "name": "ftp.io.kr",
+          "url": "https://ftp.io.kr",
+          "icon": "download",
+          "desc": "Public Arch Linux package mirror operated by @pmh-only"
+        },
+        {
           "name": "Looking Glass",
           "url": "https://lg.pmh.codes",
           "icon": "scan-search",

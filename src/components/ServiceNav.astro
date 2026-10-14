@@ -2,6 +2,9 @@
 import { visibleCategories as categories } from '../lib/services';
 import Icon from './Icon.astro';
 import { hostnameParts } from '../lib/hostname';
+
+const defaultFavorites = ['Visualized', 'Architecture', 'Grafana', 'Rybbit', 'Minecraft', 'AS218822 Console'];
+const favoriteServices = defaultFavorites.flatMap(name => categories.flatMap(category => category.services).filter(service => service.name === name));
 ---
 
 <header class="service-nav" data-service-nav>
@@ -36,6 +39,7 @@ import { hostnameParts } from '../lib/hostname';
         <p class="launcher-count" role="status" aria-live="polite"></p>
         <div class="launcher-results">
           {categories.flatMap(category => category.services.map(service => (
+            <div class="launcher-entry">
             <a
               class="launcher-result"
               href={service.url}
@@ -53,12 +57,21 @@ import { hostnameParts } from '../lib/hostname';
               </span>
               {(('allPrivate' in category && category.allPrivate) || ('private' in service && service.private)) && <Icon name="lock" class="launcher-lock" />}
             </a>
+            <button type="button" class="service-favorite-toggle" data-favorite-url={service.url} aria-label={`Add ${service.name} to favorites`} aria-pressed="false" title={`Add ${service.name} to favorites`}><Icon name="star" /></button>
+            </div>
           )))}
           <p class="launcher-empty" hidden>No matching services.</p>
         </div>
       </section>
     </div>
   </div>
+  <nav class="service-favorites" aria-label="Favorite services">
+    <div class="service-favorites-links">
+      {favoriteServices.map(service => (
+        <a href={service.url} class="service-favorite" target="_blank" rel="noopener noreferrer" title={service.desc}><Icon name={service.icon} /><span>{service.name}</span></a>
+      ))}
+    </div>
+  </nav>
 </header>
 
 <script>

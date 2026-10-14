@@ -5,6 +5,8 @@ const toggle = root.querySelector('.service-nav-toggle');
 const clear = root.querySelector('.service-search-clear');
 const filters = [...root.querySelectorAll('[data-filter]')];
 const results = [...root.querySelectorAll('.launcher-result')];
+const favoriteLinks = root.querySelector('.service-favorites-links');
+const favoriteButtons = [...root.querySelectorAll('[data-favorite-url]')];
 const serviceForUrl = new Map();
 for (const result of results) {
   serviceForUrl.set(result.href, result.href);
@@ -15,6 +17,109 @@ const count = root.querySelector('.launcher-count');
 const empty = root.querySelector('.launcher-empty');
 let filter = 'all';
 let recent = [];
+let favorites = [...favoriteLinks.querySelectorAll('a')].map(link => link.href);
+
+try {
+  const stored = JSON.parse(localStorage.getItem('pmh-favorite-services') || 'null');
+  if (Array.isArray(stored)) favorites = [...new Set(stored.map(url => serviceForUrl.get(url)).filter(Boolean))];
+} catch { /* Keep the defaults when storage is unavailable. */ }
+
+function saveFavorites() {
+  try { localStorage.setItem('pmh-favorite-services', JSON.stringify(favorites)); } catch { /* Favorites still work for this visit. */ }
+}
+
+function updateFavorites() {
+  favoriteLinks.replaceChildren();
+  for (const url of favorites) {
+    const result = results.find(result => result.href === url);
+    if (!result) continue;
+    const link = document.createElement('a');
+    link.href = url;
+    link.className = 'service-favorite';
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    link.draggable = true;
+    link.title = `${result.querySelector('.launcher-result-desc').textContent} — Drag to reorder (or Alt + Left/Right)`;
+    link.setAttribute('aria-keyshortcuts', 'Alt+ArrowLeft Alt+ArrowRight');
+    const name = document.createElement('span');
+    name.textContent = result.querySelector('.launcher-result-name').firstChild.textContent.trim();
+    link.append(result.querySelector('svg').cloneNode(true), name);
+    favoriteLinks.append(link);
+  }
+  if (!favorites.length) {
+    const hint = document.createElement('span');
+    hint.className = 'service-favorites-empty';
+    hint.textContent = 'Star services in the launcher to pin them here.';
+    favoriteLinks.append(hint);
+  }
+  for (const button of favoriteButtons) {
+    const url = new URL(button.dataset.favoriteUrl).href;
+    const selected = favorites.includes(url);
+    const name = results.find(result => result.href === url).querySelector('.launcher-result-name').firstChild.textContent.trim();
+    const label = `${selected ? 'Remove' : 'Add'} ${name} ${selected ? 'from' : 'to'} favorites`;
+    button.setAttribute('aria-pressed', String(selected));
+    button.setAttribute('aria-label', label);
+    button.title = label;
+  }
+}
+
+let draggedFavorite = null;
+
+favoriteLinks.addEventListener('dragstart', event => {
+  const link = event.target.closest('.service-favorite');
+  if (!link) return;
+  draggedFavorite = link;
+  event.dataTransfer.effectAllowed = 'move';
+  event.dataTransfer.setData('text/plain', link.href);
+  link.classList.add('is-dragging');
+});
+
+favoriteLinks.addEventListener('dragover', event => {
+  if (!draggedFavorite) return;
+  event.preventDefault();
+  event.dataTransfer.dropEffect = 'move';
+  const next = [...favoriteLinks.querySelectorAll('.service-favorite')].find(link => {
+    if (link === draggedFavorite) return false;
+    const bounds = link.getBoundingClientRect();
+    return event.clientX < bounds.left + bounds.width / 2;
+  });
+  favoriteLinks.insertBefore(draggedFavorite, next || null);
+  const bounds = favoriteLinks.getBoundingClientRect();
+  if (event.clientX < bounds.left + 24) favoriteLinks.scrollLeft -= 12;
+  else if (event.clientX > bounds.right - 24) favoriteLinks.scrollLeft += 12;
+});
+
+favoriteLinks.addEventListener('drop', event => {
+  if (!draggedFavorite) return;
+  event.preventDefault();
+  favorites = [...favoriteLinks.querySelectorAll('.service-favorite')].map(link => link.href);
+  saveFavorites();
+});
+
+favoriteLinks.addEventListener('dragend', () => {
+  draggedFavorite = null;
+  updateFavorites();
+});
+
+favoriteLinks.addEventListener('keydown', event => {
+  const link = event.target.closest('.service-favorite');
+  if (!link || !event.altKey || !['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
+  event.preventDefault();
+  const index = favorites.indexOf(link.href);
+  const next = index + (event.key === 'ArrowLeft' ? -1 : 1);
+  if (next < 0 || next >= favorites.length) return;
+  [favorites[index], favorites[next]] = [favorites[next], favorites[index]];
+  saveFavorites();
+  updateFavorites();
+  favoriteLinks.querySelectorAll('.service-favorite')[next].focus();
+});
+
+for (const button of favoriteButtons) button.addEventListener('click', () => {
+  const url = new URL(button.dataset.favoriteUrl).href;
+  favorites = favorites.includes(url) ? favorites.filter(favorite => favorite !== url) : [...favorites, url];
+  saveFavorites();
+  updateFavorites();
+});
 
 try {
   const stored = JSON.parse(localStorage.getItem('pmh-recent-services') || '[]');
@@ -29,6 +134,7 @@ function update() {
   for (const result of results) {
     const inCategory = filter === 'all' || (filter === 'recent' ? recent.includes(result.href) : result.dataset.category === filter);
     result.hidden = !inCategory || !terms.every(term => result.dataset.search.includes(term));
+    result.parentElement.hidden = result.hidden;
   }
   const visible = visibleResults();
   heading.textContent = input.value.trim() ? 'Search results' : filters.find(button => button.dataset.filter === filter).textContent.trim();
@@ -40,7 +146,7 @@ function update() {
     ? [...results].sort((a, b) => recent.indexOf(a.href) - recent.indexOf(b.href))
     : results;
   const list = root.querySelector('.launcher-results');
-  for (const result of ordered) list.append(result);
+  for (const result of ordered) list.append(result.parentElement);
   list.scrollTop = 0;
 }
 
@@ -116,7 +222,7 @@ root.addEventListener('focusout', event => {
   if (event.relatedTarget && !root.contains(event.relatedTarget)) close();
 });
 document.addEventListener('click', event => {
-  const link = event.target.closest('a.service-item, a.launcher-result, a[data-primary-url]');
+   const link = event.target.closest('a.service-item, a.launcher-result, a.service-favorite, a[data-primary-url]');
   if (!link) return;
   const primary = serviceForUrl.get(link.href) || new URL(link.dataset.primaryUrl || link.href, location.href).href;
   recent = [primary, ...recent.filter(url => url !== primary)].slice(0, 8);
@@ -124,4 +230,5 @@ document.addEventListener('click', event => {
   if (link.classList.contains('launcher-result')) close(true);
 });
 
+updateFavorites();
 update();
