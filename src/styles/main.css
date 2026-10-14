@@ -48,6 +48,34 @@ body {
   margin: 0;
   padding: 0;
   position: relative;
+  isolation: isolate;
+}
+
+/* Keep the QR texture in the periphery, rather than behind the copy. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: -240px;
+  z-index: -1;
+  pointer-events: none;
+  background: url('/pmh-qr.svg') repeat center / 231px 231px;
+  transform: rotate(-12deg);
+  opacity: 0.85;
+  mask-image: linear-gradient(
+    to right,
+    black,
+    rgb(0 0 0 / 20%) 25%,
+    transparent 45%,
+    transparent 55%,
+    rgb(0 0 0 / 20%) 75%,
+    black
+  );
+}
+
+@media (max-width: 640px) {
+  body::before {
+    background-size: 165px 165px;
+  }
 }
 
 p {
@@ -1026,6 +1054,10 @@ pre::-webkit-scrollbar-thumb:hover,
 
 /* Print styles */
 @media print {
+  body::before {
+    display: none;
+  }
+
   .container {
     grid-template-columns: 1fr;
     grid-template-areas:
