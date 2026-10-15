@@ -6,6 +6,7 @@ const clear = root.querySelector('.service-search-clear');
 const filters = [...root.querySelectorAll('[data-filter]')];
 const results = [...root.querySelectorAll('.launcher-result')];
 const favoriteLinks = root.querySelector('.service-favorites-links');
+const favoritesBar = root.querySelector('.service-favorites');
 const favoriteButtons = [...root.querySelectorAll('[data-favorite-url]')];
 const serviceForUrl = new Map();
 for (const result of results) {
@@ -64,6 +65,22 @@ function updateFavorites() {
 }
 
 let draggedFavorite = null;
+let scrollAnchor = window.scrollY;
+
+window.addEventListener('scroll', () => {
+  const scrollY = Math.max(0, Math.min(window.scrollY, document.documentElement.scrollHeight - window.innerHeight));
+  const delta = scrollY - scrollAnchor;
+  if (scrollY === 0) {
+    root.classList.remove('favorites-hidden');
+  } else if (Math.abs(delta) < 8) {
+    return;
+  } else {
+    root.classList.toggle('favorites-hidden', delta > 0 && !favoritesBar.contains(document.activeElement) && !draggedFavorite);
+  }
+  scrollAnchor = scrollY;
+}, { passive: true });
+
+favoritesBar.addEventListener('focusin', () => root.classList.remove('favorites-hidden'));
 
 favoriteLinks.addEventListener('dragstart', event => {
   const link = event.target.closest('.service-favorite');
