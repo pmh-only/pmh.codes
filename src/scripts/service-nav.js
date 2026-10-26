@@ -66,21 +66,45 @@ function updateFavorites() {
 
 let draggedFavorite = null;
 let scrollAnchor = window.scrollY;
+let scrollTransitionUntil = 0;
+
+function setFavoritesHidden(hidden) {
+  if (root.classList.contains('favorites-hidden') === hidden) return;
+  root.classList.toggle('favorites-hidden', hidden);
+  // Collapsing the bar can move the document's scroll anchor. Do not treat
+  // those layout-driven scroll events as a change in the user's direction.
+  scrollTransitionUntil = performance.now() + 220;
+}
 
 window.addEventListener('scroll', () => {
   const scrollY = Math.max(0, Math.min(window.scrollY, document.documentElement.scrollHeight - window.innerHeight));
-  const delta = scrollY - scrollAnchor;
   if (scrollY === 0) {
-    root.classList.remove('favorites-hidden');
-  } else if (Math.abs(delta) < 8) {
+    setFavoritesHidden(false);
+    scrollAnchor = scrollY;
     return;
-  } else {
-    root.classList.toggle('favorites-hidden', delta > 0 && !favoritesBar.contains(document.activeElement) && !draggedFavorite);
   }
-  scrollAnchor = scrollY;
+  if (performance.now() < scrollTransitionUntil) {
+    scrollAnchor = scrollY;
+    return;
+  }
+  const hidden = root.classList.contains('favorites-hidden');
+  // Track the directional extreme, so tiny reversals and touchpad inertia
+  // cannot repeatedly toggle the bar around a single threshold.
+  scrollAnchor = hidden ? Math.max(scrollAnchor, scrollY) : Math.min(scrollAnchor, scrollY);
+  const delta = scrollY - scrollAnchor;
+  if (hidden && delta <= -32) {
+    setFavoritesHidden(false);
+    scrollAnchor = scrollY;
+  } else if (!hidden && delta >= 24 && scrollY > root.offsetHeight) {
+    setFavoritesHidden(!favoritesBar.contains(document.activeElement) && !draggedFavorite);
+    scrollAnchor = scrollY;
+  }
 }, { passive: true });
 
-favoritesBar.addEventListener('focusin', () => root.classList.remove('favorites-hidden'));
+favoritesBar.addEventListener('focusin', () => {
+  setFavoritesHidden(false);
+  scrollAnchor = window.scrollY;
+});
 
 favoriteLinks.addEventListener('dragstart', event => {
   const link = event.target.closest('.service-favorite');
